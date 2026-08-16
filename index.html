@@ -8,31 +8,37 @@
 
   <meta
     name="description"
-    content="Matuail Cyber Security Force — MCSF community website."
+    content="Official community platform of Matuail Cyber Security Force (MCSF)."
   >
 
   <style>
     :root {
-      --primary: #0b7655;
-      --primary-dark: #075b42;
-      --primary-light: #eaf6f1;
+      --primary: #087653;
+      --primary-dark: #065d42;
+      --primary-soft: #eaf6f1;
 
-      --dark: #17201d;
-      --dark-2: #26312d;
-
-      --text: #202825;
-      --muted: #69746f;
+      --ink: #17201d;
+      --text: #28322e;
+      --muted: #6b7772;
 
       --bg: #f6f8f7;
       --white: #ffffff;
 
-      --border: #e3e9e6;
+      --border: #e1e8e4;
 
-      --shadow-sm: 0 5px 20px rgba(20, 40, 32, 0.06);
-      --shadow-md: 0 15px 40px rgba(20, 40, 32, 0.09);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
 
-      --radius: 12px;
+      --shadow-sm: 0 5px 20px rgba(19, 38, 30, .05);
+      --shadow-md: 0 14px 40px rgba(19, 38, 30, .08);
+
+      --container: 1160px;
     }
+
+    /* ==============================
+       RESET
+    ============================== */
 
     * {
       margin: 0;
@@ -45,16 +51,25 @@
     }
 
     body {
+      min-width: 320px;
+
       background: var(--bg);
       color: var(--text);
+
       font-family:
         Inter,
+        ui-sans-serif,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
+      font-size: 14px;
       line-height: 1.6;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     body.menu-open {
@@ -66,8 +81,13 @@
       text-decoration: none;
     }
 
-    button {
+    button,
+    input {
       font: inherit;
+    }
+
+    button {
+      border: 0;
     }
 
     img {
@@ -75,188 +95,208 @@
       display: block;
     }
 
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* =========================
-       TOP BAR
-    ========================== */
-
-    .topbar {
-      background: var(--dark);
-      color: #d5ded9;
-      font-size: 11px;
-    }
-
-    .topbar-inner {
-      min-height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .topbar-left,
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .topbar a {
-      color: #d5ded9;
-      transition: color 0.2s ease;
-    }
-
-    .topbar a:hover {
-      color: #8dd8bb;
-    }
-
-    .topbar-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #5bbd99;
-    }
-
-    /* =========================
-       HEADER
-    ========================== */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    /* =========================
-       BRAND
-    ========================== */
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      flex-shrink: 0;
-    }
-
-    .brand-mark {
-      width: 43px;
-      height: 43px;
-      border-radius: 10px;
-      background: var(--primary-light);
-      border: 1px solid #cde7dc;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: var(--primary);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.5px;
-    }
-
-    .brand-title {
-      color: var(--dark);
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1.25;
-    }
-
-    .brand-subtitle {
-      display: block;
-      margin-top: 3px;
-      color: var(--primary);
-      font-size: 8px;
-      font-weight: 800;
-      letter-spacing: 1.8px;
-    }
-
-    /* =========================
-       NAVIGATION
-    ========================== */
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 4px;
+    ul {
       list-style: none;
     }
 
-    .nav-link {
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* ==============================
+       TOP STRIP
+    ============================== */
+
+    .top-strip {
+      min-height: 34px;
+
+      background: var(--ink);
+      color: #cbd5d0;
+
+      font-size: 10px;
+    }
+
+    .top-strip-inner {
+      min-height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .top-strip-left,
+    .top-strip-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-strip-right a {
+      transition: color .2s ease;
+    }
+
+    .top-strip-right a:hover {
+      color: #8fd5bb;
+    }
+
+    .strip-dot {
+      width: 4px;
+      height: 4px;
+
+      border-radius: 50%;
+
+      background: #69c7a4;
+    }
+
+    /* ==============================
+       HEADER
+    ============================== */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(255, 255, 255, .96);
+
+      border-bottom: 1px solid var(--border);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      min-height: 74px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 25px;
+    }
+
+    /* BRAND */
+
+    .brand {
       display: inline-flex;
       align-items: center;
-      padding: 9px 11px;
+      gap: 11px;
+
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+
+      object-fit: contain;
+
+      border-radius: 9px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      color: var(--ink);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      line-height: 1.25;
+      letter-spacing: -.15px;
+    }
+
+    .brand-short {
+      margin-top: 3px;
+
+      color: var(--primary);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      line-height: 1;
+      letter-spacing: 1.8px;
+    }
+
+    /* NAV */
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nav-link {
+      position: relative;
+
+      padding: 9px 9px;
+
       border-radius: 7px;
 
-      color: #56625d;
-      font-size: 11px;
+      color: #58645f;
+
+      font-size: 10px;
       font-weight: 650;
 
       transition:
-        color 0.2s ease,
-        background 0.2s ease;
+        color .2s ease,
+        background .2s ease;
     }
 
-    .nav-link:hover {
-      color: var(--primary);
-      background: var(--primary-light);
-    }
-
+    .nav-link:hover,
     .nav-link.active {
       color: var(--primary);
+      background: var(--primary-soft);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-left: 5px;
+      gap: 7px;
+
+      margin-left: 7px;
     }
 
-    .nav-login,
-    .nav-register {
-      min-height: 37px;
-      padding: 0 14px;
-      border-radius: 8px;
+    .nav-button {
+      min-height: 35px;
+
+      padding: 0 13px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      font-size: 10px;
+      border-radius: 7px;
+
+      font-size: 9px;
       font-weight: 750;
 
-      transition: 0.2s ease;
+      transition: .2s ease;
     }
 
     .nav-login {
       color: var(--primary);
-      border: 1px solid #cfe1d9;
-      background: #ffffff;
+
+      background: #fff;
+
+      border: 1px solid #cfe0d8;
     }
 
     .nav-login:hover {
-      background: var(--primary-light);
+      background: var(--primary-soft);
     }
 
     .nav-register {
-      color: #ffffff;
+      color: #fff;
+
       background: var(--primary);
+
       border: 1px solid var(--primary);
     }
 
@@ -265,152 +305,181 @@
       transform: translateY(-1px);
     }
 
-    /* =========================
-       MOBILE MENU
-    ========================== */
+    /* MOBILE BUTTON */
 
-    .menu-button {
+    .menu-toggle {
       display: none;
-      width: 42px;
-      height: 42px;
+
+      width: 40px;
+      height: 40px;
+
+      align-items: center;
+      justify-content: center;
+
+      background: #fff;
 
       border: 1px solid var(--border);
-      border-radius: 9px;
-      background: #ffffff;
+      border-radius: 8px;
 
       cursor: pointer;
-      color: var(--dark);
     }
 
-    .menu-lines {
-      width: 17px;
-      height: 12px;
-      margin: auto;
+    .menu-icon {
+      width: 18px;
+      height: 14px;
 
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .menu-lines span {
+    .menu-icon span {
       width: 100%;
-      height: 1.5px;
-      background: currentColor;
-      border-radius: 2px;
-      transition: 0.2s ease;
+      height: 2px;
+
+      border-radius: 3px;
+
+      background: var(--ink);
     }
 
-    /* =========================
+    /* ==============================
        HERO
-    ========================== */
+    ============================== */
 
     .hero {
       position: relative;
       overflow: hidden;
-      background: var(--white);
+
+      background: #fff;
+
       border-bottom: 1px solid var(--border);
     }
 
-    .hero::after {
+    .hero::before {
       content: "";
+
       position: absolute;
-      width: 420px;
-      height: 420px;
 
-      right: -250px;
-      top: -180px;
+      width: 500px;
+      height: 500px;
 
-      border: 1px solid rgba(11, 118, 85, 0.07);
+      right: -300px;
+      top: -250px;
+
+      border: 1px solid rgba(8, 118, 83, .07);
+
       border-radius: 50%;
 
       pointer-events: none;
     }
 
     .hero-inner {
-      min-height: 590px;
+      min-height: 570px;
+
       padding: 75px 0;
 
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.08fr .92fr;
+
       align-items: center;
-      gap: 70px;
+
+      gap: 65px;
     }
 
     .hero-content {
       max-width: 620px;
-      animation: fadeUp 0.65s ease both;
+
+      animation: heroIn .7s ease both;
     }
 
-    .hero-label {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
 
-      color: var(--primary);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
+      margin-bottom: 17px;
 
-      margin-bottom: 18px;
+      color: var(--primary);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      line-height: 1;
+      letter-spacing: 1.7px;
+
+      text-transform: uppercase;
     }
 
-    .hero-label-line {
+    .eyebrow-line {
       width: 23px;
       height: 2px;
-      border-radius: 5px;
+
+      border-radius: 3px;
+
       background: var(--primary);
     }
 
-    .hero h1 {
-      color: var(--dark);
-      font-size: clamp(40px, 5vw, 67px);
-      line-height: 1.04;
-      letter-spacing: -2.8px;
+    .hero-title {
+      color: var(--ink);
+
+      max-width: 650px;
+
+      font-size: clamp(39px, 5.1vw, 62px);
       font-weight: 800;
-      margin-bottom: 23px;
+
+      line-height: 1.06;
+      letter-spacing: -2.5px;
+
+      margin-bottom: 22px;
     }
 
-    .hero h1 span {
+    .hero-title span {
       color: var(--primary);
     }
 
-    .hero-text {
+    .hero-description {
       max-width: 570px;
+
       color: var(--muted);
-      font-size: 15px;
+
+      font-size: 13px;
       line-height: 1.85;
-      margin-bottom: 30px;
+
+      margin-bottom: 29px;
     }
 
-    .hero-buttons {
+    .hero-actions {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+
+      gap: 9px;
     }
 
     .button {
-      min-height: 45px;
-      padding: 0 18px;
-      border-radius: 8px;
+      min-height: 44px;
+
+      padding: 0 17px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
 
-      font-size: 11px;
+      border-radius: 8px;
+
+      font-size: 10px;
       font-weight: 750;
 
       transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
     }
 
     .button-primary {
-      color: #ffffff;
+      color: #fff;
       background: var(--primary);
       border: 1px solid var(--primary);
     }
@@ -420,209 +489,780 @@
       transform: translateY(-2px);
     }
 
-    .button-secondary {
-      color: #4e5b56;
-      background: #ffffff;
+    .button-outline {
+      color: #4f5b56;
+      background: #fff;
       border: 1px solid var(--border);
     }
 
-    .button-secondary:hover {
+    .button-outline:hover {
       color: var(--primary);
-      border-color: #bad9cd;
+      border-color: #bcd9cd;
       transform: translateY(-2px);
     }
 
-    /* =========================
-       HERO VISUAL
-    ========================== */
+    /* HERO VISUAL */
 
     .hero-visual {
-      position: relative;
-      min-height: 420px;
-
       display: flex;
-      align-items: center;
       justify-content: center;
 
-      animation: fadeUp 0.75s 0.08s ease both;
+      animation: heroIn .8s .08s ease both;
     }
 
-    .visual-card {
-      width: min(100%, 460px);
-      min-height: 355px;
+    .portal-card {
+      position: relative;
+      overflow: hidden;
 
-      border-radius: 18px;
+      width: min(100%, 450px);
+      min-height: 365px;
+
+      padding: 27px;
+
+      border-radius: var(--radius-lg);
+
       background:
         linear-gradient(
           145deg,
-          #17372e,
-          #0d251e
+          #183930 0%,
+          #0d251e 100%
         );
 
       box-shadow: var(--shadow-md);
-
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
     }
 
-    .visual-card::before {
+    .portal-card::before {
       content: "";
+
       position: absolute;
-      width: 240px;
-      height: 240px;
 
-      right: -110px;
-      top: -100px;
+      width: 280px;
+      height: 280px;
 
-      border: 1px solid rgba(255,255,255,0.08);
+      top: -130px;
+      right: -120px;
+
+      border: 1px solid rgba(255,255,255,.08);
+
       border-radius: 50%;
     }
 
-    .visual-card::after {
+    .portal-card::after {
       content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
 
+      position: absolute;
+
+      width: 190px;
+      height: 190px;
+
+      top: -80px;
       right: -65px;
-      top: -55px;
 
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,.05);
+
       border-radius: 50%;
     }
 
-    .visual-top {
+    .portal-header {
       position: relative;
       z-index: 2;
+
+      padding-bottom: 18px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 15px;
 
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
     }
 
-    .visual-brand {
+    .portal-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
-    .visual-logo {
-      width: 39px;
-      height: 39px;
-      border-radius: 9px;
+    .portal-logo {
+      width: 42px;
+      height: 42px;
+
+      object-fit: contain;
+
+      border-radius: 8px;
+
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .portal-brand-name {
+      color: #fff;
+
+      font-size: 10px;
+      font-weight: 750;
+
+      line-height: 1.35;
+    }
+
+    .portal-brand-name small {
+      display: block;
+
+      margin-top: 2px;
+
+      color: #88aa9e;
+
+      font-size: 7px;
+      font-weight: 500;
+    }
+
+    .online-status {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      color: #8fd7bb;
+
+      font-size: 7px;
+      font-weight: 750;
+
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .online-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #62cea3;
+    }
+
+    .portal-content {
+      position: relative;
+      z-index: 2;
+
+      padding-top: 40px;
+    }
+
+    .portal-label {
+      color: #86a99c;
+
+      font-size: 8px;
+      font-weight: 750;
+
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+    .portal-title {
+      max-width: 330px;
+
+      color: #fff;
+
+      font-size: 27px;
+      font-weight: 750;
+
+      line-height: 1.2;
+      letter-spacing: -.7px;
+
+      margin-bottom: 11px;
+    }
+
+    .portal-description {
+      max-width: 330px;
+
+      color: #a8bdb5;
+
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .portal-stats {
+      position: absolute;
+
+      left: 27px;
+      right: 27px;
+      bottom: 26px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 8px;
+    }
+
+    .portal-stat {
+      padding: 11px;
+
+      border-radius: 8px;
+
+      background: rgba(255,255,255,.055);
+
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .portal-stat strong {
+      display: block;
+
+      color: #fff;
+
+      font-size: 13px;
+      font-weight: 750;
+
+      line-height: 1.2;
+
+      margin-bottom: 3px;
+    }
+
+    .portal-stat span {
+      color: #83a399;
+
+      font-size: 7px;
+    }
+
+    /* ==============================
+       SECTION COMMON
+    ============================== */
+
+    .section {
+      padding: 85px 0;
+    }
+
+    .section-white {
+      background: #fff;
+    }
+
+    .section-heading {
+      max-width: 650px;
+
+      margin-bottom: 36px;
+    }
+
+    .section-label {
+      display: inline-block;
+
+      color: var(--primary);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      line-height: 1;
+
+      letter-spacing: 1.6px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      color: var(--ink);
+
+      font-size: clamp(27px, 4vw, 38px);
+      font-weight: 780;
+
+      line-height: 1.17;
+      letter-spacing: -1.2px;
+
+      margin-bottom: 10px;
+    }
+
+    .section-description {
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* ==============================
+       ABOUT
+    ============================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      align-items: center;
+
+      gap: 60px;
+    }
+
+    .about-copy p {
+      max-width: 570px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.9;
+
+      margin-bottom: 15px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 10px;
+
+      margin-top: 23px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+
+      gap: 9px;
+
+      color: #4d5954;
+
+      font-size: 10px;
+      font-weight: 650;
+    }
+
+    .feature-check {
+      width: 22px;
+      height: 22px;
+
+      flex-shrink: 0;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      color: #9de2c6;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+
+      color: var(--primary);
+      background: var(--primary-soft);
 
       font-size: 9px;
       font-weight: 900;
     }
 
-    .visual-brand-text {
-      color: #ffffff;
-      font-size: 11px;
+    .about-panel {
+      min-height: 330px;
+
+      padding: 27px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      background: #f1f5f3;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .about-panel-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    .about-logo {
+      width: 58px;
+      height: 58px;
+
+      padding: 5px;
+
+      object-fit: contain;
+
+      background: #fff;
+
+      border: 1px solid var(--border);
+      border-radius: 11px;
+    }
+
+    .about-tag {
+      color: #77837e;
+
+      font-size: 8px;
       font-weight: 750;
+
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .visual-brand-text small {
-      display: block;
-      margin-top: 3px;
+    .about-panel h3 {
+      max-width: 390px;
 
-      color: #8eb4a6;
-      font-size: 8px;
-      font-weight: 500;
+      color: var(--ink);
+
+      font-size: 24px;
+      font-weight: 750;
+
+      line-height: 1.25;
+      letter-spacing: -.6px;
     }
 
-    .status {
-      display: inline-flex;
+    .about-panel-footer {
+      padding-top: 17px;
+
+      display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
 
-      color: #9de2c6;
-      font-size: 8px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-    }
+      border-top: 1px solid #dce4e0;
 
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #65d0a6;
-    }
+      color: #66736d;
 
-    .visual-main {
-      position: relative;
-      z-index: 2;
-      padding-top: 45px;
-    }
-
-    .visual-main-label {
-      color: #8fb5a8;
       font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
     }
 
-    .visual-main h2 {
-      color: #ffffff;
+    .footer-dot {
+      color: var(--primary);
+    }
+
+    /* ==============================
+       QUICK ACCESS
+    ============================== */
+
+    .quick-section {
+      background: var(--bg);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 12px;
+    }
+
+    .quick-card {
+      min-height: 175px;
+
+      padding: 21px;
+
+      background: #fff;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+    .quick-card:hover {
+      transform: translateY(-4px);
+
+      border-color: #c7ddd4;
+
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quick-icon {
+      width: 36px;
+      height: 36px;
+
+      margin-bottom: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 8px;
+
+      color: var(--primary);
+      background: var(--primary-soft);
+
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .quick-card h3 {
+      color: var(--ink);
+
+      font-size: 12px;
+      font-weight: 750;
+
+      margin-bottom: 5px;
+    }
+
+    .quick-card p {
+      color: var(--muted);
+
+      font-size: 9px;
+      line-height: 1.65;
+    }
+
+    .quick-link {
+      display: inline-block;
+
+      margin-top: 10px;
+
+      color: var(--primary);
+
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    /* ==============================
+       STATS
+    ============================== */
+
+    .stats-section {
+      background: #fff;
+
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: 34px 20px;
+
+      text-align: center;
+
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat-number {
+      display: block;
+
+      color: var(--ink);
+
       font-size: 28px;
-      line-height: 1.2;
-      letter-spacing: -0.7px;
+      font-weight: 800;
+
+      line-height: 1.1;
+      letter-spacing: -1px;
+
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+
+      font-size: 9px;
+    }
+
+    /* ==============================
+       INFO SECTIONS
+    ============================== */
+
+    .info-card {
+      padding: 27px;
+
+      background: #fff;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .info-icon {
+      width: 39px;
+      height: 39px;
+
+      margin-bottom: 14px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 9px;
+
+      color: var(--primary);
+      background: var(--primary-soft);
+
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .info-card h3 {
+      color: var(--ink);
+
+      font-size: 13px;
+      font-weight: 750;
+
+      margin-bottom: 5px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+
+      font-size: 10px;
+      line-height: 1.75;
+    }
+
+    /* ==============================
+       CTA
+    ============================== */
+
+    .cta {
+      background: var(--ink);
+
+      padding: 76px 0;
+    }
+
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 40px;
+    }
+
+    .cta-copy {
+      max-width: 650px;
+    }
+
+    .cta-label {
+      color: #8fd5bb;
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+
+      margin-bottom: 9px;
+    }
+
+    .cta-title {
+      color: #fff;
+
+      font-size: clamp(27px, 4vw, 38px);
+      font-weight: 760;
+
+      line-height: 1.18;
+      letter-spacing: -1px;
+
+      margin-bottom: 9px;
+    }
+
+    .cta-description {
+      color: #a5b8b1;
+
+      font-size: 11px;
+      line-height: 1.75;
+    }
+
+    .cta-button {
+      flex-shrink: 0;
+
+      color: #fff;
+
+      background: transparent;
+
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .cta-button:hover {
+      color: #94d9bf;
+
+      border-color: #6ac09f;
+
+      transform: translateY(-2px);
+    }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    .site-footer {
+      background: #101714;
+
+      color: #fff;
+
+      padding: 50px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .7fr .7fr .8fr;
+
+      gap: 40px;
+
+      padding-bottom: 38px;
+    }
+
+    .footer-description {
+      max-width: 360px;
+
+      color: #899892;
+
+      font-size: 9px;
+      line-height: 1.8;
+
+      margin-top: 14px;
+    }
+
+    .footer-heading {
+      color: #fff;
+
+      font-size: 10px;
+      font-weight: 750;
+
       margin-bottom: 13px;
     }
 
-    .visual-main p {
-      max-width: 330px;
-      color: #a9c0b7;
-      font-size: 11px;
-      line-height: 1.7;
-    }
-
-    .visual-bottom {
-      position: absolute;
-      left: 30px;
-      right: 30px;
-      bottom: 28px;
-
+    .footer-links {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 9px;
+      gap: 8px;
     }
 
-    .visual-stat {
-      padding: 12px;
-      border-radius: 9px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
+    .footer-links a {
+      color: #899892;
+
+      font-size: 9px;
+
+      transition: color .2s ease;
     }
 
-    .visual-stat strong {
-      display: block;
-      color: #ffffff;
-      font-size: 15px;
-      margin-bottom: 2px;
+    .footer-links a:hover {
+      color: #8fd5bb;
     }
 
-    .visual-stat span {
-      color: #8eada1;
+    .footer-bottom {
+      padding-top: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      border-top: 1px solid rgba(255,255,255,.07);
+
+      color: #687771;
+
       font-size: 8px;
     }
 
-    @keyframes fadeUp {
+    /* ==============================
+       REVEAL ANIMATION
+    ============================== */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(15px);
+
+      transition:
+        opacity .6s ease,
+        transform .6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+    @keyframes heroIn {
       from {
         opacity: 0;
         transform: translateY(14px);
@@ -634,418 +1274,18 @@
       }
     }
 
-    /* =========================
-       SECTION
-    ========================== */
-
-    .section {
-      padding: 90px 0;
-    }
-
-    .section-white {
-      background: #ffffff;
-    }
-
-    .section-header {
-      max-width: 650px;
-      margin-bottom: 38px;
-    }
-
-    .section-label {
-      display: inline-block;
-      color: var(--primary);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      color: var(--dark);
-      font-size: clamp(28px, 4vw, 39px);
-      line-height: 1.15;
-      letter-spacing: -1.2px;
-      margin-bottom: 12px;
-    }
-
-    .section-description {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    /* =========================
-       ABOUT
-    ========================== */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-copy p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.9;
-      margin-bottom: 17px;
-    }
-
-    .about-points {
-      display: grid;
-      gap: 11px;
-      margin-top: 25px;
-    }
-
-    .about-point {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      color: #4e5b56;
-      font-size: 11px;
-      font-weight: 650;
-    }
-
-    .check {
-      width: 22px;
-      height: 22px;
-      flex-shrink: 0;
-
-      border-radius: 6px;
-      background: var(--primary-light);
-      color: var(--primary);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 10px;
-      font-weight: 900;
-    }
-
-    .about-card {
-      min-height: 330px;
-      border-radius: 16px;
-      background: #f1f5f3;
-      border: 1px solid var(--border);
-
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .about-card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .about-card-mark {
-      width: 52px;
-      height: 52px;
-
-      border-radius: 12px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .about-card-tag {
-      color: #77837e;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .about-card h3 {
-      max-width: 380px;
-      color: var(--dark);
-      font-size: 25px;
-      line-height: 1.25;
-      letter-spacing: -0.7px;
-    }
-
-    .about-card-footer {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding-top: 18px;
-      border-top: 1px solid #dce4e0;
-
-      color: #64716b;
-      font-size: 10px;
-    }
-
-    /* =========================
-       QUICK LINKS
-    ========================== */
-
-    .quick-section {
-      background: var(--bg);
-    }
-
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 13px;
-    }
-
-    .quick-card {
-      min-height: 165px;
-      padding: 22px;
-
-      border-radius: 12px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-    .quick-card:hover {
-      transform: translateY(-4px);
-      border-color: #c9ddd5;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .quick-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 9px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: var(--primary-light);
-      color: var(--primary);
-
-      font-size: 12px;
-      font-weight: 850;
-
-      margin-bottom: 17px;
-    }
-
-    .quick-card h3 {
-      color: var(--dark);
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-
-    .quick-card p {
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.65;
-    }
-
-    .quick-arrow {
-      display: inline-block;
-      margin-top: 11px;
-      color: var(--primary);
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    /* =========================
-       STATS
-    ========================== */
-
-    .stats {
-      background: #ffffff;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .stat {
-      padding: 36px 25px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-    }
-
-    .stat:last-child {
-      border-right: 0;
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--dark);
-      font-size: 31px;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    /* =========================
-       CTA
-    ========================== */
-
-    .cta {
-      padding: 85px 0;
-      background: var(--dark);
-    }
-
-    .cta-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-    }
-
-    .cta-content {
-      max-width: 680px;
-    }
-
-    .cta-label {
-      color: #8fd5bb;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .cta h2 {
-      color: #ffffff;
-      font-size: clamp(27px, 4vw, 39px);
-      line-height: 1.15;
-      letter-spacing: -1px;
-      margin-bottom: 10px;
-    }
-
-    .cta p {
-      color: #a8bbb4;
-      font-size: 12px;
-      line-height: 1.75;
-    }
-
-    .cta .button-secondary {
-      flex-shrink: 0;
-      background: transparent;
-      color: #ffffff;
-      border-color: rgba(255,255,255,0.2);
-    }
-
-    .cta .button-secondary:hover {
-      border-color: #72c7a8;
-      color: #a0dfc6;
-      background: rgba(255,255,255,0.04);
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    .footer {
-      background: #101714;
-      color: #ffffff;
-      padding: 55px 0 22px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr 0.7fr 0.9fr;
-      gap: 45px;
-      padding-bottom: 42px;
-    }
-
-    .footer-brand p {
-      max-width: 350px;
-      color: #8d9c96;
-      font-size: 10px;
-      line-height: 1.8;
-      margin-top: 16px;
-    }
-
-    .footer-title {
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 750;
-      margin-bottom: 15px;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: grid;
-      gap: 9px;
-    }
-
-    .footer-links a {
-      color: #8d9c96;
-      font-size: 10px;
-      transition: color 0.2s ease;
-    }
-
-    .footer-links a:hover {
-      color: #8fd5bb;
-    }
-
-    .footer-bottom {
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-
-      color: #718079;
-      font-size: 9px;
-    }
-
-    /* =========================
-       SCROLL REVEAL
-    ========================== */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition:
-        opacity 0.6s ease,
-        transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
+    /* ==============================
+       TABLET
+    ============================== */
 
     @media (max-width: 1050px) {
 
-      .nav-menu {
+      .main-nav {
         gap: 0;
       }
 
       .nav-link {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-inline: 6px;
       }
 
       .hero-inner {
@@ -1055,45 +1295,51 @@
       .quick-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
     }
+
+    /* ==============================
+       MOBILE NAV
+    ============================== */
 
     @media (max-width: 850px) {
 
-      .topbar-right {
+      .top-strip-right {
         display: none;
       }
 
-      .menu-button {
+      .menu-toggle {
         display: flex;
       }
 
-      .nav-menu {
+      .main-nav {
         position: fixed;
-        left: 20px;
-        right: 20px;
-        top: 88px;
+
+        left: 14px;
+        right: 14px;
+        top: 75px;
 
         display: none;
+
         flex-direction: column;
         align-items: stretch;
-        gap: 3px;
 
-        padding: 12px;
+        padding: 11px;
 
-        background: #ffffff;
+        background: #fff;
+
         border: 1px solid var(--border);
         border-radius: 12px;
 
         box-shadow: var(--shadow-md);
       }
 
-      .nav-menu.open {
+      .main-nav.open {
         display: flex;
-        animation: menuIn 0.2s ease both;
+
+        animation: navOpen .2s ease both;
       }
 
-      @keyframes menuIn {
+      @keyframes navOpen {
         from {
           opacity: 0;
           transform: translateY(-5px);
@@ -1107,36 +1353,28 @@
 
       .nav-link {
         width: 100%;
-        padding: 12px;
+
+        padding: 11px;
+
+        font-size: 10px;
       }
 
       .nav-actions {
-        width: 100%;
         margin: 5px 0 0;
         padding-top: 8px;
-        border-top: 1px solid var(--border);
-      }
 
-      .nav-login,
-      .nav-register {
-        flex: 1;
+        border-top: 1px solid var(--border);
       }
 
       .hero-inner {
         grid-template-columns: 1fr;
+
         padding: 65px 0;
-      }
-
-      .hero-content {
-        max-width: 750px;
-      }
-
-      .hero-visual {
-        min-height: auto;
       }
 
       .about-grid {
         grid-template-columns: 1fr;
+
         gap: 35px;
       }
 
@@ -1152,7 +1390,7 @@
         border-bottom: 1px solid var(--border);
       }
 
-      .cta-box {
+      .cta-inner {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -1160,57 +1398,55 @@
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
     }
+
+    /* ==============================
+       PHONE
+    ============================== */
 
     @media (max-width: 600px) {
 
       .container {
-        width: min(100% - 28px, 1180px);
+        width: calc(100% - 28px);
       }
 
-      .topbar-left span:last-child,
-      .topbar-left .topbar-dot {
+      .top-strip-left span:last-child,
+      .top-strip-left .strip-dot {
         display: none;
       }
 
-      .topbar-inner {
-        min-height: 33px;
-      }
-
-      .nav {
+      .header-inner {
         min-height: 68px;
       }
 
+      .main-nav {
+        top: 69px;
+      }
+
       .nav-actions {
+        display: flex;
         flex-direction: column;
+        gap: 7px;
       }
 
-      .nav-login,
-      .nav-register {
+      .nav-button {
         width: 100%;
-      }
-
-      .nav-menu {
-        top: 78px;
-        left: 14px;
-        right: 14px;
       }
 
       .hero-inner {
         padding: 52px 0;
       }
 
-      .hero h1 {
-        font-size: 42px;
+      .hero-title {
+        font-size: 41px;
         letter-spacing: -1.8px;
       }
 
-      .hero-text {
-        font-size: 13px;
+      .hero-description {
+        font-size: 12px;
       }
 
-      .hero-buttons {
+      .hero-actions {
         align-items: stretch;
         flex-direction: column;
       }
@@ -1219,19 +1455,24 @@
         width: 100%;
       }
 
-      .visual-card {
-        min-height: 330px;
-        padding: 23px;
+      .portal-card {
+        min-height: 335px;
+
+        padding: 22px;
       }
 
-      .visual-bottom {
-        left: 23px;
-        right: 23px;
+      .portal-stats {
+        left: 22px;
+        right: 22px;
         bottom: 22px;
       }
 
       .section {
-        padding: 65px 0;
+        padding: 64px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
       }
 
       .quick-grid {
@@ -1247,65 +1488,70 @@
       }
 
       .stat {
-        padding: 28px 10px;
+        padding: 27px 10px;
       }
 
-      .stat strong {
-        font-size: 26px;
+      .stat-number {
+        font-size: 24px;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+
+        gap: 28px;
       }
 
       .footer-bottom {
         align-items: flex-start;
         flex-direction: column;
       }
-
     }
 
+    /* ==============================
+       REDUCED MOTION
+    ============================== */
+
     @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
 
       *,
       *::before,
       *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        animation: none !important;
+        transition: none !important;
       }
-
     }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       TOP BAR
-  ========================== -->
+  <!-- ==========================================
+       TOP STRIP
+  =========================================== -->
 
-  <div class="topbar">
+  <div class="top-strip">
 
-    <div class="container topbar-inner">
+    <div class="container top-strip-inner">
 
-      <div class="topbar-left">
+      <div class="top-strip-left">
 
         <span>
           Matuail Cyber Security Force
         </span>
 
-        <span class="topbar-dot"></span>
+        <span class="strip-dot"></span>
 
         <span>
-          MCSF Community Portal
+          MCSF Community Platform
         </span>
 
       </div>
 
-      <div class="topbar-right">
+      <div class="top-strip-right">
 
         <a href="#contact">
           Contact
@@ -1322,27 +1568,29 @@
   </div>
 
 
-  <!-- =========================
+  <!-- ==========================================
        HEADER
-  ========================== -->
+  =========================================== -->
 
-  <header class="header">
+  <header class="site-header">
 
-    <div class="container nav">
+    <div class="container header-inner">
 
       <a href="index.html" class="brand">
 
-        <div class="brand-mark">
-          MCSF
-        </div>
+        <img
+          src="logo.png"
+          alt="Matuail Cyber Security Force"
+          class="brand-logo"
+        >
 
-        <div>
+        <div class="brand-copy">
 
-          <div class="brand-title">
+          <span class="brand-name">
             Matuail Cyber Security Force
-          </div>
+          </span>
 
-          <span class="brand-subtitle">
+          <span class="brand-short">
             MCSF
           </span>
 
@@ -1351,85 +1599,100 @@
       </a>
 
 
-      <!-- DESKTOP / MOBILE MENU -->
+      <nav
+        class="main-nav"
+        id="mainNav"
+      >
 
-      <nav>
+        <a
+          href="#home"
+          class="nav-link active"
+        >
+          Home
+        </a>
 
-        <ul class="nav-menu" id="navMenu">
+        <a
+          href="#about"
+          class="nav-link"
+        >
+          About
+        </a>
 
-          <li>
-            <a href="#home" class="nav-link active">
-              Home
-            </a>
-          </li>
+        <a
+          href="#members"
+          class="nav-link"
+        >
+          Members
+        </a>
 
-          <li>
-            <a href="#about" class="nav-link">
-              About
-            </a>
-          </li>
+        <a
+          href="#team"
+          class="nav-link"
+        >
+          Team
+        </a>
 
-          <li>
-            <a href="#members" class="nav-link">
-              Members
-            </a>
-          </li>
+        <a
+          href="#activities"
+          class="nav-link"
+        >
+          Activities
+        </a>
 
-          <li>
-            <a href="#team" class="nav-link">
-              Team
-            </a>
-          </li>
+        <a
+          href="#notices"
+          class="nav-link"
+        >
+          Notices
+        </a>
 
-          <li>
-            <a href="#activities" class="nav-link">
-              Activities
-            </a>
-          </li>
+        <a
+          href="#gallery"
+          class="nav-link"
+        >
+          Gallery
+        </a>
 
-          <li>
-            <a href="#notices" class="nav-link">
-              Notices
-            </a>
-          </li>
+        <a
+          href="#contact"
+          class="nav-link"
+        >
+          Contact
+        </a>
 
-          <li>
-            <a href="#contact" class="nav-link">
-              Contact
-            </a>
-          </li>
+        <div class="nav-actions">
 
-          <li class="nav-actions">
+          <a
+            href="login.html"
+            class="nav-button nav-login"
+          >
+            Login
+          </a>
 
-            <a href="login.html" class="nav-login">
-              Login
-            </a>
+          <a
+            href="register.html"
+            class="nav-button nav-register"
+          >
+            Register
+          </a>
 
-            <a href="register.html" class="nav-register">
-              Register
-            </a>
-
-          </li>
-
-        </ul>
+        </div>
 
       </nav>
 
 
       <button
-        class="menu-button"
-        id="menuButton"
         type="button"
-        aria-label="Open navigation menu"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
         aria-expanded="false"
       >
 
-        <span class="menu-lines">
-
+        <span class="menu-icon">
           <span></span>
           <span></span>
           <span></span>
-
         </span>
 
       </button>
@@ -1441,36 +1704,48 @@
 
   <main>
 
-    <!-- =========================
+    <!-- ==========================================
          HERO
-    ========================== -->
+    =========================================== -->
 
-    <section class="hero" id="home">
+    <section
+      class="hero"
+      id="home"
+    >
 
       <div class="container hero-inner">
 
         <div class="hero-content">
 
-          <div class="hero-label">
+          <div class="eyebrow">
 
-            <span class="hero-label-line"></span>
+            <span class="eyebrow-line"></span>
 
             MCSF Community
 
           </div>
 
-          <h1>
+
+          <h1 class="hero-title">
+
             Matuail
-            <span>Cyber Security Force</span>
+
+            <span>
+              Cyber Security Force
+            </span>
+
           </h1>
 
-          <p class="hero-text">
-            A professional community platform for MCSF members,
-            team information, announcements, activities and
-            organizational updates — all in one place.
+
+          <p class="hero-description">
+            A professional community platform for
+            MCSF members, team information, notices,
+            activities and organizational updates —
+            presented in one clear and accessible place.
           </p>
 
-          <div class="hero-buttons">
+
+          <div class="hero-actions">
 
             <a
               href="register.html"
@@ -1482,9 +1757,9 @@
 
             <a
               href="#about"
-              class="button button-secondary"
+              class="button button-outline"
             >
-              Learn about MCSF
+              Learn More
             </a>
 
           </div>
@@ -1492,35 +1767,38 @@
         </div>
 
 
-        <!-- HERO VISUAL -->
+        <!-- PORTAL VISUAL -->
 
         <div class="hero-visual">
 
-          <div class="visual-card">
+          <div class="portal-card">
 
-            <div class="visual-top">
+            <div class="portal-header">
 
-              <div class="visual-brand">
+              <div class="portal-brand">
 
-                <div class="visual-logo">
-                  MCSF
-                </div>
+                <img
+                  src="logo.png"
+                  alt="MCSF Logo"
+                  class="portal-logo"
+                >
 
-                <div class="visual-brand-text">
+                <div class="portal-brand-name">
 
                   Matuail Cyber Security Force
 
                   <small>
-                    Community Portal
+                    MCSF Community
                   </small>
 
                 </div>
 
               </div>
 
-              <div class="status">
 
-                <span class="status-dot"></span>
+              <div class="online-status">
+
+                <span class="online-dot"></span>
 
                 Active
 
@@ -1529,53 +1807,60 @@
             </div>
 
 
-            <div class="visual-main">
+            <div class="portal-content">
 
-              <div class="visual-main-label">
-                Organization
+              <div class="portal-label">
+                Community Portal
               </div>
 
-              <h2>
-                One community.
-                One platform.
+              <h2 class="portal-title">
+                One platform for
+                the MCSF community.
               </h2>
 
-              <p>
-                Connect with members, discover team information,
-                follow notices and stay updated with MCSF activities.
+              <p class="portal-description">
+                Members, team information,
+                activities, notices and more
+                will be organized here.
               </p>
 
             </div>
 
 
-            <div class="visual-bottom">
+            <div class="portal-stats">
 
-              <div class="visual-stat">
+              <div class="portal-stat">
 
-                <strong>Members</strong>
+                <strong>
+                  Members
+                </strong>
 
                 <span>
-                  Community
+                  Directory
                 </span>
 
               </div>
 
-              <div class="visual-stat">
+              <div class="portal-stat">
 
-                <strong>Team</strong>
+                <strong>
+                  Team
+                </strong>
 
                 <span>
-                  Leadership
+                  Information
                 </span>
 
               </div>
 
-              <div class="visual-stat">
+              <div class="portal-stat">
 
-                <strong>Updates</strong>
+                <strong>
+                  Updates
+                </strong>
 
                 <span>
-                  Latest news
+                  Notices
                 </span>
 
               </div>
@@ -1591,96 +1876,121 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==========================================
          ABOUT
-    ========================== -->
+    =========================================== -->
 
-    <section class="section section-white" id="about">
+    <section
+      class="section section-white"
+      id="about"
+    >
 
-      <div class="container">
+      <div class="container about-grid">
 
-        <div class="about-grid">
+        <div class="reveal">
 
-          <div class="about-copy reveal">
+          <div class="section-heading">
 
             <span class="section-label">
               About MCSF
             </span>
 
             <h2 class="section-title">
-              Built around people,
-              information and community.
+              A central place for
+              the MCSF community.
             </h2>
 
+          </div>
+
+
+          <div class="about-copy">
+
             <p>
-              Matuail Cyber Security Force (MCSF) is presented
-              through this platform as a centralized community
-              website for its members and team.
+              Matuail Cyber Security Force (MCSF)
+              is represented through this platform
+              with a structured digital presence for
+              members, teams and community information.
             </p>
 
             <p>
-              The goal of this website is to make important
-              organizational information easier to find while
-              providing a clear and professional online presence.
+              The website is designed to make important
+              information easier to find while keeping
+              the interface clean, professional and
+              accessible across devices.
             </p>
 
-            <div class="about-points">
+          </div>
 
-              <div class="about-point">
 
-                <span class="check">✓</span>
+          <div class="feature-list">
 
-                Organized member information
+            <div class="feature-item">
 
-              </div>
+              <span class="feature-check">
+                ✓
+              </span>
 
-              <div class="about-point">
+              Organized member information
 
-                <span class="check">✓</span>
+            </div>
 
-                Team and administration details
 
-              </div>
+            <div class="feature-item">
 
-              <div class="about-point">
+              <span class="feature-check">
+                ✓
+              </span>
 
-                <span class="check">✓</span>
+              Team and administration information
 
-                Notices and community updates
+            </div>
 
-              </div>
+
+            <div class="feature-item">
+
+              <span class="feature-check">
+                ✓
+              </span>
+
+              Notices and community activities
 
             </div>
 
           </div>
 
+        </div>
 
-          <div class="about-card reveal">
 
-            <div class="about-card-top">
+        <div class="about-panel reveal">
 
-              <div class="about-card-mark">
-                MCSF
-              </div>
+          <div class="about-panel-top">
 
-              <div class="about-card-tag">
-                Community Platform
-              </div>
+            <img
+              src="logo.png"
+              alt="MCSF Logo"
+              class="about-logo"
+            >
 
-            </div>
+            <span class="about-tag">
+              MCSF Platform
+            </span>
 
-            <h3>
-              Everything important about MCSF,
-              organized in one place.
-            </h3>
+          </div>
 
-            <div class="about-card-footer">
 
-              <span>●</span>
+          <h3>
+            Everything important about MCSF,
+            organized in one place.
+          </h3>
 
-              Member-focused website
 
-            </div>
+          <div class="about-panel-footer">
+
+            <span class="footer-dot">
+              ●
+            </span>
+
+            Member-focused community platform
 
           </div>
 
@@ -1691,29 +2001,30 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==========================================
          QUICK ACCESS
-    ========================== -->
+    =========================================== -->
 
-    <section class="section quick-section" id="members">
+    <section
+      class="section quick-section"
+      id="members"
+    >
 
       <div class="container">
 
-        <div class="section-header reveal">
+        <div class="section-heading reveal">
 
           <span class="section-label">
             Explore MCSF
           </span>
 
           <h2 class="section-title">
-            Everything you need,
-            easy to find.
+            Find what you need quickly.
           </h2>
 
           <p class="section-description">
-            The platform will organize MCSF's members,
-            team information, activities and important
-            community resources.
+            The main areas of the MCSF platform are
+            organized below for easy access.
           </p>
 
         </div>
@@ -1722,7 +2033,7 @@
         <div class="quick-grid">
 
           <a
-            href="#members"
+            href="members.html"
             class="quick-card reveal"
           >
 
@@ -1735,11 +2046,11 @@
             </h3>
 
             <p>
-              Explore the MCSF member directory and
-              member information.
+              Member directory and profile
+              information.
             </p>
 
-            <span class="quick-arrow">
+            <span class="quick-link">
               View members →
             </span>
 
@@ -1747,8 +2058,9 @@
 
 
           <a
-            href="#team"
+            href="team.html"
             class="quick-card reveal"
+            id="team"
           >
 
             <div class="quick-icon">
@@ -1756,24 +2068,25 @@
             </div>
 
             <h3>
-              Our Team
+              Team
             </h3>
 
             <p>
-              Learn about leadership, administration
-              and team responsibilities.
+              Leadership, administration and
+              team information.
             </p>
 
-            <span class="quick-arrow">
-              Meet the team →
+            <span class="quick-link">
+              View team →
             </span>
 
           </a>
 
 
           <a
-            href="#activities"
+            href="activities.html"
             class="quick-card reveal"
+            id="activities"
           >
 
             <div class="quick-icon">
@@ -1785,20 +2098,21 @@
             </h3>
 
             <p>
-              Keep track of MCSF activities,
-              community work and updates.
+              Community activities, events
+              and updates.
             </p>
 
-            <span class="quick-arrow">
-              Explore activities →
+            <span class="quick-link">
+              View activities →
             </span>
 
           </a>
 
 
           <a
-            href="#notices"
+            href="notices.html"
             class="quick-card reveal"
+            id="notices"
           >
 
             <div class="quick-icon">
@@ -1810,11 +2124,11 @@
             </h3>
 
             <p>
-              Find important announcements and
-              official community notices.
+              Important announcements and
+              official notices.
             </p>
 
-            <span class="quick-arrow">
+            <span class="quick-link">
               View notices →
             </span>
 
@@ -1827,57 +2141,72 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==========================================
          STATS
-    ========================== -->
+    =========================================== -->
 
-    <section class="stats">
+    <section class="stats-section">
 
       <div class="container stats-grid">
 
         <div class="stat reveal">
 
-          <strong data-number="0">
+          <span
+            class="stat-number"
+            data-count="0"
+          >
             0
-          </strong>
+          </span>
 
-          <span>
+          <span class="stat-label">
             Registered Members
           </span>
 
         </div>
 
+
         <div class="stat reveal">
 
-          <strong data-number="0">
+          <span
+            class="stat-number"
+            data-count="0"
+          >
             0
-          </strong>
+          </span>
 
-          <span>
+          <span class="stat-label">
             Team Members
           </span>
 
         </div>
 
+
         <div class="stat reveal">
 
-          <strong data-number="0">
+          <span
+            class="stat-number"
+            data-count="0"
+          >
             0
-          </strong>
+          </span>
 
-          <span>
+          <span class="stat-label">
             Activities
           </span>
 
         </div>
 
+
         <div class="stat reveal">
 
-          <strong data-number="0">
+          <span
+            class="stat-number"
+            data-count="0"
+          >
             0
-          </strong>
+          </span>
 
-          <span>
+          <span class="stat-label">
             Notices
           </span>
 
@@ -1888,48 +2217,50 @@
     </section>
 
 
-    <!-- =========================
-         TEAM PLACEHOLDER
-    ========================== -->
+    <!-- ==========================================
+         TEAM
+    =========================================== -->
 
     <section
       class="section section-white"
-      id="team"
+      id="team-info"
     >
 
       <div class="container">
 
-        <div class="section-header reveal">
+        <div class="section-heading reveal">
 
           <span class="section-label">
             Our Team
           </span>
 
           <h2 class="section-title">
-            The people behind MCSF.
+            People behind the organization.
           </h2>
 
           <p class="section-description">
-            Team profiles, positions and responsibilities
-            will be added here from the official MCSF
-            information you provide.
+            Official team profiles, positions and
+            responsibilities will be displayed here
+            from the MCSF information system.
           </p>
 
         </div>
 
-        <div class="quick-card reveal">
 
-          <div class="quick-icon">
-            +
+        <div class="info-card reveal">
+
+          <div class="info-icon">
+            T
           </div>
 
           <h3>
-            Team information coming next
+            Team information
           </h3>
 
           <p>
-            Official team data will be connected to this
-            section when the MCSF team information is provided.
+            Team data will be connected to the
+            platform when the member and administration
+            system is configured.
           </p>
 
         </div>
@@ -1939,33 +2270,31 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==========================================
          ACTIVITIES
-    ========================== -->
+    =========================================== -->
 
-    <section
-      class="section quick-section"
-      id="activities"
-    >
+    <section class="section quick-section">
 
       <div class="container">
 
-        <div class="section-header reveal">
+        <div class="section-heading reveal">
 
           <span class="section-label">
             Activities
           </span>
 
           <h2 class="section-title">
-            MCSF activities and updates.
+            MCSF activities and community updates.
           </h2>
 
           <p class="section-description">
-            This area will show verified MCSF activities,
-            events and community updates.
+            Activities and events will be managed
+            through the MCSF platform.
           </p>
 
         </div>
+
 
         <div class="quick-grid">
 
@@ -1976,14 +2305,15 @@
             </div>
 
             <h3>
-              Activities
+              Events
             </h3>
 
             <p>
-              Activity information will appear here.
+              MCSF event information and schedules.
             </p>
 
           </div>
+
 
           <div class="quick-card reveal">
 
@@ -1992,14 +2322,15 @@
             </div>
 
             <h3>
-              Events
+              Community
             </h3>
 
             <p>
-              Event information will appear here.
+              Community activities and updates.
             </p>
 
           </div>
+
 
           <div class="quick-card reveal">
 
@@ -2008,14 +2339,15 @@
             </div>
 
             <h3>
-              Community
+              Programs
             </h3>
 
             <p>
-              Community updates will appear here.
+              Programs and organizational activities.
             </p>
 
           </div>
+
 
           <div class="quick-card reveal">
 
@@ -2028,7 +2360,7 @@
             </h3>
 
             <p>
-              Latest updates will appear here.
+              Latest activity information.
             </p>
 
           </div>
@@ -2040,47 +2372,46 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==========================================
          NOTICES
-    ========================== -->
+    =========================================== -->
 
-    <section
-      class="section section-white"
-      id="notices"
-    >
+    <section class="section section-white">
 
       <div class="container">
 
-        <div class="section-header reveal">
+        <div class="section-heading reveal">
 
           <span class="section-label">
             Notice Board
           </span>
 
           <h2 class="section-title">
-            Important information from MCSF.
+            Important MCSF announcements.
           </h2>
 
           <p class="section-description">
-            Official notices and announcements will be
-            displayed here for members and visitors.
+            Official notices and announcements will
+            appear here once the notice system is active.
           </p>
 
         </div>
 
-        <div class="quick-card reveal">
 
-          <div class="quick-icon">
-            !
+        <div class="info-card reveal">
+
+          <div class="info-icon">
+            N
           </div>
 
           <h3>
-            No notices published yet
+            Notice board
           </h3>
 
           <p>
-            Once official MCSF notices are added,
-            they will be displayed in this section.
+            No official notices have been published
+            yet. The notice management system will
+            be connected later.
           </p>
 
         </div>
@@ -2090,36 +2421,88 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==========================================
+         GALLERY
+    =========================================== -->
+
+    <section
+      class="section quick-section"
+      id="gallery"
+    >
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="section-label">
+            Gallery
+          </span>
+
+          <h2 class="section-title">
+            MCSF moments and activities.
+          </h2>
+
+          <p class="section-description">
+            Photos and media from MCSF activities
+            will be displayed in the gallery.
+          </p>
+
+        </div>
+
+
+        <div class="info-card reveal">
+
+          <div class="info-icon">
+            G
+          </div>
+
+          <h3>
+            MCSF Gallery
+          </h3>
+
+          <p>
+            The gallery will be connected to the
+            media management system.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
          CTA
-    ========================== -->
+    =========================================== -->
 
     <section class="cta">
 
-      <div class="container cta-box">
+      <div class="container cta-inner">
 
-        <div class="cta-content reveal">
+        <div class="cta-copy reveal">
 
           <div class="cta-label">
             MCSF Community
           </div>
 
-          <h2>
-            Want to be part of MCSF?
+          <h2 class="cta-title">
+            Ready to join the community?
           </h2>
 
-          <p>
-            Create your account to access the member
-            area when registration becomes available.
+          <p class="cta-description">
+            Create an account to become part of the
+            MCSF member platform.
           </p>
 
         </div>
 
+
         <a
           href="register.html"
-          class="button button-secondary reveal"
+          class="button cta-button reveal"
         >
-          Create an account →
+          Create Account →
         </a>
 
       </div>
@@ -2127,9 +2510,7 @@
     </section>
 
 
-    <!-- =========================
-         CONTACT ANCHOR
-    ========================== -->
+    <!-- CONTACT ANCHOR -->
 
     <section
       id="contact"
@@ -2140,42 +2521,37 @@
   </main>
 
 
-  <!-- =========================
+  <!-- ==========================================
        FOOTER
-  ========================== -->
+  =========================================== -->
 
-  <footer class="footer">
+  <footer class="site-footer">
 
     <div class="container">
 
       <div class="footer-grid">
 
-        <div class="footer-brand">
+        <div>
 
           <a href="index.html" class="brand">
 
-            <div
-              class="brand-mark"
-              style="
-                color:#9de2c6;
-                background:rgba(255,255,255,0.06);
-                border-color:rgba(255,255,255,0.1);
-              "
+            <img
+              src="logo.png"
+              alt="MCSF Logo"
+              class="brand-logo"
             >
-              MCSF
-            </div>
 
-            <div>
-
-              <div
-                class="brand-title"
-                style="color:#ffffff;"
-              >
-                Matuail Cyber Security Force
-              </div>
+            <div class="brand-copy">
 
               <span
-                class="brand-subtitle"
+                class="brand-name"
+                style="color:#fff;"
+              >
+                Matuail Cyber Security Force
+              </span>
+
+              <span
+                class="brand-short"
                 style="color:#8fd5bb;"
               >
                 MCSF
@@ -2185,11 +2561,11 @@
 
           </a>
 
-          <p>
-            Official community website interface for
-            Matuail Cyber Security Force (MCSF).
-            Information shown on the platform will be
-            maintained through the website administration.
+
+          <p class="footer-description">
+            Matuail Cyber Security Force (MCSF)
+            community platform for members,
+            organizational information and updates.
           </p>
 
         </div>
@@ -2197,9 +2573,9 @@
 
         <div>
 
-          <div class="footer-title">
+          <h3 class="footer-heading">
             Explore
-          </div>
+          </h3>
 
           <ul class="footer-links">
 
@@ -2210,19 +2586,19 @@
             </li>
 
             <li>
-              <a href="#members">
+              <a href="members.html">
                 Members
               </a>
             </li>
 
             <li>
-              <a href="#team">
+              <a href="team.html">
                 Team
               </a>
             </li>
 
             <li>
-              <a href="#activities">
+              <a href="activities.html">
                 Activities
               </a>
             </li>
@@ -2234,15 +2610,21 @@
 
         <div>
 
-          <div class="footer-title">
-            Information
-          </div>
+          <h3 class="footer-heading">
+            Platform
+          </h3>
 
           <ul class="footer-links">
 
             <li>
-              <a href="#notices">
+              <a href="notices.html">
                 Notices
+              </a>
+            </li>
+
+            <li>
+              <a href="gallery.html">
+                Gallery
               </a>
             </li>
 
@@ -2258,12 +2640,6 @@
               </a>
             </li>
 
-            <li>
-              <a href="#contact">
-                Contact
-              </a>
-            </li>
-
           </ul>
 
         </div>
@@ -2271,9 +2647,9 @@
 
         <div>
 
-          <div class="footer-title">
+          <h3 class="footer-heading">
             MCSF
-          </div>
+          </h3>
 
           <ul class="footer-links">
 
@@ -2290,14 +2666,8 @@
             </li>
 
             <li>
-              <a href="#team">
-                Our Team
-              </a>
-            </li>
-
-            <li>
-              <a href="#notices">
-                Notice Board
+              <a href="#contact">
+                Contact
               </a>
             </li>
 
@@ -2311,13 +2681,13 @@
       <div class="footer-bottom">
 
         <span>
-          © <span id="year"></span>
-          Matuail Cyber Security Force (MCSF).
+          © <span id="currentYear"></span>
+          Matuail Cyber Security Force.
           All rights reserved.
         </span>
 
         <span>
-          MCSF Community Portal
+          MCSF Community Platform
         </span>
 
       </div>
@@ -2327,37 +2697,41 @@
   </footer>
 
 
+  <!-- ==========================================
+       JAVASCRIPT
+  =========================================== -->
+
   <script>
 
-    /* =========================
-       YEAR
-    ========================== */
+    /* ------------------------------------------
+       CURRENT YEAR
+    ------------------------------------------ */
 
-    document.getElementById("year").textContent =
+    document.getElementById("currentYear").textContent =
       new Date().getFullYear();
 
 
-    /* =========================
-       MOBILE MENU
-    ========================== */
+    /* ------------------------------------------
+       MOBILE NAVIGATION
+    ------------------------------------------ */
 
-    const menuButton =
-      document.getElementById("menuButton");
+    const menuToggle =
+      document.getElementById("menuToggle");
 
-    const navMenu =
-      document.getElementById("navMenu");
+    const mainNav =
+      document.getElementById("mainNav");
 
-    menuButton.addEventListener("click", () => {
+    menuToggle.addEventListener("click", function () {
 
       const opened =
-        navMenu.classList.toggle("open");
+        mainNav.classList.toggle("open");
 
       document.body.classList.toggle(
         "menu-open",
         opened
       );
 
-      menuButton.setAttribute(
+      menuToggle.setAttribute(
         "aria-expanded",
         opened ? "true" : "false"
       );
@@ -2365,21 +2739,21 @@
     });
 
 
-    /* CLOSE MOBILE MENU */
+    /* CLOSE MENU AFTER CLICK */
 
-    document
-      .querySelectorAll(".nav-link, .nav-actions a")
-      .forEach(link => {
+    mainNav
+      .querySelectorAll("a")
+      .forEach(function (link) {
 
-        link.addEventListener("click", () => {
+        link.addEventListener("click", function () {
 
-          navMenu.classList.remove("open");
+          mainNav.classList.remove("open");
 
           document.body.classList.remove(
             "menu-open"
           );
 
-          menuButton.setAttribute(
+          menuToggle.setAttribute(
             "aria-expanded",
             "false"
           );
@@ -2389,190 +2763,157 @@
       });
 
 
-    /* =========================
+    /* ------------------------------------------
        SCROLL REVEAL
-    ========================== */
+    ------------------------------------------ */
 
-    const revealElements =
+    const revealItems =
       document.querySelectorAll(".reveal");
 
-    const revealObserver =
-      new IntersectionObserver(
-        entries => {
+    if ("IntersectionObserver" in window) {
 
-          entries.forEach(entry => {
+      const revealObserver =
+        new IntersectionObserver(
+          function (entries) {
 
-            if (entry.isIntersecting) {
+            entries.forEach(function (entry) {
 
-              entry.target.classList.add(
-                "visible"
-              );
+              if (entry.isIntersecting) {
 
-              revealObserver.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.12
-        }
-      );
-
-    revealElements.forEach(element => {
-
-      revealObserver.observe(element);
-
-    });
-
-
-    /* =========================
-       STAT COUNTER
-       Currently set to zero
-       until real MCSF data is added.
-    ========================== */
-
-    const statNumbers =
-      document.querySelectorAll("[data-number]");
-
-    const statObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            const element =
-              entry.target;
-
-            const target =
-              Number(
-                element.dataset.number
-              );
-
-            if (target === 0) {
-              element.textContent = "0";
-              statObserver.unobserve(element);
-              return;
-            }
-
-            let current = 0;
-
-            const duration = 900;
-
-            const start =
-              performance.now();
-
-            function update(time) {
-
-              const progress =
-                Math.min(
-                  (time - start) / duration,
-                  1
+                entry.target.classList.add(
+                  "visible"
                 );
 
-              current =
-                Math.floor(
-                  progress * target
-                );
-
-              element.textContent =
-                current;
-
-              if (progress < 1) {
-
-                requestAnimationFrame(update);
-
-              } else {
-
-                element.textContent =
-                  target;
-
-              }
-
-            }
-
-            requestAnimationFrame(update);
-
-            statObserver.unobserve(element);
-
-          });
-
-        },
-        {
-          threshold: 0.5
-        }
-      );
-
-    statNumbers.forEach(element => {
-
-      statObserver.observe(element);
-
-    });
-
-
-    /* =========================
-       ACTIVE NAVIGATION
-    ========================== */
-
-    const sections =
-      document.querySelectorAll(
-        "main section[id]"
-      );
-
-    const navLinks =
-      document.querySelectorAll(
-        ".nav-link"
-      );
-
-    const activeObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            navLinks.forEach(link => {
-
-              link.classList.remove(
-                "active"
-              );
-
-              if (
-                link.getAttribute("href") ===
-                "#" + entry.target.id
-              ) {
-
-                link.classList.add(
-                  "active"
+                revealObserver.unobserve(
+                  entry.target
                 );
 
               }
 
             });
 
-          });
+          },
+          {
+            threshold: 0.12
+          }
+        );
 
-        },
-        {
-          rootMargin: "-35% 0px -55% 0px"
+      revealItems.forEach(function (item) {
+
+        revealObserver.observe(item);
+
+      });
+
+    } else {
+
+      revealItems.forEach(function (item) {
+
+        item.classList.add("visible");
+
+      });
+
+    }
+
+
+    /* ------------------------------------------
+       ACTIVE NAVIGATION
+    ------------------------------------------ */
+
+    const navigationLinks =
+      document.querySelectorAll(
+        ".main-nav > .nav-link"
+      );
+
+    const pageSections =
+      document.querySelectorAll(
+        "main section[id]"
+      );
+
+    if ("IntersectionObserver" in window) {
+
+      const sectionObserver =
+        new IntersectionObserver(
+          function (entries) {
+
+            entries.forEach(function (entry) {
+
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              navigationLinks.forEach(
+                function (link) {
+
+                  link.classList.remove(
+                    "active"
+                  );
+
+                  const target =
+                    link.getAttribute("href");
+
+                  if (
+                    target ===
+                    "#" + entry.target.id
+                  ) {
+
+                    link.classList.add(
+                      "active"
+                    );
+
+                  }
+
+                }
+              );
+
+            });
+
+          },
+          {
+            rootMargin:
+              "-35% 0px -55% 0px"
+          }
+        );
+
+      pageSections.forEach(function (section) {
+
+        sectionObserver.observe(section);
+
+      });
+
+    }
+
+
+    /* ------------------------------------------
+       PREVENT BROKEN LOCAL ANCHOR BEHAVIOUR
+       FOR THE CONTACT PLACEHOLDER
+    ------------------------------------------ */
+
+    const contactLink =
+      document.querySelector(
+        'a[href="#contact"]'
+      );
+
+    if (contactLink) {
+
+      contactLink.addEventListener(
+        "click",
+        function () {
+
+          const contact =
+            document.getElementById("contact");
+
+          if (contact) {
+
+            contact.scrollIntoView({
+              behavior: "smooth"
+            });
+
+          }
+
         }
       );
 
-    sections.forEach(section => {
-
-      activeObserver.observe(section);
-
-    });
+    }
 
   </script>
 
