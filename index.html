@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Matuail Cyber Security Force</title>
+  <meta
+    name="description"
+    content="Matuail Cyber Security Force — Cyber Security Community & Digital Awareness Platform."
+  />
+
+  <style>
+    /* =========================
+       RESET
+    ========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #05080d;
+      color: #f5f7fa;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================== */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+      background:
+        linear-gradient(rgba(0,255,170,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,170,0.035) 1px, transparent 1px);
+      background-size: 45px 45px;
+      animation: gridMove 12s linear infinite;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      top: -150px;
+      right: -150px;
+      border-radius: 50%;
+      background: rgba(0, 255, 170, 0.08);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    @keyframes gridMove {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(45px);
+      }
+    }
+
+    /* =========================
+       PARTICLES
+    ========================== */
+    #particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #00ffaa;
+      opacity: 0.45;
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      from {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0.5;
+      }
+
+      80% {
+        opacity: 0.5;
+      }
+
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       LOADER
+    ========================== */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #030507;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+      transition: 0.6s ease;
+    }
+
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      width: 80px;
+      height: 80px;
+      border: 2px solid rgba(0,255,170,0.2);
+      border-top-color: #00ffaa;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+    }
+
+    .loader-logo span {
+      font-size: 26px;
+      color: #00ffaa;
+      font-weight: 900;
+    }
+
+    .loader-text {
+      color: #00ffaa;
+      letter-spacing: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(5,8,13,0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0,255,170,0.1);
+    }
+
+    .nav-container {
+      max-width: 1250px;
+      margin: auto;
+      height: 75px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0,255,170,0.5);
+      color: #00ffaa;
+      background: rgba(0,255,170,0.05);
+      box-shadow: 0 0 25px rgba(0,255,170,0.08);
+    }
+
+    .brand-text {
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .brand-text small {
+      color: #00ffaa;
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #b8c2cc;
+      font-size: 13px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: #00ffaa;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00ffaa;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      padding: 11px 17px;
+      border-radius: 9px;
+      font-weight: 800;
+      font-size: 12px;
+      transition: 0.3s;
+    }
+
+    .btn-outline {
+      color: #00ffaa;
+      background: transparent;
+      border: 1px solid rgba(0,255,170,0.35);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0,255,170,0.08);
+      box-shadow: 0 0 20px rgba(0,255,170,0.1);
+    }
+
+    .btn-primary {
+      color: #00110b;
+      background: #00ffaa;
+      box-shadow: 0 0 25px rgba(0,255,170,0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(0,255,170,0.35);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid rgba(0,255,170,0.25);
+      background: transparent;
+      color: #00ffaa;
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 120px 25px 80px;
+    }
+
+    .hero-container {
+      width: 100%;
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 50px;
+      background: rgba(0,255,170,0.06);
+      border: 1px solid rgba(0,255,170,0.18);
+      color: #00ffaa;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00ffaa;
+      box-shadow: 0 0 10px #00ffaa;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: 0.3;
+        transform: scale(0.7);
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #00ffaa;
+      text-shadow: 0 0 30px rgba(0,255,170,0.2);
+    }
+
+    .hero p {
+      color: #8d99a6;
+      max-width: 650px;
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .cyber-orb {
+      width: min(420px, 80vw);
+      height: min(420px, 80vw);
+      border-radius: 50%;
+      border: 1px solid rgba(0,255,170,0.2);
+      display: grid;
+      place-items: center;
+      position: relative;
+      animation: orbFloat 5s ease-in-out infinite;
+    }
+
+    .cyber-orb::before,
+    .cyber-orb::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0,255,170,0.12);
+    }
+
+    .cyber-orb::before {
+      inset: 35px;
+      animation: spin 15s linear infinite;
+    }
+
+    .cyber-orb::after {
+      inset: 75px;
+      border-style: dashed;
+      animation: spinReverse 12s linear infinite;
+    }
+
+    @keyframes spinReverse {
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+
+    @keyframes orbFloat {
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .orb-core {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, rgba(0,255,170,0.18), rgba(0,255,170,0.01) 70%);
+      border: 1px solid rgba(0,255,170,0.35);
+      box-shadow:
+        0 0 40px rgba(0,255,170,0.12),
+        inset 0 0 40px rgba(0,255,170,0.08);
+    }
+
+    .orb-core div {
+      font-size: 52px;
+      color: #00ffaa;
+      filter: drop-shadow(0 0 15px rgba(0,255,170,0.5));
+    }
+
+    .floating-card {
+      position: absolute;
+      padding: 13px 15px;
+      border-radius: 12px;
+      background: rgba(10,15,21,0.8);
+      border: 1px solid rgba(0,255,170,0.15);
+      backdrop-filter: blur(12px);
+      color: #b9c4ce;
+      font-size: 11px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      animation: cardFloat 4s ease-in-out infinite;
+    }
+
+    .floating-card strong {
+      display: block;
+      color: #00ffaa;
+      margin-bottom: 4px;
+    }
+
+    .card-one {
+      top: 15%;
+      right: 0;
+    }
+
+    .card-two {
+      bottom: 14%;
+      left: 0;
+      animation-delay: 1s;
+    }
+
+    @keyframes cardFloat {
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* =========================
+       SECTION
+    ========================== */
+    section {
+      padding: 100px 25px;
+    }
+
+    .container {
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 55px;
+    }
+
+    .section-label {
+      color: #00ffaa;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 5vw, 48px);
+      margin-bottom: 15px;
+    }
+
+    .section-head p {
+      color: #7f8b98;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .glass-card {
+      padding: 30px;
+      background: rgba(10,15,21,0.62);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      backdrop-filter: blur(15px);
+      transition: 0.35s;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0,255,170,0.2);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+    }
+
+    .glass-card h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .glass-card p {
+      color: #85919d;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .feature-list {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 10px;
+      color: #aeb8c2;
+      font-size: 13px;
+    }
+
+    .feature-item span {
+      color: #00ffaa;
+    }
+
+    /* =========================
+       STATS
+    ========================== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .stat-card {
+      padding: 28px 20px;
+      text-align: center;
+      border-radius: 16px;
+      background: rgba(0,255,170,0.025);
+      border: 1px solid rgba(0,255,170,0.1);
+    }
+
+    .stat-number {
+      font-size: 36px;
+      color: #00ffaa;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .stat-card p {
+      color: #7e8994;
+      font-size: 12px;
+    }
+
+    /* =========================
+       TEAM
+    ========================== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .team-card {
+      padding: 28px 18px;
+      text-align: center;
+      background: rgba(10,15,21,0.6);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      transition: 0.35s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(0,255,170,0.25);
+    }
+
+    .team-icon {
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 17px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      color: #00ffaa;
+      background: rgba(0,255,170,0.06);
+      border: 1px solid rgba(0,255,170,0.12);
+    }
+
+    .team-card h3 {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .team-card p {
+      color: #77828e;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       MEMBERS
+    ========================== */
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .member-card {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: rgba(10,15,21,0.65);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      transition: 0.3s;
+    }
+
+    .member-card:hover {
+      border-color: rgba(0,255,170,0.22);
+      transform: translateY(-4px);
+    }
+
+    .avatar {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(0,255,170,0.15), rgba(0,130,255,0.08));
+      border: 1px solid rgba(0,255,170,0.18);
+      color: #00ffaa;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .member-info h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .member-info p {
+      color: #77828e;
+      font-size: 11px;
+    }
+
+    .verified {
+      color: #00ffaa;
+      font-size: 11px;
+      margin-left: 3px;
+    }
+
+    /* =========================
+       SERVICES
+    ========================== */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      padding: 27px;
+      background: rgba(10,15,21,0.58);
+      border-radius: 17px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0,255,170,0.2);
+    }
+
+    .service-icon {
+      font-size: 25px;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .service-card p {
+      color: #7e8994;
+      line-height: 1.7;
+      font-size: 12px;
+    }
+
+    /* =========================
+       EVENTS
+    ========================== */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .event-card {
+      overflow: hidden;
+      border-radius: 17px;
+      background: rgba(10,15,21,0.65);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .event-top {
+      height: 130px;
+      display: grid;
+      place-items: center;
+      font-size: 40px;
+      background:
+        radial-gradient(circle at center, rgba(0,255,170,0.12), transparent 60%);
+    }
+
+    .event-content {
+      padding: 22px;
+    }
+
+    .event-date {
+      color: #00ffaa;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .event-content h3 {
+      font-size: 16px;
+      margin-bottom: 9px;
+    }
+
+    .event-content p {
+      color: #77828e;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       CTA
+    ========================== */
+    .cta {
+      text-align: center;
+      padding: 70px 30px;
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at center, rgba(0,255,170,0.09), transparent 65%),
+        rgba(10,15,21,0.7);
+      border: 1px solid rgba(0,255,170,0.12);
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 5vw, 45px);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: auto auto 25px;
+      color: #7f8b98;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 25px;
+    }
+
+    .contact-item {
+      padding: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .contact-item:last-child {
+      border-bottom: 0;
+    }
+
+    .contact-item small {
+      display: block;
+      color: #00ffaa;
+      margin-bottom: 6px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-item p {
+      color: #aeb7c0;
+      font-size: 13px;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 13px;
+    }
+
+    .input,
+    .textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      outline: none;
+      background: rgba(0,0,0,0.2);
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border-color: rgba(0,255,170,0.45);
+      box-shadow: 0 0 20px rgba(0,255,170,0.05);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    footer {
+      padding: 35px 25px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: #68737e;
+      font-size: 11px;
+    }
+
+    .footer-container {
+      max-width: 1250px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer-brand {
+      color: #00ffaa;
+      font-weight: 900;
+    }
+
+    /* =========================
+       MODAL
+    ========================== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 5000;
+    }
+
+    .modal.show {
+      display: flex;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 430px;
+      background: #0a1016;
+      border: 1px solid rgba(0,255,170,0.18);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.6);
+      animation: modalUp 0.3s ease;
+    }
+
+    @keyframes modalUp {
+      from {
+        transform: translateY(20px) scale(0.97);
+      }
+
+      to {
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 35px;
+      height: 35px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: transparent;
+      color: #9aa5af;
+      cursor: pointer;
+    }
+
+    .modal-logo {
+      color: #00ffaa;
+      font-size: 28px;
+      margin-bottom: 13px;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 7px;
+    }
+
+    .modal-box > p {
+      color: #74808b;
+      font-size: 12px;
+      margin-bottom: 22px;
+    }
+
+    .auth-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .auth-form label {
+      font-size: 11px;
+      color: #8c98a4;
+    }
+
+    .auth-group {
+      display: grid;
+      gap: 7px;
+    }
+
+    .auth-switch {
+      text-align: center;
+      color: #737e89;
+      font-size: 11px;
+      margin-top: 17px;
+    }
+
+    .auth-switch button {
+      border: 0;
+      background: transparent;
+      color: #00ffaa;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+    @media (max-width: 950px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 400px;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .member-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .service-grid,
+      .event-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-mobile {
+        display: none;
+        padding: 15px 25px 22px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .nav-mobile.show {
+        display: grid;
+        gap: 14px;
+      }
+
+      .nav-mobile a {
+        color: #9da8b2;
+        font-size: 13px;
+      }
+
+      .nav-mobile button {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 110px;
+      }
+
+      .cyber-orb {
+        width: 300px;
+        height: 300px;
+      }
+
+      .orb-core {
+        width: 115px;
+        height: 115px;
+      }
+
+      .orb-core div {
+        font-size: 36px;
+      }
+
+      .card-one {
+        right: 0;
+      }
+
+      .card-two {
+        left: 0;
+      }
+
+      .team-grid,
+      .member-grid,
+      .service-grid,
+      .event-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (min-width: 721px) {
+      .nav-mobile {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       LOADER
+  ========================== -->
+  <div id="loader">
+    <div class="loader-logo">
+      <span>MC</span>
+    </div>
+    <div class="loader-text">Initializing Secure Network...</div>
+  </div>
+
+  <!-- PARTICLES -->
+  <div id="particles"></div>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+  <header class="navbar">
+    <div class="nav-container">
+
+      <a href="#home" class="brand">
+        <div class="brand-icon">🛡️</div>
+
+        <div class="brand-text">
+          <strong>MATUAIL CYBER</strong>
+          <small>SECURITY FORCE</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#team">Teams</a>
+        <a href="#members">Members</a>
+        <a href="#services">Services</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" onclick="openAuth('login')">
+          Login
+        </button>
+
+        <button class="btn btn-primary" onclick="openAuth('register')">
+          Register
+        </button>
+      </div>
+
+      <button class="menu-btn" id="menuBtn">
+        ☰
+      </button>
+
+    </div>
+
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#team">Teams</a>
+      <a href="#members">Members</a>
+      <a href="#services">Services</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+
+      <button class="btn btn-outline" onclick="openAuth('login')">
+        Login
+      </button>
+
+      <button class="btn btn-primary" onclick="openAuth('register')">
+        Register
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================
+       HERO
+  ========================== -->
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-container">
+
+        <div class="hero-content reveal">
+
+          <div class="badge">
+            <span class="pulse-dot"></span>
+            SECURE • AWARE • UNITED
+          </div>
+
+          <h1>
+            Matuail<br />
+            <span>Cyber Security</span><br />
+            Force
+          </h1>
+
+          <p>
+            A professional community platform focused on cyber security
+            awareness, digital safety, knowledge sharing and building a
+            responsible security-minded community.
+          </p>
+
+          <div class="hero-buttons">
+            <button
+              class="btn btn-primary"
+              onclick="document.getElementById('about').scrollIntoView()"
+            >
+              Explore Community →
+            </button>
+
+            <button
+              class="btn btn-outline"
+              onclick="openAuth('register')"
+            >
+              Join Us
+            </button>
+          </div>
+
+        </div>
+
+        <div class="hero-visual reveal">
+
+          <div class="cyber-orb">
+            <div class="orb-core">
+              <div>🛡️</div>
+            </div>
+          </div>
+
+          <div class="floating-card card-one">
+            <strong>● SYSTEM STATUS</strong>
+            Protected & Online
+          </div>
+
+          <div class="floating-card card-two">
+            <strong>✓ COMMUNITY</strong>
+            Secure • Active • United
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+    <section id="about">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Who We Are</div>
+          <h2>Built for a Safer Digital Community</h2>
+          <p>
+            Matuail Cyber Security Force is designed as a community platform
+            for cyber awareness, digital responsibility, education and
+            collaboration.
+          </p>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="glass-card reveal">
+            <h3>🛡️ Our Mission</h3>
+
+            <p>
+              Our mission is to promote responsible cyber security awareness,
+              encourage safe digital practices and create an organized
+              community where members can learn and contribute.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-item">
+                <span>✓</span>
+                Cyber security awareness
+              </div>
+
+              <div class="feature-item">
+                <span>✓</span>
+                Digital safety education
+              </div>
+
+              <div class="feature-item">
+                <span>✓</span>
+                Community collaboration
+              </div>
+
+              <div class="feature-item">
+                <span>✓</span>
+                Responsible technology use
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card reveal">
+            <h3>🎯 Our Vision</h3>
+
+            <p>
+              To build a trusted, organized and knowledgeable community where
+              people can develop cyber security awareness and understand how
+              to stay safer in the digital world.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-item">
+                <span>→</span>
+                Learn
+              </div>
+
+              <div class="feature-item">
+                <span>→</span>
+                Protect
+              </div>
+
+              <div class="feature-item">
+                <span>→</span>
+                Educate
+              </div>
+
+              <div class="feature-item">
+                <span>→</span>
+                Collaborate
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         STATS
+    ========================== -->
+    <section>
+      <div class="container">
+
+        <div class="stats reveal">
+
+          <div class="stat-card">
+            <div class="stat-number" data-target="100">0</div>
+            <p>Community Members</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-number" data-target="10">0</div>
+            <p>Teams & Departments</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-number" data-target="25">0</div>
+            <p>Activities</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-number" data-target="100">0</div>
+            <p>Digital Awareness</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         TEAMS
+    ========================== -->
+    <section id="team">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Departments</div>
+          <h2>Our Team Structure</h2>
+          <p>
+            Organized departments help the community operate efficiently and
+            give every member a clear area of responsibility.
+          </p>
+        </div>
+
+        <div class="team-grid">
+
+          <div class="team-card reveal">
+            <div class="team-icon">👑</div>
+            <h3>Executive Team</h3>
+            <p>Leadership, strategy and organizational direction.</p>
+          </div>
+
+          <div class="team-card reveal">
+            <div class="team-icon">🛡️</div>
+            <h3>Cyber Security Team</h3>
+            <p>Security awareness and responsible cyber education.</p>
+          </div>
+
+          <div class="team-card reveal">
+            <div class="team-icon">💻</div>
+            <h3>Technical Team</h3>
+            <p>Technology, website and technical operations.</p>
+          </div>
+
+          <div class="team-card reveal">
+            <div class="team-icon">📢</div>
+            <h3>Media Team</h3>
+            <p>Creative content, communication and announcements.</p>
+          </div>
+
+          <div class="team-card reveal">
+            <div class="team-icon">🤝</div>
+            <h3>Support Team</h3>
+            <p>Community support and member assistance.</p>
+          </div>
+
+          <div class="team-card reveal">
+            <div class="team-icon">📚</div>
+            <h3>Education Team</h3>
+            <p>Learning resources and educational activities.</p>
+          </div>
+
+          <div class="team-card reveal">
+            <div class="team-icon">🎯</div>
+            <h3>Operations Team</h3>
+            <p>Events, activities and operational coordination.</p>
+          </div>
+
+          <div class="team-card reveal">
+            <div class="team-icon">👥</div>
+            <h3>Member Team</h3>
+            <p>Member engagement and community management.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         MEMBERS
+    ========================== -->
+    <section id="members">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Community</div>
+          <h2>Featured Members</h2>
+          <p>
+            Member information will later be connected to our secure database
+            and managed through the admin panel.
+          </p>
+        </div>
+
+        <div class="member-grid">
+
+          <div class="member-card reveal">
+            <div class="avatar">MC</div>
+            <div class="member-info">
+              <h3>Member Profile <span class="verified">✓</span></h3>
+              <p>Executive Team • Verified Member</p>
+            </div>
+          </div>
+
+          <div class="member-card reveal">
+            <div class="avatar">CS</div>
+            <div class="member-info">
+              <h3>Security Member <span class="verified">✓</span></h3>
+              <p>Cyber Security Team • Active</p>
+            </div>
+          </div>
+
+          <div class="member-card reveal">
+            <div class="avatar">TM</div>
+            <div class="member-info">
+              <h3>Technical Member <span class="verified">✓</span></h3>
+              <p>Technical Team • Active</p>
+            </div>
+          </div>
+
+          <div class="member-card reveal">
+            <div class="avatar">MD</div>
+            <div class="member-info">
+              <h3>Media Member <span class="verified">✓</span></h3>
+              <p>Media Team • Active</p>
+            </div>
+          </div>
+
+          <div class="member-card reveal">
+            <div class="avatar">SP</div>
+            <div class="member-info">
+              <h3>Support Member <span class="verified">✓</span></h3>
+              <p>Support Team • Active</p>
+            </div>
+          </div>
+
+          <div class="member-card reveal">
+            <div class="avatar">ED</div>
+            <div class="member-info">
+              <h3>Education Member <span class="verified">✓</span></h3>
+              <p>Education Team • Active</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+    <section id="services">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">What We Do</div>
+          <h2>Community Services</h2>
+          <p>
+            A centralized platform for community activities and cyber
+            awareness initiatives.
+          </p>
+        </div>
+
+        <div class="service-grid">
+
+          <div class="service-card reveal">
+            <div class="service-icon">🛡️</div>
+            <h3>Cyber Awareness</h3>
+            <p>
+              Learn about safer digital practices and common online security
+              risks.
+            </p>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">📚</div>
+            <h3>Learning Resources</h3>
+            <p>
+              Educational materials and resources for responsible cyber
+              security learning.
+            </p>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">👥</div>
+            <h3>Community</h3>
+            <p>
+              Connect with members and participate in community activities.
+            </p>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">📢</div>
+            <h3>Announcements</h3>
+            <p>
+              Important notices, updates and official community information.
+            </p>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">🏆</div>
+            <h3>Achievements</h3>
+            <p>
+              Showcase community achievements, awards and member
+              contributions.
+            </p>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-icon">🎓</div>
+            <h3>Education</h3>
+            <p>
+              Promote responsible knowledge sharing and digital awareness.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         EVENTS
+    ========================== -->
+    <section id="events">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Activities</div>
+          <h2>Latest Events</h2>
+          <p>
+            Events and activities will be managed dynamically from the admin
+            panel.
+          </p>
+        </div>
+
+        <div class="event-grid">
+
+          <div class="event-card reveal">
+            <div class="event-top">🛡️</div>
+
+            <div class="event-content">
+              <div class="event-date">COMMUNITY EVENT</div>
+              <h3>Cyber Awareness Session</h3>
+              <p>
+                A community awareness session focused on responsible digital
+                security.
+              </p>
+            </div>
+          </div>
+
+          <div class="event-card reveal">
+            <div class="event-top">💻</div>
+
+            <div class="event-content">
+              <div class="event-date">TECHNICAL EVENT</div>
+              <h3>Digital Safety Workshop</h3>
+              <p>
+                Educational discussion about protecting accounts and digital
+                information.
+              </p>
+            </div>
+          </div>
+
+          <div class="event-card reveal">
+            <div class="event-top">👥</div>
+
+            <div class="event-content">
+              <div class="event-date">COMMUNITY ACTIVITY</div>
+              <h3>Member Meetup</h3>
+              <p>
+                A community meetup for collaboration, networking and
+                knowledge sharing.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         CTA
+    ========================== -->
+    <section>
+      <div class="container">
+
+        <div class="cta reveal">
+          <h2>Ready to Join the Community?</h2>
+
+          <p>
+            Create your account and become part of the Matuail Cyber Security
+            Force community.
+          </p>
+
+          <button
+            class="btn btn-primary"
+            onclick="openAuth('register')"
+          >
+            Create Account →
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section id="contact">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-label">Contact</div>
+          <h2>Get In Touch</h2>
+          <p>
+            Send us a message through the community contact form.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="glass-card reveal">
+
+            <div class="contact-item">
+              <small>Organization</small>
+              <p>Matuail Cyber Security Force</p>
+            </div>
+
+            <div class="contact-item">
+              <small>Location</small>
+              <p>Matuail, Dhaka, Bangladesh</p>
+            </div>
+
+            <div class="contact-item">
+              <small>Status</small>
+              <p>● Community Platform Online</p>
+            </div>
+
+            <div class="contact-item">
+              <small>Support</small>
+              <p>Official Community Support</p>
+            </div>
+
+          </div>
+
+          <div class="glass-card reveal">
+
+            <form
+              class="form-grid"
+              onsubmit="submitContact(event)"
+            >
+
+              <input
+                class="input"
+                type="text"
+                placeholder="Your Name"
+                required
+              />
+
+              <input
+                class="input"
+                type="email"
+                placeholder="Your Email"
+                required
+              />
+
+              <textarea
+                class="textarea"
+                placeholder="Your Message"
+                required
+              ></textarea>
+
+              <button
+                class="btn btn-primary"
+                type="submit"
+              >
+                Send Message →
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+    <div class="footer-container">
+
+      <div>
+        © <span id="year"></span>
+        <span class="footer-brand">
+          Matuail Cyber Security Force
+        </span>
+        — All Rights Reserved.
+      </div>
+
+      <div>
+        Secure • Aware • United
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================
+       AUTH MODAL
+  ========================== -->
+  <div class="modal" id="authModal">
+
+    <div class="modal-box">
+
+      <button
+        class="close-modal"
+        onclick="closeAuth()"
+      >
+        ✕
+      </button>
+
+      <div class="modal-logo">🛡️</div>
+
+      <!-- LOGIN -->
+      <div id="loginPanel">
+
+        <h2>Welcome Back</h2>
+
+        <p>
+          Login to access your community account.
+        </p>
+
+        <form
+          class="auth-form"
+          onsubmit="demoLogin(event)"
+        >
+
+          <div class="auth-group">
+            <label>Email / Username</label>
+
+            <input
+              class="input"
+              type="text"
+              id="loginUser"
+              placeholder="Enter email or username"
+              required
+            />
+          </div>
+
+          <div class="auth-group">
+            <label>Password</label>
+
+            <input
+              class="input"
+              type="password"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+
+          <button
+            class="btn btn-primary"
+            type="submit"
+          >
+            Login →
+          </button>
+
+        </form>
+
+        <div class="auth-switch">
+          Don't have an account?
+          <button onclick="switchAuth('register')">
+            Register
+          </button>
+        </div>
+
+      </div>
+
+      <!-- REGISTER -->
+      <div id="registerPanel" style="display:none;">
+
+        <h2>Create Account</h2>
+
+        <p>
+          Join Matuail Cyber Security Force.
+        </p>
+
+        <form
+          class="auth-form"
+          onsubmit="demoRegister(event)"
+        >
+
+          <div class="auth-group">
+            <label>Full Name</label>
+
+            <input
+              class="input"
+              type="text"
+              placeholder="Your full name"
+              required
+            />
+          </div>
+
+          <div class="auth-group">
+            <label>Email</label>
+
+            <input
+              class="input"
+              type="email"
+              placeholder="Your email"
+              required
+            />
+          </div>
+
+          <div class="auth-group">
+            <label>Password</label>
+
+            <input
+              class="input"
+              type="password"
+              placeholder="Create password"
+              required
+            />
+          </div>
+
+          <button
+            class="btn btn-primary"
+            type="submit"
+          >
+            Create Account →
+          </button>
+
+        </form>
+
+        <div class="auth-switch">
+          Already have an account?
+          <button onclick="switchAuth('login')">
+            Login
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+  <script>
+
+    /* =========================
+       LOADER
+    ========================== */
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+        document
+          .getElementById("loader")
+          .classList.add("hide");
+      }, 900);
+
+    });
+
+
+    /* =========================
