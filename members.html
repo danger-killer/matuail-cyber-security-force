@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Members | Matuail Cyber Security Force</title>
+
+  <meta
+    name="description"
+    content="Matuail Cyber Security Force (MCSF) official member directory."
+  >
+
+  <style>
+    :root {
+      --primary: #087653;
+      --primary-dark: #065c41;
+      --primary-soft: #edf8f3;
+
+      --dark: #17201d;
+      --text: #35413c;
+      --muted: #74817b;
+
+      --white: #ffffff;
+      --background: #f5f7f6;
+
+      --border: #e0e7e3;
+
+      --shadow: 0 8px 30px rgba(18, 35, 28, 0.06);
+
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      background: var(--background);
+      color: var(--text);
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      font-size: 14px;
+      line-height: 1.6;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================= */
+
+    .topbar {
+      min-height: 32px;
+      background: var(--dark);
+      color: #b9c4bf;
+      font-size: 9px;
+    }
+
+    .topbar-inner {
+      min-height: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .topbar a {
+      transition: color 0.2s ease;
+    }
+
+    .topbar a:hover {
+      color: #ffffff;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 72px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+
+      object-fit: contain;
+      border-radius: 9px;
+    }
+
+    .brand-text {
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      color: var(--dark);
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .brand-short {
+      display: block;
+
+      margin-top: 4px;
+
+      color: var(--primary);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: 2px;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .navigation a {
+      padding: 8px 11px;
+
+      color: #68756f;
+
+      border-radius: 7px;
+
+      font-size: 9px;
+      font-weight: 700;
+
+      transition:
+        color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .navigation a:hover,
+    .navigation a.active {
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .login-btn {
+      padding: 8px 13px;
+
+      color: var(--primary);
+
+      border: 1px solid #bfd8cd;
+      border-radius: 7px;
+
+      font-size: 9px;
+      font-weight: 750;
+
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .login-btn:hover {
+      background: var(--primary-soft);
+      border-color: #9fc7b7;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      min-height: calc(100vh - 145px);
+
+      padding: 48px 0 70px;
+    }
+
+    .page-heading {
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--primary);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .page-title {
+      color: var(--dark);
+
+      font-size: 34px;
+      font-weight: 800;
+
+      line-height: 1.15;
+      letter-spacing: -1px;
+
+      margin-bottom: 8px;
+    }
+
+    .page-description {
+      max-width: 680px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       DIRECTORY
+    ========================= */
+
+    .directory {
+      overflow: hidden;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+    }
+
+    /* =========================
+       TOOLBAR
+    ========================= */
+
+    .toolbar {
+      padding: 16px;
+
+      display: grid;
+      grid-template-columns: 1fr 190px 170px;
+
+      gap: 10px;
+
+      background: #fbfcfb;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+
+      left: 13px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #8a9691;
+
+      font-size: 13px;
+
+      pointer-events: none;
+    }
+
+    .search-input,
+    .filter-select {
+      width: 100%;
+      height: 42px;
+
+      color: var(--dark);
+      background: var(--white);
+
+      border: 1px solid #d7e0dc;
+      border-radius: 8px;
+
+      outline: none;
+
+      font-size: 9px;
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .search-input {
+      padding: 0 12px 0 35px;
+    }
+
+    .filter-select {
+      padding: 0 11px;
+    }
+
+    .search-input::placeholder {
+      color: #9ba5a1;
+    }
+
+    .search-input:focus,
+    .filter-select:focus {
+      border-color: #76b59d;
+
+      box-shadow:
+        0 0 0 3px rgba(8, 118, 83, 0.07);
+    }
+
+    /* =========================
+       DIRECTORY HEADER
+    ========================= */
+
+    .directory-header {
+      padding: 15px 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .directory-title {
+      color: var(--dark);
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .directory-count {
+      color: var(--muted);
+
+      font-size: 8px;
+    }
+
+    /* =========================
+       MEMBER GRID
+    ========================= */
+
+    .members-grid {
+      padding: 18px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 13px;
+    }
+
+    /* =========================
+       MEMBER CARD
+    ========================= */
+
+    .member-card {
+      padding: 17px;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+      border-radius: 11px;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-2px);
+
+      border-color: #c7d8d0;
+
+      box-shadow:
+        0 10px 25px rgba(18, 35, 28, 0.06);
+    }
+
+    .member-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 14px;
+    }
+
+    .member-avatar {
+      width: 48px;
+      height: 48px;
+
+      flex: 0 0 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      background: var(--primary-soft);
+
+      border: 1px solid #cfe4da;
+      border-radius: 50%;
+
+      color: var(--primary);
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .member-avatar img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .member-name {
+      color: var(--dark);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      line-height: 1.3;
+
+      margin-bottom: 3px;
+    }
+
+    .member-role {
+      color: var(--primary);
+
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .member-details {
+      padding-top: 12px;
+
+      border-top: 1px solid #edf1ef;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 7px;
+
+      font-size: 8px;
+    }
+
+    .detail-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .detail-label {
+      color: #8a9691;
+    }
+
+    .detail-value {
+      color: #4c5954;
+
+      font-weight: 650;
+
+      text-align: right;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-dot {
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: var(--primary);
+    }
+
+    .status.inactive .status-dot {
+      background: #a58d40;
+    }
+
+    .status.suspended .status-dot {
+      background: #b42318;
+    }
+
+    /* =========================
+       EMPTY STATE
+    ========================= */
+
+    .empty-state {
+      grid-column: 1 / -1;
+
+      min-height: 270px;
+
+      padding: 45px 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+    }
+
+    .empty-inner {
+      max-width: 410px;
+    }
+
+    .empty-icon {
+      width: 48px;
+      height: 48px;
+
+      margin: 0 auto 13px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #f0f4f2;
+
+      border-radius: 50%;
+
+      color: #7c8983;
+
+      font-size: 15px;
+    }
+
+    .empty-title {
+      color: var(--dark);
+
+      font-size: 13px;
+      font-weight: 800;
+
+      margin-bottom: 6px;
+    }
+
+    .empty-text {
+      color: var(--muted);
+
+      font-size: 9px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      padding: 23px 0;
+
+      background: #101714;
+
+      color: #75827c;
+
+      font-size: 8px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr 170px;
+      }
+
+      .toolbar .filter-select:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 680px) {
+
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .topbar-links {
+        display: none;
+      }
+
+      .header-inner {
+        min-height: 66px;
+      }
+
+      .navigation {
+        display: none;
+      }
+
+      main {
+        padding: 34px 0 50px;
+      }
+
+      .page-title {
+        font-size: 29px;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar .filter-select:last-child {
+        grid-column: auto;
+      }
+
+      .members-grid {
+        grid-template-columns: 1fr;
+        padding: 13px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 390px) {
+
+      .brand-name {
+        font-size: 10px;
+      }
+
+      .brand-logo {
+        width: 39px;
+        height: 39px;
+      }
+
+      .page-title {
+        font-size: 26px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+
+  <div class="topbar">
+
+    <div class="container topbar-inner">
+
+      <span>
+        Matuail Cyber Security Force
+      </span>
+
+      <div class="topbar-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="login.html">
+          Login
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="container header-inner">
+
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="Matuail Cyber Security Force Home"
+      >
+
+        <img
+          src="logo.png"
+          alt="Matuail Cyber Security Force"
+          class="brand-logo"
+        >
+
+        <div class="brand-text">
+
+          <div class="brand-name">
+            Matuail Cyber Security Force
+          </div>
+
+          <span class="brand-short">
+            MCSF
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <nav
+        class="navigation"
+        aria-label="Main navigation"
+      >
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a
+          href="members.html"
+          class="active"
+        >
+          Members
+        </a>
+
+        <a href="teams.html">
+          Teams
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+      </nav>
+
+
+      <a
+        href="login.html"
+        class="login-btn"
+      >
+        Member Login
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <div class="container">
+
+      <!-- PAGE HEADING -->
+
+      <section class="page-heading">
+
+        <span class="eyebrow">
+          MCSF Directory
+        </span>
+
+        <h1 class="page-title">
+          Members
+        </h1>
+
+        <p class="page-description">
+          Official member directory of Matuail Cyber
+          Security Force. Authorized member information
+          will be displayed through the secure MCSF
+          member system.
+        </p>
+
+      </section>
+
+
+      <!-- DIRECTORY -->
+
+      <section class="directory">
+
+        <!-- SEARCH / FILTER -->
+
+        <div class="toolbar">
+
+          <div class="search-box">
+
+            <span
+              class="search-icon"
+              aria-hidden="true"
+            >
+              ⌕
+            </span>
+
+            <input
+              id="memberSearch"
+              class="search-input"
+              type="search"
+              placeholder="Search members..."
+              autocomplete="off"
+              aria-label="Search members"
+            >
+
+          </div>
+
+
+          <select
+            id="teamFilter"
+            class="filter-select"
+            aria-label="Filter by team"
+          >
+
+            <option value="">
+              All Teams
+            </option>
+
+          </select>
+
+
+          <select
+            id="statusFilter"
+            class="filter-select"
+            aria-label="Filter by status"
+          >
+
+            <option value="">
+              All Status
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- DIRECTORY TITLE -->
+
+        <div class="directory-header">
+
+          <h2 class="directory-title">
+            Member Directory
+          </h2>
+
+          <span
+            id="directoryCount"
+            class="directory-count"
+          >
+            No member records loaded
+          </span>
+
+        </div>
+
+
+        <!-- MEMBERS -->
+
+        <div
+          id="membersGrid"
+          class="members-grid"
+        >
+
+          <!--
+            NO DEMO DATA.
+
+            Real member information will be loaded
+            from the secure database/backend.
+          -->
+
+          <div class="empty-state">
+
+            <div class="empty-inner">
+
+              <div
+                class="empty-icon"
+                aria-hidden="true"
+              >
+                👥
+              </div>
+
+              <h3 class="empty-title">
+                Member Directory
+              </h3>
+
+              <p class="empty-text">
+                No public member records are currently
+                loaded. Authorized member information will
+                appear here when the MCSF database is
+                connected.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <span>
+        ©
+        <span id="currentYear"></span>
+        Matuail Cyber Security Force.
+        All rights reserved.
+      </span>
+
+      <span>
+        MCSF
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    /*
+    =====================================================
+    MCSF MEMBERS PAGE
+    =====================================================
+
+    IMPORTANT:
+    This file intentionally contains NO fake/demo
+    member information.
+
+    The backend/database will provide approved member
+    records later.
+
+    Expected member object:
+
+    {
+      member_id: "...",
+      full_name: "...",
+      username: "...",
+      profile_photo: "...",
+      role: "...",
+      team: "...",
+      status: "...",
+      join_date: "..."
+    }
+
+    =====================================================
+    */
+
+
+    const currentYear =
+      document.getElementById("currentYear");
+
+    currentYear.textContent =
+      new Date().getFullYear();
+
+
+    const membersGrid =
+      document.getElementById("membersGrid");
+
+    const directoryCount =
+      document.getElementById("directoryCount");
+
+    const memberSearch =
+      document.getElementById("memberSearch");
+
+    const teamFilter =
+      document.getElementById("teamFilter");
+
+    const statusFilter =
+      document.getElementById("statusFilter");
+
+
+    /*
+    =====================================================
+    SECURITY HELPER
+    =====================================================
+    */
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    /*
+    =====================================================
+    INITIAL MEMBER STATE
+    =====================================================
+    */
+
+    window.MCSF =
+      window.MCSF || {};
+
+
+    window.MCSF.members =
+      [];
+
+
+    /*
+    =====================================================
+    RENDER MEMBERS
+    =====================================================
+    */
+
+    window.MCSF.renderMembers =
+      function (members) {
+
+        if (!Array.isArray(members)) {
+          return;
+        }
+
+        window.MCSF.members =
+          members;
+
+
+        renderMemberCards(members);
+
+        updateTeamFilter(members);
+
+        updateStatusFilter(members);
+
+      };
+
+
+    /*
+    =====================================================
+    RENDER CARDS
+    =====================================================
+    */
+
+    function renderMemberCards(members) {
+
+      membersGrid.innerHTML = "";
+
+
+      if (!members.length) {
+
+        membersGrid.innerHTML = `
+
+          <div class="empty-state">
+
+            <div class="empty-inner">
+
+              <div class="empty-icon">
+                👥
+              </div>
+
+              <h3 class="empty-title">
+                No members found
+              </h3>
+
+              <p class="empty-text">
+                No member records match the current
+                search or filter.
+              </p>
+
+            </div>
+
+          </div>
+
+        `;
+
+        directoryCount.textContent =
+          "0 members";
+
+        return;
+      }
+
+
+      members.forEach(function (member) {
+
+        const card =
+          document.createElement("article");
+
+        card.className =
+          "member-card";
+
+
+        const name =
+          member.full_name || "Member";
+
+
+        const initials =
+          name
+            .trim()
+            .split(/\s+/)
+            .map(function (word) {
+              return word.charAt(0);
+            })
+            .join("")
+            .substring(0, 2)
+            .toUpperCase();
+
+
+        const role =
+          member.role || "Member";
+
+
+        const team =
+          member.team || "—";
+
+
+        const memberID =
+          member.member_id || "—";
+
+
+        const status =
+          member.status || "active";
+
+
+        let statusClass =
+          "";
+
+
+        if (status === "inactive") {
+          statusClass = "inactive";
+        }
+
+        if (status === "suspended") {
+          statusClass = "suspended";
+        }
+
+
+        const photo =
+          member.profile_photo || "";
+
+
+        let avatarHTML;
+
+
+        if (photo) {
+
+          avatarHTML = `
+
+            <img
+              src="${escapeHTML(photo)}"
+              alt="${escapeHTML(name)}"
+              loading="lazy"
+            >
+
+          `;
+
+        } else {
+
+          avatarHTML =
+            escapeHTML(initials);
+
+        }
+
+
+        card.innerHTML = `
+
+          <div class="member-top">
+
+            <div class="member-avatar">
+              ${avatarHTML}
+            </div>
+
+            <div>
+
+              <h3 class="member-name">
+                ${escapeHTML(name)}
+              </h3>
+
+              <div class="member-role">
+                ${escapeHTML(role)}
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="member-details">
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Member ID
+              </span>
+
+              <span class="detail-value">
+                ${escapeHTML(memberID)}
+              </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Team
+              </span>
+
+              <span class="detail-value">
+                ${escapeHTML(team)}
+              </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Status
+              </span>
+
+              <span
+                class="detail-value status ${statusClass}"
+              >
+
+                <span class="status-dot"></span>
+
+                ${escapeHTML(
+                  status.charAt(0).toUpperCase() +
+                  status.slice(1)
+                )}
+
+              </span>
+
+            </div>
+
+          </div>
+
+        `;
+
+
+        membersGrid.appendChild(card);
+
+      });
+
+
+      directoryCount.textContent =
+        `${members.length} member${members.length === 1 ? "" : "s"}`;
+
+    }
+
+
+    /*
+    =====================================================
+    UPDATE TEAM FILTER
+    =====================================================
+    */
+
+    function updateTeamFilter(members) {
+
+      const currentValue =
+        teamFilter.value;
+
+
+      const teams =
+        [...new Set(
+          members
+            .map(function (member) {
+              return member.team;
+            })
+            .filter(Boolean)
+        )]
+        .sort();
+
+
+      teamFilter.innerHTML = `
+
+        <option value="">
+          All Teams
+        </option>
+
+      `;
+
+
+      teams.forEach(function (team) {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          team;
+
+        option.textContent =
+          team;
+
+        teamFilter.appendChild(option);
+
+      });
+
+
+      if (teams.includes(currentValue)) {
+        teamFilter.value =
+          currentValue;
+      }
+
+    }
+
+
+    /*
+    =====================================================
+    UPDATE STATUS FILTER
+    =====================================================
+    */
+
+    function updateStatusFilter(members) {
+
+      const currentValue =
+        statusFilter.value;
+
+
+      const statuses =
+        [...new Set(
+          members
+            .map(function (member) {
+              return member.status;
+            })
+            .filter(Boolean)
+        )]
+        .sort();
+
+
+      statusFilter.innerHTML = `
+
+        <option value="">
+          All Status
+        </option>
+
+      `;
+
+
+      statuses.forEach(function (status) {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          status;
+
+        option.textContent =
+          status.charAt(0).toUpperCase() +
+          status.slice(1);
+
+        statusFilter.appendChild(option);
+
+      });
+
+
+      if (statuses.includes(currentValue)) {
+        statusFilter.value =
+          currentValue;
+      }
+
+    }
+
+
+    /*
+    =====================================================
+    FILTER MEMBERS
+    =====================================================
+    */
+
+    function filterMembers() {
+
+      const search =
+        memberSearch.value
+          .trim()
+          .toLowerCase();
+
+
+      const team =
+        teamFilter.value;
+
+
+      const status =
+        statusFilter.value;
+
+
+      const filtered =
+        window.MCSF.members.filter(
+          function (member) {
+
+            const searchableText = [
+
+              member.full_name,
+              member.username,
+              member.member_id,
+              member.role,
+              member.team
+
+            ]
+              .filter(Boolean)
+              .join(" ")
+              .toLowerCase();
+
+
+            const matchesSearch =
+              !search ||
+              searchableText.includes(search);
+
+
+            const matchesTeam =
+              !team ||
+              member.team === team;
+
+
+            const matchesStatus =
+              !status ||
+              member.status === status;
+
+
+            return (
+              matchesSearch &&
+              matchesTeam &&
+              matchesStatus
+            );
+
+          }
+        );
+
+
+      renderMemberCards(filtered);
+
+    }
+
+
+    /*
+    =====================================================
+    SEARCH
+    =====================================================
+    */
+
+    memberSearch.addEventListener(
+      "input",
+      filterMembers
+    );
+
+
+    /*
+    =====================================================
+    TEAM FILTER
+    =====================================================
+    */
+
+    teamFilter.addEventListener(
+      "change",
+      filterMembers
+    );
+
+
+    /*
+    =====================================================
+    STATUS FILTER
+    =====================================================
+    */
+
+    statusFilter.addEventListener(
+      "change",
+      filterMembers
+    );
+
+
+    /*
+    =====================================================
+    FUTURE DATABASE CONNECTION
+    =====================================================
+
+    The backend can later call:
+
+      window.MCSF.renderMembers(memberData);
+
+    No HTML changes will be required.
+
+    =====================================================
+    */
+
+  </script>
+
+</body>
+  </html>
