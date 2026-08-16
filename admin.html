@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MCSF Admin Panel</title>
+
+  <style>
+    :root {
+      --green: #087653;
+      --green-dark: #065c41;
+      --dark: #17201d;
+      --text: #35413c;
+      --muted: #74817b;
+      --white: #ffffff;
+      --bg: #f5f7f6;
+      --border: #dfe7e3;
+
+      --pending: #9a6700;
+      --pending-bg: #fff8e6;
+
+      --approved: #087653;
+      --approved-bg: #edf8f3;
+
+      --rejected: #b42318;
+      --rejected-bg: #fff3f2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(8,118,83,.07),
+          transparent 32%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* HEADER */
+
+    .header {
+      height: 72px;
+      background: rgba(255,255,255,.98);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      width: min(1160px, calc(100% - 32px));
+      height: 100%;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 9px;
+    }
+
+    .brand-title {
+      color: var(--dark);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand-short {
+      display: block;
+      margin-top: 3px;
+
+      color: var(--green);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .admin-badge {
+      padding: 6px 9px;
+
+      color: var(--green);
+      background: var(--approved-bg);
+
+      border-radius: 6px;
+
+      font-size: 7px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .logout-btn {
+      padding: 8px 12px;
+
+      color: #68746f;
+      background: #fff;
+
+      border: 1px solid var(--border);
+      border-radius: 7px;
+
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .logout-btn:hover {
+      color: var(--rejected);
+      border-color: #e5c5c1;
+    }
+
+    /* MAIN */
+
+    main {
+      width: min(1160px, calc(100% - 24px));
+      margin: auto;
+      padding: 38px 0 60px;
+    }
+
+    .heading {
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 7px;
+
+      color: var(--green);
+
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .description {
+      margin-top: 7px;
+
+      color: var(--muted);
+
+      font-size: 9px;
+      line-height: 1.7;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+
+      margin-bottom: 22px;
+    }
+
+    .stat {
+      padding: 18px;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      box-shadow: 0 10px 30px rgba(18,35,28,.06);
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .stat-number {
+      margin-top: 7px;
+
+      color: var(--dark);
+
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    /* PANEL */
+
+    .panel {
+      overflow: hidden;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      box-shadow: 0 10px 30px rgba(18,35,28,.06);
+    }
+
+    .panel-top {
+      padding: 17px 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      border-bottom: 1px solid #edf1ef;
+    }
+
+    .panel-title {
+      color: var(--dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .refresh-btn {
+      padding: 8px 12px;
+
+      color: white;
+      background: var(--green);
+
+      border: 0;
+      border-radius: 7px;
+
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .refresh-btn:hover {
+      background: var(--green-dark);
+    }
+
+    .refresh-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    /* SEARCH */
+
+    .search-area {
+      padding: 14px 18px;
+
+      border-bottom: 1px solid #edf1ef;
+    }
+
+    .search {
+      width: 100%;
+      height: 40px;
+
+      padding: 0 12px;
+
+      color: var(--dark);
+      background: #fafcfb;
+
+      border: 1px solid var(--border);
+      border-radius: 7px;
+
+      outline: none;
+
+      font-size: 9px;
+    }
+
+    .search:focus {
+      border-color: #78b69e;
+      box-shadow: 0 0 0 3px rgba(8,118,83,.06);
+    }
+
+    /* TABLE */
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 820px;
+
+      border-collapse: collapse;
+    }
+
+    th {
+      padding: 12px 15px;
+
+      color: #7b8782;
+      background: #fafcfb;
+
+      border-bottom: 1px solid var(--border);
+
+      text-align: left;
+
+      font-size: 7px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 14px 15px;
+
+      color: var(--text);
+
+      border-bottom: 1px solid #edf1ef;
+
+      font-size: 8px;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .member-name {
+      color: var(--dark);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .member-username {
+      margin-top: 3px;
+
+      color: var(--muted);
+      font-size: 7px;
+    }
+
+    .email {
+      color: #5e6b65;
+      word-break: break-word;
+    }
+
+    /* STATUS */
+
+    .status {
+      display: inline-flex;
+
+      padding: 5px 8px;
+
+      border-radius: 20px;
+
+      font-size: 7px;
+      font-weight: 800;
+
+      text-transform: capitalize;
+    }
+
+    .status.pending {
+      color: var(--pending);
+      background: var(--pending-bg);
+    }
+
+    .status.approved {
+      color: var(--approved);
+      background: var(--approved-bg);
+    }
+
+    .status.rejected,
+    .status.suspended {
+      color: var(--rejected);
+      background: var(--rejected-bg);
+    }
+
+    /* ACTIONS */
+
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .action {
+      padding: 6px 9px;
+
+      border: 1px solid;
+      border-radius: 6px;
+
+      font-size: 7px;
+      font-weight: 800;
+    }
+
+    .approve {
+      color: var(--green);
+      background: var(--approved-bg);
+      border-color: #cbe3d8;
+    }
+
+    .approve:hover {
+      background: #dff2e9;
+    }
+
+    .reject {
+      color: var(--rejected);
+      background: var(--rejected-bg);
+      border-color: #f2d1ce;
+    }
+
+    .reject:hover {
+      background: #ffe5e2;
+    }
+
+    .suspend {
+      color: #775600;
+      background: var(--pending-bg);
+      border-color: #efdfae;
+    }
+
+    .restore {
+      color: var(--green);
+      background: var(--approved-bg);
+      border-color: #cbe3d8;
+    }
+
+    .empty {
+      padding: 48px 20px;
+
+      color: var(--muted);
+
+      text-align: center;
+
+      font-size: 9px;
+    }
+
+    .loading {
+      padding: 48px 20px;
+
+      color: var(--muted);
+
+      text-align: center;
+
+      font-size: 9px;
+    }
+
+    .error {
+      color: var(--rejected);
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+
+      right: 18px;
+      bottom: 18px;
+
+      max-width: 340px;
+
+      padding: 12px 15px;
+
+      color: white;
+      background: var(--dark);
+
+      border-radius: 8px;
+
+      box-shadow: 0 12px 35px rgba(0,0,0,.18);
+
+      font-size: 8px;
+
+      opacity: 0;
+      transform: translateY(12px);
+
+      pointer-events: none;
+
+      transition: .25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast.success {
+      background: var(--green);
+    }
+
+    .toast.error {
+      background: var(--rejected);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 760px) {
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .admin-badge {
+        display: none;
+      }
+
+      .header-inner {
+        width: calc(100% - 22px);
+      }
+
+      main {
+        width: calc(100% - 18px);
+        padding-top: 28px;
+      }
+    }
+
+    @media (max-width: 430px) {
+
+      .brand-title {
+        font-size: 10px;
+      }
+
+      .brand-short {
+        font-size: 7px;
+      }
+
+      .stats {
+        gap: 8px;
+      }
+
+      .stat {
+        padding: 14px;
+      }
+
+      .stat-number {
+        font-size: 21px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="header-inner">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <img
+          src="logo.png"
+          alt="MCSF Logo"
+          class="logo"
+        >
+
+        <div>
+
+          <div class="brand-title">
+            Matuail Cyber Security Force
+          </div>
+
+          <span class="brand-short">
+            MCSF
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <div class="header-right">
+
+        <span class="admin-badge">
+          Administrator
+        </span>
+
+        <button
+          id="logoutBtn"
+          class="logout-btn"
+          type="button"
+        >
+          Sign Out
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <section class="heading">
+
+      <span class="eyebrow">
+        MCSF Administration
+      </span>
+
+      <h1>
+        Member Management
+      </h1>
+
+      <p class="description">
+        Review and manage MCSF member registrations.
+      </p>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+      <div class="stat">
+
+        <div class="stat-label">
+          Total Members
+        </div>
+
+        <div
+          id="totalCount"
+          class="stat-number"
+        >
+          —
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-label">
+          Pending
+        </div>
+
+        <div
+          id="pendingCount"
+          class="stat-number"
+        >
+          —
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-label">
+          Approved
+        </div>
+
+        <div
+          id="approvedCount"
+          class="stat-number"
+        >
+          —
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-label">
+          Administrators
+        </div>
+
+        <div
+          id="adminCount"
+          class="stat-number"
+        >
+          —
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MEMBERS -->
+
+    <section class="panel">
+
+      <div class="panel-top">
+
+        <div class="panel-title">
+          Registered Members
+        </div>
+
+        <button
+          id="refreshBtn"
+          class="refresh-btn"
+          type="button"
+        >
+          Refresh
+        </button>
+
+      </div>
+
+
+      <div class="search-area">
+
+        <input
+          id="searchInput"
+          class="search"
+          type="search"
+          placeholder="Search by name, username or email..."
+        >
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Member
+              </th>
+
+              <th>
+                Email
+              </th>
+
+              <th>
+                Status
+              </th>
+
+              <th>
+                Role
+              </th>
+
+              <th>
+                Actions
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="memberBody">
+
+            <tr>
+
+              <td
+                colspan="5"
+                class="loading"
+              >
+                Loading members...
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- TOAST -->
+
+  <div
+    id="toast"
+    class="toast"
+  ></div>
+
+
+  <!-- SUPABASE -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+  <script>
+
+    /* =========================================
+       SUPABASE CONFIG
+    ========================================= */
+
+    const SUPABASE_URL =
+      "https://avxfxwyahujnhfhfqoih.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_viwcMj3ZBDWtkt6Wl2GUnA_zp7ASREi";
+
+
+    const {
+      createClient
+    } = window.supabase;
+
+
+    const supabaseClient =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const memberBody =
+      document.getElementById(
+        "memberBody"
+      );
+
+    const searchInput =
+      document.getElementById(
+        "searchInput"
+      );
+
+    const refreshBtn =
+      document.getElementById(
+        "refreshBtn"
+      );
+
+    const logoutBtn =
+      document.getElementById(
+        "logoutBtn"
+      );
+
+    const totalCount =
+      document.getElementById(
+        "totalCount"
+      );
+
+    const pendingCount =
+      document.getElementById(
+        "pendingCount"
+      );
+
+    const approvedCount =
+      document.getElementById(
+        "approvedCount"
+      );
+
+    const adminCount =
+      document.getElementById(
+        "adminCount"
+      );
+
+    const toast =
+      document.getElementById(
+        "toast"
+      );
+
+
+    let allMembers = [];
+
+    let currentAdminId = null;
+
+
+    /* =========================================
+       TOAST
+    ========================================= */
+
+    let toastTimer;
+
+
+    function showToast(
+      text,
+      type = "success"
+    ) {
+
+      clearTimeout(toastTimer);
+
+      toast.textContent = text;
+
+      toast.className =
+        "toast show " + type;
+
+      toastTimer =
+        setTimeout(
+          function() {
+
+            toast.className =
+              "toast";
+
+          },
+          3000
+        );
+
+    }
+
+
+    /* =========================================
+       ESCAPE HTML
+    ========================================= */
+
+    function escapeHTML(value) {
+
+      if (
+        value === null ||
+        value === undefined
+      ) {
+        return "";
+      }
+
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    /* =========================================
+       GET CURRENT USER
+    ========================================= */
+
+    async function getCurrentUser() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth
+          .getUser();
+
+
+      if (error) {
+
+        console.error(error);
+
+        return null;
+
+      }
+
+
+      return data.user || null;
+
+    }
+
+
+    /* =========================================
+       CHECK ADMIN
+    ========================================= */
+
+    async function checkAdmin() {
+
+      const user =
+        await getCurrentUser();
+
+
+      if (!user) {
+
+        window.location.href =
+          "login.html";
+
+        return false;
+
+      }
+
+
+      currentAdminId =
+        user.id;
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabaseClient
+          .from("members")
+          .select(
+            "user_id, full_name, username, status, role"
+          )
+          .eq(
+            "user_id",
+            user.id
+          )
+          .maybeSingle();
+
+
+      if (error) {
+
+        console.error(error);
+
+        showToast(
+          "Could not verify admin account.",
+          "error"
+        );
+
+        return false;
+
+      }
+
+
+      if (
+        !profile ||
+        profile.role !== "admin" ||
+        profile.status !== "approved"
+      ) {
+
+        await supabaseClient.auth.signOut();
+
+        window.location.href =
+          "login.html";
+
+        return false;
+
+      }
+
+
+      return true;
+
+    }
+
+
+    /* =========================================
+       LOAD MEMBERS
+    ========================================= */
+
+    async function loadMembers() {
+
+      memberBody.innerHTML = `
+
+        <tr>
+
+          <td
+            colspan="5"
+            class="loading"
+          >
+            Loading members...
+          </td>
+
+        </tr>
+
+      `;
+
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("members")
+          .select("*")
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+
+      if (error) {
+
+        console.error(error);
+
+        memberBody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="5"
+              class="loading error"
+            >
+              ${escapeHTML(error.message)}
+            </td>
+
+          </tr>
+
+        `;
+
+        showToast(
+          "Could not load members.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      allMembers =
+        data || [];
+
+
+      updateStats();
+
+      renderMembers();
+
+    }
+
+
+    /* =========================================
+       UPDATE STATISTICS
+    ========================================= */
+
+    function updateStats() {
+
+      totalCount.textContent =
+        allMembers.length;
+
+
+      pendingCount.textContent =
+        allMembers.filter(
+          function(member) {
+
+            return member.status === "pending";
+
+          }
+        ).length;
+
+
+      approvedCount.textContent =
+        allMembers.filter(
+          function(member) {
+
+            return member.status === "approved";
+
+          }
+        ).length;
+
+
+      adminCount.textContent =
+        allMembers.filter(
+          function(member) {
+
+            return member.role === "admin";
+
+          }
+        ).length;
+
+    }
+
+
+    /* =========================================
+       RENDER MEMBERS
+    ========================================= */
+
+    function renderMembers() {
+
+      const query =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+
+      const filtered =
+        allMembers.filter(
+          function(member) {
+
+            const name =
+              String(
+                member.full_name || ""
+              ).toLowerCase();
+
+            const username =
+              String(
+                member.username || ""
+              ).toLowerCase();
+
+            const email =
+              String(
+                member.email || ""
+              ).toLowerCase();
+
+
+            return (
+              !query ||
+              name.includes(query) ||
+              username.includes(query) ||
+              email.includes(query)
+            );
+
+          }
+        );
+
+
+      if (!filtered.length) {
+
+        memberBody.innerHTML = `
+
+          <tr>
+
+            <td
+              colspan="5"
+              class="empty"
+            >
+              No members found.
+            </td>
+
+          </tr>
+
+        `;
+
+        return;
+
+      }
+
+
+      memberBody.innerHTML =
+        filtered
+          .map(createMemberRow)
+          .join("");
+
+    }
+
+
+    /* =========================================
+       CREATE MEMBER ROW
+    ========================================= */
+
+    function createMemberRow(member) {
+
+      const name =
+        escapeHTML(
+          member.full_name ||
+          "Unnamed Member"
+        );
+
+
+      const username =
+        member.username
+          ? "@" +
+            escapeHTML(
+              member.username
+            )
+          : "";
+
+
+      const email =
+        escapeHTML(
+          member.email || "—"
+        );
+
+
+      const status =
+        member.status ||
+        "pending";
+
+
+      const role =
+        member.role ||
+        "member";
+
+
+      const safeId =
+        encodeURIComponent(
+          member.user_id || ""
+        );
+
+
+      let actions = "";
+
+
+      /* PENDING */
+
+      if (
+        status === "pending"
+      ) {
+
+        actions += `
+
+          <button
+            type="button"
+            class="action approve"
+            onclick="changeStatus(
+              '${safeId}',
+              'approved'
+            )"
+          >
+            Approve
+          </button>
+
+          <button
+            type="button"
+            class="action reject"
+            onclick="changeStatus(
+              '${safeId}',
+              'rejected'
+            )"
+          >
+            Reject
+          </button>
+
+        `;
+
+      }
+
+
+      /* APPROVED */
+
+      else if (
+        status === "approved"
+      ) {
+
+        actions += `
+
+          <button
+            type="button"
+            class="action suspend"
+            onclick="changeStatus(
+              '${safeId}',
+              'suspended'
+            )"
+          >
+            Suspend
+          </button>
+
+        `;
+
+      }
+
+
+      /* REJECTED */
+
+      else if (
+        status === "rejected"
+      ) {
+
+        actions += `
+
+          <button
+            type="button"
+            class="action approve"
+            onclick="changeStatus(
+              '${safeId}',
+              'approved'
+            )"
+          >
+            Approve
+          </button>
+
+        `;
+
+      }
+
+
+      /* SUSPENDED */
+
+      else if (
+        status === "suspended"
+      ) {
+
+        actions += `
+
+          <button
+            type="button"
+            class="action restore"
+            onclick="changeStatus(
+              '${safeId}',
+              'approved'
+            )"
+          >
+            Restore
+          </button>
+
+        `;
+
+      }
+
+
+      return `
+
+        <tr>
+
+          <td>
+
+            <div class="member-name">
+              ${name}
+            </div>
+
+            <div class="member-username">
+              ${username}
+            </div>
+
+          </td>
+
+
+          <td>
+
+            <div class="email">
+              ${email}
+            </div>
+
+          </td>
+
+
+          <td>
+
+            <span
+              class="status ${escapeHTML(status)}"
+            >
+              ${escapeHTML(status)}
+            </span>
+
+          </td>
+
+
+          <td>
+
+            <span
+              class="status ${
+                role === "admin"
+                  ? "approved"
+                  : "pending"
+              }"
+            >
+              ${escapeHTML(role)}
+            </span>
+
+          </td>
+
+
+          <td>
+
+            <div class="actions">
+
+              ${actions}
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+
+
+    /* =========================================
+       CHANGE STATUS
+    ========================================= */
+
+    async function changeStatus(
+      encodedUserId,
+      newStatus
+    ) {
+
+      const userId =
+        decodeURIComponent(
+          encodedUserId
+        );
+
+
+      if (!userId) {
+
+        showToast(
+          "Invalid member.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      if (
+        userId === currentAdminId &&
+        newStatus !== "approved"
+      ) {
+
+        showToast(
+          "You cannot disable your own admin account from this panel.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      let actionText =
+        "update this member";
+
+
+      if (
+        newStatus === "approved"
+      ) {
+
+        actionText =
+          "approve this member";
+
+      }
+
+      else if (
+        newStatus === "rejected"
+      ) {
+
+        actionText =
+          "reject this member";
+
+      }
+
+      else if (
+        newStatus === "suspended"
+      ) {
+
+        actionText =
+          "suspend this member";
+
+      }
+
+
+      const confirmed =
+        window.confirm(
+          "Are you sure you want to " +
+          actionText +
+          "?"
+        );
+
+
+      if (!confirmed) {
+        return;
+      }
+
+
+      const updateData = {
+
+        status:
+          newStatus
+
+      };
+
+
+      if (
+        newStatus === "approved"
+      ) {
+
+        updateData.approved_at =
+          new Date().toISOString();
+
+        updateData.approved_by =
+          currentAdminId;
+
+      }
+
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from("members")
+          .update(updateData)
+          .eq(
+            "user_id",
+            userId
+          );
+
+
+      if (error) {
+
+        console.error(error);
+
+        showToast(
+          "Update failed: " +
+          error.message,
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      showToast(
+        "Member status updated successfully."
+      );
+
+
+      await loadMembers();
+
+    }
+
+
+    /* =========================================
+       SEARCH
+    ========================================= */
+
+    searchInput.addEventListener(
+      "input",
+      function() {
+
+        renderMembers();
+
+      }
+    );
+
+
+    /* =========================================
+       REFRESH
+    ========================================= */
+
+    refreshBtn.addEventListener(
+      "click",
+      async function() {
+
+        refreshBtn.disabled =
+          true;
+
+        refreshBtn.textContent =
+          "Loading...";
+
+
+        await loadMembers();
+
+
+        refreshBtn.disabled =
+          false;
+
+        refreshBtn.textContent =
+          "Refresh";
+
+      }
+    );
+
+
+    /* =========================================
+       LOGOUT
+    ========================================= */
+
+    logoutBtn.addEventListener(
+      "click",
+      async function() {
+
+        await supabaseClient.auth.signOut();
+
+        window.location.href =
+          "login.html";
+
+      }
+    );
+
+
+    /* =========================================
+       START
+    ========================================= */
+
+    async function start() {
+
+      const isAdmin =
+        await checkAdmin();
+
+
+      if (!isAdmin) {
+        return;
+      }
+
+
+      await loadMembers();
+
+    }
+
+
+    start();
+
+  </script>
+
+</body>
+  </html>
