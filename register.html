@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Register | Matuail Cyber Security Force</title>
+
+  <meta
+    name="description"
+    content="Create your MCSF member account."
+  >
+
+  <style>
+    :root {
+      --primary: #087653;
+      --primary-dark: #065d42;
+      --primary-soft: #eaf6f1;
+
+      --ink: #17201d;
+      --text: #28322e;
+      --muted: #6b7772;
+
+      --bg: #f6f8f7;
+      --white: #ffffff;
+
+      --border: #e1e8e4;
+
+      --danger: #b42318;
+      --success: #087653;
+      --warning: #9a6700;
+
+      --radius: 9px;
+
+      --shadow:
+        0 18px 55px rgba(19, 38, 30, .09);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+
+      background: var(--bg);
+      color: var(--text);
+
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      font-size: 14px;
+      line-height: 1.6;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* =========================
+       TOP STRIP
+    ========================= */
+
+    .top-strip {
+      min-height: 34px;
+
+      background: var(--ink);
+      color: #cbd5d0;
+
+      font-size: 10px;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .top-inner {
+      min-height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-left,
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-right a {
+      transition: color .2s ease;
+    }
+
+    .top-right a:hover {
+      color: #8fd5bb;
+    }
+
+    .dot {
+      width: 4px;
+      height: 4px;
+
+      border-radius: 50%;
+
+      background: #69c7a4;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      background: rgba(255, 255, 255, .97);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 72px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-logo {
+      width: 43px;
+      height: 43px;
+
+      object-fit: contain;
+
+      border-radius: 9px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      color: var(--ink);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      line-height: 1.25;
+    }
+
+    .brand-short {
+      margin-top: 3px;
+
+      color: var(--primary);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: 1.8px;
+      line-height: 1;
+    }
+
+    .back-home {
+      color: #68746f;
+
+      font-size: 10px;
+      font-weight: 650;
+
+      transition: color .2s ease;
+    }
+
+    .back-home:hover {
+      color: var(--primary);
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      flex: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 48px 0;
+    }
+
+    .register-layout {
+      width: min(1000px, 100%);
+
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
+
+      animation: pageIn .55s ease both;
+    }
+
+    /* =========================
+       INTRO PANEL
+    ========================= */
+
+    .register-intro {
+      position: relative;
+      overflow: hidden;
+
+      padding: 42px 35px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      background:
+        linear-gradient(
+          145deg,
+          #183930,
+          #0d251e
+        );
+
+      color: #fff;
+    }
+
+    .register-intro::before {
+      content: "";
+
+      position: absolute;
+
+      width: 350px;
+      height: 350px;
+
+      top: -170px;
+      right: -170px;
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      border-radius: 50%;
+    }
+
+    .register-intro::after {
+      content: "";
+
+      position: absolute;
+
+      width: 230px;
+      height: 230px;
+
+      bottom: -130px;
+      left: -100px;
+
+      border: 1px solid rgba(255,255,255,.06);
+
+      border-radius: 50%;
+    }
+
+    .intro-content,
+    .intro-footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .intro-logo {
+      width: 57px;
+      height: 57px;
+
+      object-fit: contain;
+
+      padding: 5px;
+
+      background: rgba(255,255,255,.07);
+
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 11px;
+
+      margin-bottom: 27px;
+    }
+
+    .intro-label {
+      color: #8fd5bb;
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
+    }
+
+    .intro-title {
+      max-width: 300px;
+
+      color: #fff;
+
+      font-size: 28px;
+      font-weight: 760;
+
+      line-height: 1.2;
+      letter-spacing: -.8px;
+
+      margin-bottom: 13px;
+    }
+
+    .intro-text {
+      max-width: 310px;
+
+      color: #a5b9b2;
+
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .intro-points {
+      margin-top: 26px;
+
+      display: grid;
+      gap: 9px;
+    }
+
+    .intro-point {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      color: #9eb4ac;
+
+      font-size: 9px;
+    }
+
+    .intro-check {
+      width: 19px;
+      height: 19px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border-radius: 5px;
+
+      color: #8fd5bb;
+      background: rgba(143,213,187,.08);
+
+      border: 1px solid rgba(143,213,187,.13);
+
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .intro-footer {
+      padding-top: 25px;
+
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      color: #829890;
+
+      font-size: 8px;
+    }
+
+    .intro-status {
+      color: #69cba5;
+    }
+
+    /* =========================
+       FORM PANEL
+    ========================= */
+
+    .register-panel {
+      padding: 42px 48px;
+    }
+
+    .register-heading {
+      margin-bottom: 24px;
+    }
+
+    .register-label {
+      display: block;
+
+      color: var(--primary);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+
+      margin-bottom: 9px;
+    }
+
+    .register-title {
+      color: var(--ink);
+
+      font-size: 27px;
+      font-weight: 780;
+
+      line-height: 1.2;
+      letter-spacing: -.7px;
+
+      margin-bottom: 6px;
+    }
+
+    .register-subtitle {
+      color: var(--muted);
+
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FORM GRID
+    ========================= */
+
+    .form {
+      width: 100%;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 0 13px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field-label {
+      display: block;
+
+      color: #39453f;
+
+      font-size: 9px;
+      font-weight: 750;
+
+      margin-bottom: 6px;
+    }
+
+    .required {
+      color: var(--primary);
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input {
+      width: 100%;
+      height: 43px;
+
+      padding: 0 12px;
+
+      color: var(--ink);
+
+      background: #fff;
+
+      border: 1px solid #d9e2de;
+      border-radius: 8px;
+
+      outline: none;
+
+      font-size: 10px;
+
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .input::placeholder {
+      color: #9aa5a0;
+    }
+
+    .input:focus {
+      border-color: #7bb9a2;
+
+      box-shadow:
+        0 0 0 3px rgba(8,118,83,.08);
+    }
+
+    .input.valid {
+      border-color: #78b99f;
+    }
+
+    .input.invalid {
+      border-color: #d98b84;
+    }
+
+    .password-input {
+      padding-right: 47px;
+    }
+
+    .password-toggle {
+      position: absolute;
+
+      right: 6px;
+      top: 50%;
+
+      width: 34px;
+      height: 33px;
+
+      transform: translateY(-50%);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: transparent;
+
+      color: #78847f;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      font-size: 8px;
+      font-weight: 750;
+
+      transition:
+        color .2s ease,
+        background .2s ease;
+    }
+
+    .password-toggle:hover {
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    /* =========================
+       PASSWORD STRENGTH
+    ========================= */
+
+    .strength {
+      display: none;
+
+      margin-top: 7px;
+    }
+
+    .strength.show {
+      display: block;
+    }
+
+    .strength-bars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 4px;
+
+      margin-bottom: 4px;
+    }
+
+    .strength-bar {
+      height: 3px;
+
+      border-radius: 5px;
+
+      background: #e4e9e6;
+
+      transition: background .2s ease;
+    }
+
+    .strength-text {
+      color: #8a9691;
+
+      font-size: 7px;
+    }
+
+    /* =========================
+       TERMS
+    ========================= */
+
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+
+      margin: 3px 0 19px;
+
+      color: #6d7974;
+
+      font-size: 8px;
+      line-height: 1.65;
+
+      cursor: pointer;
+    }
+
+    .terms input {
+      width: 13px;
+      height: 13px;
+
+      flex-shrink: 0;
+
+      margin-top: 1px;
+
+      accent-color: var(--primary);
+
+      cursor: pointer;
+    }
+
+    .terms a {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .terms a:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       MESSAGE
+    ========================= */
+
+    .form-message {
+      display: none;
+
+      padding: 10px 11px;
+
+      margin-bottom: 15px;
+
+      border-radius: 7px;
+
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .form-message.show {
+      display: block;
+    }
+
+    .form-message.error {
+      color: var(--danger);
+
+      background: #fff2f1;
+
+      border: 1px solid #f1ceca;
+    }
+
+    .form-message.success {
+      color: var(--success);
+
+      background: var(--primary-soft);
+
+      border: 1px solid #c9e5d9;
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    .register-button {
+      width: 100%;
+      height: 46px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 8px;
+
+      color: #fff;
+
+      background: var(--primary);
+
+      cursor: pointer;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .register-button:hover {
+      background: var(--primary-dark);
+
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 7px 18px rgba(8,118,83,.16);
+    }
+
+    .register-button:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .register-button.loading {
+      pointer-events: none;
+    }
+
+    .register-button.loading::after {
+      content: "";
+
+      width: 14px;
+      height: 14px;
+
+      margin-left: 8px;
+
+      border: 2px solid rgba(255,255,255,.35);
+      border-top-color: #fff;
+
+      border-radius: 50%;
+
+      animation: spin .7s linear infinite;
+    }
+
+    /* =========================
+       LOGIN LINK
+    ========================= */
+
+    .login-note {
+      margin-top: 18px;
+
+      text-align: center;
+
+      color: #77837e;
+
+      font-size: 9px;
+    }
+
+    .login-note a {
+      color: var(--primary);
+      font-weight: 750;
+    }
+
+    .login-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      padding: 20px 0;
+
+      background: #101714;
+
+      color: #718079;
+
+      font-size: 8px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 820px) {
+
+      .register-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .register-intro {
+        min-height: 290px;
+      }
+
+      .intro-points {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .top-right {
+        display: none;
+      }
+
+      .header-inner {
+        min-height: 67px;
+      }
+
+      main {
+        padding: 25px 0;
+      }
+
+      .register-intro {
+        min-height: 300px;
+
+        padding: 28px 24px;
+      }
+
+      .intro-logo {
+        width: 48px;
+        height: 48px;
+
+        margin-bottom: 19px;
+      }
+
+      .intro-title {
+        font-size: 24px;
+      }
+
+      .intro-points {
+        grid-template-columns: 1fr;
+        gap: 7px;
+        margin-top: 18px;
+      }
+
+      .register-panel {
+        padding: 34px 24px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+
+      .brand-name {
+        font-size: 10px;
+      }
+
+      .brand-logo {
+        width: 39px;
+        height: 39px;
+      }
+
+      .back-home {
+        font-size: 9px;
+      }
+
+      .register-title {
+        font-size: 25px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       TOP STRIP
+  ========================== -->
+
+  <div class="top-strip">
+
+    <div class="container top-inner">
+
+      <div class="top-left">
+
+        <span>
+          Matuail Cyber Security Force
+        </span>
+
+        <span class="dot"></span>
+
+        <span>
+          MCSF Community Platform
+        </span>
+
+      </div>
+
+      <div class="top-right">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="login.html">
+          Login
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="header">
+
+    <div class="container header-inner">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <img
+          src="logo.png"
+          alt="Matuail Cyber Security Force"
+          class="brand-logo"
+        >
+
+        <div class="brand-copy">
+
+          <span class="brand-name">
+            Matuail Cyber Security Force
+          </span>
+
+          <span class="brand-short">
+            MCSF
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <a
+        href="index.html"
+        class="back-home"
+      >
+        ← Back to website
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main>
+
+    <div class="container">
+
+      <div class="register-layout">
+
+
+        <!-- =====================
+             INTRO
+        ====================== -->
+
+        <section class="register-intro">
+
+          <div class="intro-content">
+
+            <img
+              src="logo.png"
+              alt="MCSF Logo"
+              class="intro-logo"
+            >
+
+            <div class="intro-label">
+              MCSF Membership
+            </div>
+
+            <h1 class="intro-title">
+              Become part of
+              the MCSF community.
+            </h1>
+
+            <p class="intro-text">
+              Create your member account to access
+              the MCSF community platform and your
+              personal member area.
+            </p>
+
+
+            <div class="intro-points">
+
+              <div class="intro-point">
+
+                <span class="intro-check">
+                  ✓
+                </span>
+
+                Personal member profile
+
+              </div>
+
+
+              <div class="intro-point">
+
+                <span class="intro-check">
+                  ✓
+                </span>
+
+                Community platform access
+
+              </div>
+
+
+              <div class="intro-point">
+
+                <span class="intro-check">
+                  ✓
+                </span>
+
+                Member updates and notices
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="intro-footer">
+
+            <span class="intro-status">
+              ●
+            </span>
+
+            Secure registration area
+
+          </div>
+
+        </section>
+
+
+        <!-- =====================
+             REGISTER FORM
+        ====================== -->
+
+        <section class="register-panel">
+
+          <div class="register-heading">
+
+            <span class="register-label">
+              Create Account
+            </span>
+
+            <h2 class="register-title">
+              Join MCSF
+            </h2>
+
+            <p class="register-subtitle">
+              Fill in your information to create
+              your member account.
+            </p>
+
+          </div>
+
+
+          <form
+            class="form"
+            id="registerForm"
+            novalidate
+          >
+
+            <div
+              class="form-message"
+              id="formMessage"
+              role="alert"
+            ></div>
+
+
+            <div class="form-grid">
+
+
+              <!-- FULL NAME -->
+
+              <div class="field">
+
+                <label
+                  class="field-label"
+                  for="fullName"
+                >
+                  Full Name
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="input"
+                  placeholder="Your full name"
+                  autocomplete="name"
+                  maxlength="80"
+                  required
+                >
+
+              </div>
+
+
+              <!-- USERNAME -->
+
+              <div class="field">
+
+                <label
+                  class="field-label"
+                  for="username"
+                >
+                  Username
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  class="input"
+                  placeholder="Choose a username"
+                  autocomplete="username"
+                  minlength="3"
+                  maxlength="30"
+                  required
+                >
+
+              </div>
+
+
+              <!-- EMAIL -->
+
+              <div class="field">
+
+                <label
+                  class="field-label"
+                  for="email"
+                >
+                  Email Address
+                  <span class="required">*</span>
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="input"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  maxlength="120"
+                  required
+                >
+
+              </div>
+
+
+              <!-- PHONE -->
+
+              <div class="field">
+
+                <label
+                  class="field-label"
+                  for="phone"
+                >
+                  Phone Number
+                </label>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="input"
+                  placeholder="01XXXXXXXXX"
+                  autocomplete="tel"
+                  maxlength="20"
+                >
+
+              </div>
+
+
+              <!-- PASSWORD -->
+
+              <div class="field">
+
+                <label
+                  class="field-label"
+                  for="password"
+                >
+                  Password
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap">
+
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="input password-input"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    minlength="8"
+                    maxlength="72"
+                    required
+                  >
+
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="password"
+                    aria-label="Show password"
+                  >
+                    Show
+                  </button>
+
+                </div>
+
+
+                <div
+                  class="strength"
+                  id="passwordStrength"
+                >
+
+                  <div class="strength-bars">
+
+                    <span class="strength-bar"></span>
+                    <span class="strength-bar"></span>
+                    <span class="strength-bar"></span>
+                    <span class="strength-bar"></span>
+
+                  </div>
+
+                  <span
+                    class="strength-text"
+                    id="strengthText"
+                  >
+                    Password strength
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- CONFIRM PASSWORD -->
+
+              <div class="field">
+
+                <label
+                  class="field-label"
+                  for="confirmPassword"
+                >
+                  Confirm Password
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap">
+
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    class="input password-input"
+                    placeholder="Repeat your password"
+                    autocomplete="new-password"
+                    minlength="8"
+                    maxlength="72"
+                    required
+                  >
+
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="confirmPassword"
+                    aria-label="Show password"
+                  >
+                    Show
+                  </button>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+            <!-- TERMS -->
+
+            <label class="terms">
+
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                required
+              >
+
+              <span>
+                I agree to the MCSF
+                <a href="#" id="termsLink">
+                  Terms & Conditions
+                </a>
+                and understand that my account
+                information will be handled according
+                to the platform's privacy policy.
+              </span>
+
+            </label>
+
+
+            <!-- BUTTON -->
+
+            <button
+              type="submit"
+              class="register-button"
+              id="registerButton"
+            >
+              Create Account
+            </button>
+
+
+            <div class="login-note">
+
+              Already have an account?
+
+              <a href="login.html">
+                Sign in
+              </a>
+
+            </div>
+
+          </form>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <span>
+        © <span id="year"></span>
+        Matuail Cyber Security Force.
+        All rights reserved.
+      </span>
+
+      <span>
+        MCSF Community Platform
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /* -------------------------
+       YEAR
+    ------------------------- */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* -------------------------
+       ELEMENTS
+    ------------------------- */
+
+    const registerForm =
+      document.getElementById("registerForm");
+
+    const formMessage =
+      document.getElementById("formMessage");
+
+    const registerButton =
+      document.getElementById("registerButton");
+
+    const fullName =
+      document.getElementById("fullName");
+
+    const username =
+      document.getElementById("username");
+
+    const email =
+      document.getElementById("email");
+
+    const phone =
+      document.getElementById("phone");
+
+    const password =
+      document.getElementById("password");
+
+    const confirmPassword =
+      document.getElementById("confirmPassword");
+
+    const terms =
+      document.getElementById("terms");
+
+    const strengthBox =
+      document.getElementById("passwordStrength");
+
+    const strengthText =
+      document.getElementById("strengthText");
+
+    const strengthBars =
+      document.querySelectorAll(".strength-bar");
+
+
+    /* -------------------------
+       MESSAGE
+    ------------------------- */
+
+    function showMessage(message, type) {
+
+      formMessage.textContent = message;
+
+      formMessage.className =
+        "form-message show " + type;
+
+    }
+
+
+    function clearMessage() {
+
+      formMessage.textContent = "";
+
+      formMessage.className =
+        "form-message";
+
+    }
+
+
+    /* -------------------------
+       PASSWORD TOGGLE
+    ------------------------- */
+
+    document
+      .querySelectorAll(".password-toggle")
+      .forEach(function(button) {
+
+        button.addEventListener(
+          "click",
+          function() {
+
+            const targetId =
+              button.getAttribute("data-target");
+
+            const input =
+              document.getElementById(targetId);
+
+            const isPassword =
+              input.type === "password";
+
+            input.type =
+              isPassword ? "text" : "password";
+
+            button.textContent =
+              isPassword ? "Hide" : "Show";
+
+            button.setAttribute(
+              "aria-label",
+              isPassword
+                ? "Hide password"
+                : "Show password"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* -------------------------
+       PASSWORD STRENGTH
+    ------------------------- */
+
+    function getPasswordScore(value) {
+
+      let score = 0;
+
+      if (value.length >= 8) {
+        score++;
+      }
+
+      if (/[a-z]/.test(value)) {
+        score++;
+      }
+
+      if (/[A-Z]/.test(value)) {
+        score++;
+      }
+
+      if (/[0-9]/.test(value)) {
+        score++;
+      }
+
+      if (/[^A-Za-z0-9]/.test(value)) {
+        score++;
+      }
+
+      return Math.min(score, 4);
+
+    }
+
+
+    function updatePasswordStrength() {
+
+      const value = password.value;
+
+      if (!value) {
+
+        strengthBox.classList.remove("show");
+
+        strengthBars.forEach(function(bar) {
+          bar.style.background = "";
+        });
+
+        return;
+      }
+
+      strengthBox.classList.add("show");
+
+      const score =
+        getPasswordScore(value);
+
+
+      strengthBars.forEach(
+        function(bar, index) {
+
+          bar.style.background =
+            index < score
+              ? "#087653"
+              : "#e4e9e6";
+
+        }
+      );
+
+
+      if (score <= 1) {
+
+        strengthText.textContent =
+          "Weak password";
+
+      } else if (score === 2) {
+
+        strengthText.textContent =
+          "Fair password";
+
+      } else if (score === 3) {
+
+        strengthText.textContent =
+          "Good password";
+
+      } else {
+
+        strengthText.textContent =
+          "Strong password";
+
+      }
+
+    }
+
+
+    password.addEventListener(
+      "input",
+      updatePasswordStrength
+    );
+
+
+    /* -------------------------
+       PASSWORD MATCH
+    ------------------------- */
+
+    function checkPasswordMatch() {
+
+      if (!confirmPassword.value) {
+        confirmPassword.classList.remove(
+          "valid",
+          "invalid"
+        );
+
+        return;
+      }
+
+      if (
+        password.value ===
+        confirmPassword.value
+      ) {
+
+        confirmPassword.classList.add(
+          "valid"
+        );
+
+        confirmPassword.classList.remove(
+          "invalid"
+        );
+
+      } else {
+
+        confirmPassword.classList.add(
+          "invalid"
+        );
+
+        confirmPassword.classList.remove(
+          "valid"
+        );
+
+      }
+
+    }
+
+
+    confirmPassword.addEventListener(
+      "input",
+      checkPasswordMatch
+    );
+
+
+    password.addEventListener(
+      "input",
+      checkPasswordMatch
+    );
+
+
+    /* -------------------------
+       USERNAME VALIDATION
+    ------------------------- */
+
+    username.addEventListener(
+      "input",
+      function() {
+
+        const value =
+          username.value.trim();
+
+        const valid =
+          /^[a-zA-Z0-9._-]{3,30}$/.test(value);
+
+        username.classList.toggle(
+          "valid",
+          value.length >= 3 && valid
+        );
+
+        username.classList.toggle(
+          "invalid",
+          value.length > 0 && !valid
+        );
+
+      }
+    );
+
+
+    /* -------------------------
+       EMAIL VALIDATION
+    ------------------------- */
+
+    email.addEventListener(
+      "input",
+      function() {
+
+        const value =
+          email.value.trim();
+
+        const valid =
+          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+        email.classList.toggle(
+          "valid",
+          valid
+        );
+
+        email.classList.toggle(
+          "invalid",
+          value.length > 0 && !valid
+        );
+
+      }
+    );
+
+
+    /* -------------------------
+       FORM SUBMIT
+    ------------------------- */
+
+    registerForm.addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+        clearMessage();
+
+
+        const nameValue =
+          fullName.value.trim();
+
+        const usernameValue =
+          username.value.trim();
+
+        const emailValue =
+          email.value.trim();
+
+        const phoneValue =
+          phone.value.trim();
+
+        const passwordValue =
+          password.value;
+
+        const confirmValue =
+          confirmPassword.value;
+
+
+        /* NAME */
+
+        if (
+          nameValue.length < 2
+        ) {
+
+          showMessage(
+            "Please enter your full name.",
+            "error"
+          );
+
+          fullName.focus();
+
+          return;
+
+        }
+
+
+        /* USERNAME */
+
+        if (
+          !/^[a-zA-Z0-9._-]{3,30}$/
+            .test(usernameValue)
+        ) {
+
+          showMessage(
+            "Username must be 3–30 characters and may contain letters, numbers, dots, underscores or hyphens.",
+            "error"
+          );
+
+          username.focus();
+
+          return;
+
+        }
+
+
+        /* EMAIL */
+
+        if (
+          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            .test(emailValue)
+        ) {
+
+          showMessage(
+            "Please enter a valid email address.",
+            "error"
+          );
+
+          email.focus();
+
+          return;
+
+        }
+
+
+        /* PHONE */
+
+        if (phoneValue) {
+
+          const cleanPhone =
+            phoneValue.replace(
+              /[\s-]/g,
+              ""
+            );
+
+          if (
+            !/^\+?[0-9]{8,15}$/
+              .test(cleanPhone)
+          ) {
+
+            showMessage(
+              "Please enter a valid phone number.",
+              "error"
+            );
+
+            phone.focus();
+
+            return;
+
+          }
+
+        }
+
+
+        /* PASSWORD */
+
+        if (
+          passwordValue.length < 8
+        ) {
+
+          showMessage(
+            "Password must contain at least 8 characters.",
+            "error"
+          );
+
+          password.focus();
+
+          return;
+
+        }
+
+
+        /* PASSWORD STRENGTH */
+
+        if (
+          getPasswordScore(passwordValue) < 3
+        ) {
+
+          showMessage(
+            "Please choose a stronger password using uppercase, lowercase, numbers or symbols.",
+            "error"
+          );
+
+          password.focus();
+
+          return;
+
+        }
+
+
+        /* CONFIRM */
+
+        if (
+          passwordValue !== confirmValue
+        ) {
+
+          showMessage(
+            "Passwords do not match.",
+            "error"
+          );
+
+          confirmPassword.focus();
+
+          return;
+
+        }
+
+
+        /* TERMS */
+
+        if (!terms.checked) {
+
+          showMessage(
+            "Please agree to the Terms & Conditions before creating an account.",
+            "error"
+          );
+
+          terms.focus();
+
+          return;
+
+        }
+
+
+        /*
+          IMPORTANT:
+
+          This page only validates the registration
+          information on the frontend.
+
+          The real account creation system will
+          be connected to a secure backend/API later.
+
+          Passwords must NEVER be stored directly
+          inside HTML, JavaScript or GitHub files.
+        */
+
+
+        registerButton.disabled = true;
+
+        registerButton.classList.add(
+          "loading"
+        );
+
+        registerButton.textContent =
+          "Creating account";
+
+
+        setTimeout(function() {
+
+          registerButton.disabled = false;
+
+          registerButton.classList.remove(
+            "loading"
+          );
+
+          registerButton.textContent =
+            "Create Account";
+
+
+          showMessage(
+            "Your information passed the registration checks. Secure account creation will be connected with the authentication system.",
+            "success"
+          );
+
+        }, 800);
+
+      }
+    );
+
+
+    /* -------------------------
+       CLEAR MESSAGE
+    ------------------------- */
+
+    [
+      fullName,
+      username,
+      email,
+      phone,
+      password,
+      confirmPassword
+    ].forEach(function(input) {
+
+      input.addEventListener(
+        "input",
+        function() {
+
+          if (
+            formMessage.classList.contains(
+              "error"
+            )
+          ) {
+
+            clearMessage();
+
+          }
+
+        }
+      );
+
+    });
+
+
+    /* -------------------------
+       TERMS LINK
+    ------------------------- */
+
+    document
+      .getElementById("termsLink")
+      .addEventListener(
+        "click",
+        function(event) {
+
+          event.preventDefault();
+
+          showMessage(
+            "The Terms & Conditions page will be added to the MCSF platform.",
+            "success"
+          );
+
+        }
+      );
+
+  </script>
+
+</body>
+  </html>
