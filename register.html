@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Register | Matuail Cyber Security Force</title>
+  <title>Create Account | Matuail Cyber Security Force</title>
 
   <meta
     name="description"
-    content="MCSF member registration portal."
+    content="Create a member account for Matuail Cyber Security Force."
   >
 
   <style>
     :root {
       --green: #087653;
       --green-dark: #065c41;
-      --green-soft: #edf8f3;
+      --green-light: #edf8f3;
 
       --dark: #17201d;
       --text: #35413c;
@@ -25,7 +25,12 @@
       --background: #f5f7f6;
 
       --border: #dfe7e3;
+
       --danger: #b42318;
+      --danger-bg: #fff3f2;
+
+      --success: #086746;
+      --success-bg: #edf8f3;
 
       --shadow: 0 18px 55px rgba(18, 35, 28, 0.09);
     }
@@ -36,13 +41,13 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
-      min-height: 100%;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       min-width: 320px;
+      min-height: 100vh;
 
       background:
         radial-gradient(
@@ -71,8 +76,7 @@
     }
 
     button,
-    input,
-    select {
+    input {
       font: inherit;
     }
 
@@ -87,7 +91,7 @@
     .header {
       height: 72px;
 
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.97);
 
       border-bottom: 1px solid var(--border);
     }
@@ -214,7 +218,7 @@
       line-height: 1.2;
       letter-spacing: -0.5px;
 
-      margin-bottom: 7px;
+      margin-bottom: 8px;
     }
 
     .description {
@@ -225,11 +229,22 @@
     }
 
     /* =========================
-       FORM
+       FORM GRID
     ========================= */
 
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 16px;
+    }
+
     .form-group {
-      margin-bottom: 16px;
+      min-width: 0;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
     }
 
     .form-label {
@@ -243,11 +258,15 @@
       font-weight: 750;
     }
 
+    .required {
+      color: var(--green);
+    }
+
     .form-input {
       width: 100%;
-      height: 44px;
+      height: 45px;
 
-      padding: 0 12px;
+      padding: 0 13px;
 
       color: var(--dark);
       background: var(--white);
@@ -275,97 +294,17 @@
       color: #a0aaa6;
     }
 
-    .password-wrap {
-      position: relative;
+    .form-input.invalid {
+      border-color: #e4aaa5;
     }
 
-    .password-wrap .form-input {
-      padding-right: 65px;
-    }
+    .field-note {
+      margin-top: 5px;
 
-    .password-toggle {
-      position: absolute;
-
-      right: 9px;
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      padding: 5px 6px;
-
-      color: var(--muted);
-
-      background: transparent;
-
-      border: 0;
-
-      font-size: 8px;
-      font-weight: 750;
-    }
-
-    .password-toggle:hover {
-      color: var(--green);
-    }
-
-    .password-help {
-      margin-top: 6px;
-
-      color: #8a9691;
+      color: #8b9691;
 
       font-size: 7px;
-      line-height: 1.6;
-    }
-
-    /* =========================
-       TWO COLUMN
-    ========================= */
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      gap: 11px;
-    }
-
-    /* =========================
-       TERMS
-    ========================= */
-
-    .terms {
-      margin: 19px 0;
-
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-
-      color: #6f7b76;
-
-      font-size: 8px;
-      line-height: 1.7;
-
-      cursor: pointer;
-    }
-
-    .terms input {
-      width: 13px;
-      height: 13px;
-
-      flex: 0 0 13px;
-
-      margin-top: 2px;
-
-      accent-color: var(--green);
-
-      cursor: pointer;
-    }
-
-    .terms a {
-      color: var(--green);
-      font-weight: 750;
-    }
-
-    .terms a:hover {
-      text-decoration: underline;
+      line-height: 1.5;
     }
 
     /* =========================
@@ -375,14 +314,14 @@
     .message {
       display: none;
 
-      margin-bottom: 17px;
+      margin-bottom: 18px;
 
-      padding: 10px 12px;
+      padding: 11px 12px;
 
-      border-radius: 7px;
+      border-radius: 8px;
 
       font-size: 8px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .message.show {
@@ -392,26 +331,64 @@
     .message.error {
       color: var(--danger);
 
-      background: #fff3f2;
+      background: var(--danger-bg);
 
       border: 1px solid #f2d1ce;
     }
 
     .message.success {
-      color: #086746;
+      color: var(--success);
 
-      background: var(--green-soft);
+      background: var(--success-bg);
 
       border: 1px solid #cbe3d8;
     }
 
     /* =========================
-       REGISTER BUTTON
+       TERMS
     ========================= */
 
-    .register-submit {
+    .terms {
+      margin-top: 18px;
+
+      display: flex;
+      align-items: flex-start;
+
+      gap: 8px;
+    }
+
+    .terms input {
+      width: 14px;
+      height: 14px;
+
+      margin-top: 1px;
+
+      accent-color: var(--green);
+
+      flex: 0 0 auto;
+    }
+
+    .terms label {
+      color: #7a8580;
+
+      font-size: 7px;
+      line-height: 1.65;
+    }
+
+    .terms a {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    .register-button {
       width: 100%;
-      height: 45px;
+      height: 46px;
+
+      margin-top: 20px;
 
       display: flex;
       align-items: center;
@@ -428,24 +405,25 @@
 
       transition:
         background 0.2s ease,
-        transform 0.1s ease;
+        transform 0.1s ease,
+        opacity 0.2s ease;
     }
 
-    .register-submit:hover {
+    .register-button:hover {
       background: var(--green-dark);
     }
 
-    .register-submit:active {
+    .register-button:active {
       transform: translateY(1px);
     }
 
-    .register-submit:disabled {
+    .register-button:disabled {
       opacity: 0.65;
       cursor: not-allowed;
     }
 
     /* =========================
-       LOGIN LINK
+       LOGIN
     ========================= */
 
     .login-area {
@@ -481,9 +459,9 @@
     ========================= */
 
     .security-note {
-      margin-top: 16px;
+      margin-top: 15px;
 
-      color: #8b9691;
+      color: #929c98;
 
       font-size: 7px;
       line-height: 1.7;
@@ -492,7 +470,7 @@
     }
 
     /* =========================
-       RESPONSIVE
+       MOBILE
     ========================= */
 
     @media (max-width: 520px) {
@@ -517,9 +495,7 @@
       main {
         min-height: calc(100vh - 66px);
 
-        padding:
-          32px 14px
-          48px;
+        padding: 32px 14px 45px;
       }
 
       .register-card {
@@ -533,13 +509,16 @@
 
     @media (max-width: 390px) {
 
-      .back-link {
-        display: none;
+      .form-grid {
+        grid-template-columns: 1fr;
       }
 
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .back-link {
+        display: none;
       }
     }
 
@@ -556,7 +535,9 @@
 
 <body>
 
-  <!-- HEADER -->
+  <!-- =========================
+       HEADER
+  ========================= -->
 
   <header class="header">
 
@@ -601,15 +582,15 @@
   </header>
 
 
-  <!-- MAIN -->
+  <!-- =========================
+       MAIN
+  ========================= -->
 
   <main>
 
     <div class="register-wrapper">
 
       <section class="register-card">
-
-        <!-- HEADING -->
 
         <div class="heading">
 
@@ -618,13 +599,13 @@
           </span>
 
           <h1 class="title">
-            Create an account
+            Create your account
           </h1>
 
           <p class="description">
-            Register for an MCSF account. Your
-            information will be handled through the
-            official member system.
+            Register for a Matuail Cyber Security Force
+            member account. Your application will be
+            reviewed before activation.
           </p>
 
         </div>
@@ -633,205 +614,208 @@
         <!-- MESSAGE -->
 
         <div
-          id="registerMessage"
+          id="message"
           class="message"
           role="alert"
           aria-live="polite"
         ></div>
 
 
-        <!-- FORM -->
+        <!-- =========================
+             REGISTER FORM
+        ========================= -->
 
         <form
           id="registerForm"
           novalidate
         >
 
-          <!-- NAME -->
+          <div class="form-grid">
 
-          <div class="form-row">
+            <!-- FULL NAME -->
 
             <div class="form-group">
 
               <label
-                for="firstName"
                 class="form-label"
+                for="fullName"
               >
-                First Name
+                Full Name
+                <span class="required">*</span>
               </label>
 
               <input
-                id="firstName"
-                name="first_name"
                 class="form-input"
+                id="fullName"
+                name="full_name"
                 type="text"
-                placeholder="First name"
-                autocomplete="given-name"
-                maxlength="50"
+                placeholder="Your full name"
+                autocomplete="name"
+                maxlength="80"
                 required
               >
 
             </div>
 
 
+            <!-- USERNAME -->
+
             <div class="form-group">
 
               <label
-                for="lastName"
                 class="form-label"
+                for="username"
               >
-                Last Name
+                Username
+                <span class="required">*</span>
               </label>
 
               <input
-                id="lastName"
-                name="last_name"
                 class="form-input"
+                id="username"
+                name="username"
                 type="text"
-                placeholder="Last name"
-                autocomplete="family-name"
-                maxlength="50"
+                placeholder="Choose username"
+                autocomplete="username"
+                maxlength="30"
+                pattern="[A-Za-z0-9_.-]+"
+                required
+              >
+
+              <div class="field-note">
+                Letters, numbers, dot, dash and underscore.
+              </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group full">
+
+              <label
+                class="form-label"
+                for="email"
+              >
+                Email Address
+                <span class="required">*</span>
+              </label>
+
+              <input
+                class="form-input"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your email address"
+                autocomplete="email"
+                maxlength="120"
                 required
               >
 
             </div>
 
-          </div>
 
+            <!-- PHONE -->
 
-          <!-- USERNAME -->
+            <div class="form-group">
 
-          <div class="form-group">
-
-            <label
-              for="username"
-              class="form-label"
-            >
-              Username
-            </label>
-
-            <input
-              id="username"
-              name="username"
-              class="form-input"
-              type="text"
-              placeholder="Choose a username"
-              autocomplete="username"
-              minlength="3"
-              maxlength="30"
-              pattern="[A-Za-z0-9._-]+"
-              required
-            >
-
-            <div class="password-help">
-              Use 3–30 characters: letters, numbers,
-              dot, underscore or hyphen.
-            </div>
-
-          </div>
-
-
-          <!-- EMAIL -->
-
-          <div class="form-group">
-
-            <label
-              for="email"
-              class="form-label"
-            >
-              Email Address
-            </label>
-
-            <input
-              id="email"
-              name="email"
-              class="form-input"
-              type="email"
-              placeholder="Enter your email address"
-              autocomplete="email"
-              maxlength="120"
-              required
-            >
-
-          </div>
-
-
-          <!-- PASSWORD -->
-
-          <div class="form-group">
-
-            <label
-              for="password"
-              class="form-label"
-            >
-              Password
-            </label>
-
-            <div class="password-wrap">
+              <label
+                class="form-label"
+                for="phone"
+              >
+                Phone Number
+              </label>
 
               <input
+                class="form-input"
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="Optional"
+                autocomplete="tel"
+                maxlength="25"
+              >
+
+            </div>
+
+
+            <!-- DESIGNATION -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="designation"
+              >
+                Designation
+              </label>
+
+              <input
+                class="form-input"
+                id="designation"
+                name="designation"
+                type="text"
+                placeholder="Optional"
+                maxlength="80"
+              >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="password"
+              >
+                Password
+                <span class="required">*</span>
+              </label>
+
+              <input
+                class="form-input"
                 id="password"
                 name="password"
-                class="form-input"
                 type="password"
-                placeholder="Create a password"
+                placeholder="Create password"
                 autocomplete="new-password"
                 minlength="8"
-                maxlength="128"
+                maxlength="72"
                 required
               >
 
-              <button
-                type="button"
-                class="password-toggle"
-                data-target="password"
-                aria-label="Show password"
+              <div class="field-note">
+                Minimum 8 characters.
+              </div>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="confirmPassword"
               >
-                Show
-              </button>
-
-            </div>
-
-            <div class="password-help">
-              Password must contain at least 8 characters.
-            </div>
-
-          </div>
-
-
-          <!-- CONFIRM PASSWORD -->
-
-          <div class="form-group">
-
-            <label
-              for="confirmPassword"
-              class="form-label"
-            >
-              Confirm Password
-            </label>
-
-            <div class="password-wrap">
+                Confirm Password
+                <span class="required">*</span>
+              </label>
 
               <input
+                class="form-input"
                 id="confirmPassword"
                 name="confirm_password"
-                class="form-input"
                 type="password"
-                placeholder="Confirm your password"
+                placeholder="Repeat password"
                 autocomplete="new-password"
                 minlength="8"
-                maxlength="128"
+                maxlength="72"
                 required
               >
-
-              <button
-                type="button"
-                class="password-toggle"
-                data-target="confirmPassword"
-                aria-label="Show password"
-              >
-                Show
-              </button>
 
             </div>
 
@@ -840,34 +824,30 @@
 
           <!-- TERMS -->
 
-          <label class="terms">
+          <div class="terms">
 
             <input
               id="terms"
-              name="terms"
               type="checkbox"
               required
             >
 
-            <span>
-              I agree to the MCSF
-              <a href="terms.html">
-                Terms of Use
-              </a>
-              and
-              <a href="privacy.html">
-                Privacy Policy
-              </a>.
-            </span>
+            <label for="terms">
 
-          </label>
+              I confirm that the information provided is
+              accurate and I agree to follow the rules and
+              policies of Matuail Cyber Security Force.
+
+            </label>
+
+          </div>
 
 
-          <!-- SUBMIT -->
+          <!-- BUTTON -->
 
           <button
             id="registerButton"
-            class="register-submit"
+            class="register-button"
             type="submit"
           >
             Create Account
@@ -888,19 +868,16 @@
             href="login.html"
             class="login-link"
           >
-            Sign in
+            Sign In
           </a>
 
         </div>
 
 
-        <!-- SECURITY -->
-
         <p class="security-note">
-          Registration does not automatically grant
-          administrative privileges. Account roles and
-          member access are controlled by the MCSF
-          authentication system.
+          Your password is handled by Supabase
+          Authentication and is not stored in the
+          MCSF members table.
         </p>
 
       </section>
@@ -910,114 +887,78 @@
   </main>
 
 
+  <!-- =========================
+       SUPABASE
+  ========================= -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
   <script>
 
     /*
     =====================================================
-    MCSF REGISTRATION FRONTEND
-    =====================================================
-
-    IMPORTANT:
-
-    This page intentionally contains:
-
-    - No demo accounts
-    - No fake users
-    - No hard-coded passwords
-    - No admin credentials
-    - No secret API keys
-
-    The actual account creation will be handled
-    by the secure backend/authentication service.
-
+    MCSF SUPABASE CONFIG
     =====================================================
     */
 
+    const SUPABASE_URL =
+      "https://avxfxwyahujnhfhfqoih.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_viwcMj3ZBDWtkt6Wl2GUnA_zp7ASREi";
+
+
+    const {
+      createClient
+    } = window.supabase;
+
+
+    const supabaseClient =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+
+    /*
+    =====================================================
+    ELEMENTS
+    =====================================================
+    */
 
     const registerForm =
       document.getElementById("registerForm");
 
-    const firstName =
-      document.getElementById("firstName");
+    const fullNameInput =
+      document.getElementById("fullName");
 
-    const lastName =
-      document.getElementById("lastName");
-
-    const username =
+    const usernameInput =
       document.getElementById("username");
 
-    const email =
+    const emailInput =
       document.getElementById("email");
 
-    const password =
+    const phoneInput =
+      document.getElementById("phone");
+
+    const designationInput =
+      document.getElementById("designation");
+
+    const passwordInput =
       document.getElementById("password");
 
-    const confirmPassword =
+    const confirmPasswordInput =
       document.getElementById("confirmPassword");
 
-    const terms =
+    const termsInput =
       document.getElementById("terms");
 
     const registerButton =
       document.getElementById("registerButton");
 
-    const registerMessage =
-      document.getElementById("registerMessage");
-
-
-    /*
-    =====================================================
-    PASSWORD VISIBILITY
-    =====================================================
-    */
-
-    document
-      .querySelectorAll(".password-toggle")
-      .forEach(function (button) {
-
-        button.addEventListener(
-          "click",
-          function () {
-
-            const targetID =
-              button.dataset.target;
-
-            const input =
-              document.getElementById(targetID);
-
-
-            if (!input) {
-              return;
-            }
-
-
-            const showing =
-              input.type === "text";
-
-
-            input.type =
-              showing
-                ? "password"
-                : "text";
-
-
-            button.textContent =
-              showing
-                ? "Show"
-                : "Hide";
-
-
-            button.setAttribute(
-              "aria-label",
-              showing
-                ? "Show password"
-                : "Hide password"
-            );
-
-          }
-        );
-
-      });
+    const messageBox =
+      document.getElementById("message");
 
 
     /*
@@ -1027,24 +968,23 @@
     */
 
     function showMessage(
-      message,
+      text,
       type = "error"
     ) {
 
-      registerMessage.textContent =
-        message;
+      messageBox.textContent = text;
 
-      registerMessage.className =
-        `message show ${type}`;
+      messageBox.className =
+        "message show " + type;
 
     }
 
 
     function clearMessage() {
 
-      registerMessage.textContent = "";
+      messageBox.textContent = "";
 
-      registerMessage.className =
+      messageBox.className =
         "message";
 
     }
@@ -1052,69 +992,52 @@
 
     /*
     =====================================================
-    BASIC VALIDATION
+    NORMALIZE USERNAME
+    =====================================================
+    */
+
+    function normalizeUsername(value) {
+
+      return value
+        .trim()
+        .toLowerCase();
+
+    }
+
+
+    /*
+    =====================================================
+    VALIDATION
     =====================================================
     */
 
     function validateForm() {
 
-      const first =
-        firstName.value.trim();
+      const fullName =
+        fullNameInput.value.trim();
 
-
-      const last =
-        lastName.value.trim();
-
-
-      const user =
-        username.value.trim();
-
-
-      const mail =
-        email.value.trim();
-
-
-      const pass =
-        password.value;
-
-
-      const confirm =
-        confirmPassword.value;
-
-
-      if (!first) {
-
-        showMessage(
-          "Please enter your first name."
+      const username =
+        normalizeUsername(
+          usernameInput.value
         );
 
-        firstName.focus();
+      const email =
+        emailInput.value.trim();
 
-        return false;
+      const password =
+        passwordInput.value;
 
-      }
-
-
-      if (!last) {
-
-        showMessage(
-          "Please enter your last name."
-        );
-
-        lastName.focus();
-
-        return false;
-
-      }
+      const confirmPassword =
+        confirmPasswordInput.value;
 
 
-      if (!user) {
+      if (!fullName) {
 
         showMessage(
-          "Please choose a username."
+          "Please enter your full name."
         );
 
-        username.focus();
+        fullNameInput.focus();
 
         return false;
 
@@ -1122,99 +1045,82 @@
 
 
       if (
-        user.length < 3 ||
-        user.length > 30
+        username.length < 3 ||
+        username.length > 30
       ) {
 
         showMessage(
           "Username must be between 3 and 30 characters."
         );
 
-        username.focus();
+        usernameInput.focus();
 
         return false;
 
       }
-
-
-      const usernamePattern =
-        /^[A-Za-z0-9._-]+$/;
 
 
       if (
-        !usernamePattern.test(user)
+        !/^[a-z0-9_.-]+$/i.test(username)
       ) {
 
         showMessage(
-          "Username contains unsupported characters."
+          "Username contains invalid characters."
         );
 
-        username.focus();
+        usernameInput.focus();
 
         return false;
 
       }
 
 
-      if (!mail) {
-
-        showMessage(
-          "Please enter your email address."
-        );
-
-        email.focus();
-
-        return false;
-
-      }
-
-
-      if (!email.validity.valid) {
+      if (!emailInput.validity.valid) {
 
         showMessage(
           "Please enter a valid email address."
         );
 
-        email.focus();
+        emailInput.focus();
 
         return false;
 
       }
 
 
-      if (pass.length < 8) {
+      if (password.length < 8) {
 
         showMessage(
           "Password must contain at least 8 characters."
         );
 
-        password.focus();
+        passwordInput.focus();
 
         return false;
 
       }
 
 
-      if (pass !== confirm) {
+      if (password !== confirmPassword) {
 
         showMessage(
           "Passwords do not match."
         );
 
-        confirmPassword.focus();
+        confirmPasswordInput.focus();
 
         return false;
 
       }
 
 
-      if (!terms.checked) {
+      if (!termsInput.checked) {
 
         showMessage(
-          "Please accept the Terms of Use and Privacy Policy."
+          "Please accept the MCSF terms before creating your account."
         );
 
-        terms.focus();
+        termsInput.focus();
 
         return false;
 
@@ -1228,13 +1134,13 @@
 
     /*
     =====================================================
-    SUBMIT
+    REGISTER
     =====================================================
     */
 
     registerForm.addEventListener(
       "submit",
-      async function (event) {
+      async function(event) {
 
         event.preventDefault();
 
@@ -1246,70 +1152,199 @@
         }
 
 
+        const fullName =
+          fullNameInput.value.trim();
+
+        const username =
+          normalizeUsername(
+            usernameInput.value
+          );
+
+        const email =
+          emailInput.value.trim()
+          .toLowerCase();
+
+        const phone =
+          phoneInput.value.trim();
+
+        const designation =
+          designationInput.value.trim();
+
+        const password =
+          passwordInput.value;
+
+
         registerButton.disabled = true;
 
         registerButton.textContent =
           "Creating account...";
 
 
-        /*
-        =================================================
-        REAL BACKEND CONNECTION
-        =================================================
-
-        The real backend will be connected here.
-
-        Example future request:
-
-          const response = await fetch(
-            "/api/auth/register",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                first_name: firstName.value.trim(),
-                last_name: lastName.value.trim(),
-                username: username.value.trim(),
-                email: email.value.trim(),
-                password: password.value
-              })
-            }
-          );
-
-        Never store passwords directly in this
-        frontend file.
-
-        The backend must securely hash passwords
-        before storing them.
-
-        =================================================
-        */
-
-
         try {
 
           /*
-            Backend is intentionally not faked.
-
-            Until the authentication backend is
-            connected, this form will not pretend
-            that registration succeeded.
+          =================================================
+          SUPABASE AUTH SIGNUP
+          =================================================
           */
 
+          const {
+            data,
+            error
+          } = await supabaseClient.auth.signUp({
+
+            email: email,
+
+            password: password,
+
+            options: {
+
+              data: {
+
+                full_name:
+                  fullName,
+
+                username:
+                  username,
+
+                phone:
+                  phone,
+
+                designation:
+                  designation
+
+              }
+
+            }
+
+          });
+
+
+          if (error) {
+
+            throw error;
+
+          }
+
+
+          /*
+          =================================================
+          IMPORTANT
+          =================================================
+
+          The database trigger automatically creates:
+
+          public.members
+
+          with:
+
+          role = member
+          status = pending
+
+          using the authenticated user's ID.
+
+          =================================================
+          */
+
+
+          /*
+          Supabase may require email confirmation.
+          */
+
+          if (
+            data.user &&
+            !data.session
+          ) {
+
+            showMessage(
+              "Account created successfully. Please check your email and confirm your account before signing in.",
+              "success"
+            );
+
+          }
+
+          else {
+
+            showMessage(
+              "Account created successfully. Your MCSF membership is pending review.",
+              "success"
+            );
+
+          }
+
+
+          /*
+          Clear password fields.
+          */
+
+          passwordInput.value = "";
+
+          confirmPasswordInput.value = "";
+
+
+          /*
+          Do not automatically redirect immediately.
+          This lets the member see the status message.
+          */
+
+        }
+
+        catch (error) {
+
+          console.error(
+            "MCSF registration error:",
+            error
+          );
+
+
+          let errorMessage =
+            "Registration failed. Please try again.";
+
+
+          if (error.message) {
+
+            errorMessage =
+              error.message;
+
+          }
+
+
+          /*
+          Friendly common Supabase messages.
+          */
+
+          if (
+            errorMessage
+              .toLowerCase()
+              .includes("user already registered")
+          ) {
+
+            errorMessage =
+              "An account with this email already exists. Please sign in instead.";
+
+          }
+
+
+          if (
+            errorMessage
+              .toLowerCase()
+              .includes("password should be at least")
+          ) {
+
+            errorMessage =
+              "Password must be at least 8 characters.";
+
+          }
+
+
           showMessage(
-            "Registration service is not connected yet. Complete the MCSF backend setup before creating accounts.",
+            errorMessage,
             "error"
           );
 
-        } catch (error) {
+        }
 
-          showMessage(
-            "Unable to connect to the registration service."
-          );
-
-        } finally {
+        finally {
 
           registerButton.disabled = false;
 
@@ -1324,27 +1359,31 @@
 
     /*
     =====================================================
-    LIVE PASSWORD MATCH CHECK
+    LIVE PASSWORD CHECK
     =====================================================
     */
 
-    confirmPassword.addEventListener(
+    confirmPasswordInput.addEventListener(
       "input",
-      function () {
+      function() {
 
         if (
-          confirmPassword.value &&
-          password.value !==
-          confirmPassword.value
+          confirmPasswordInput.value &&
+          passwordInput.value !==
+          confirmPasswordInput.value
         ) {
 
-          confirmPassword.setCustomValidity(
-            "Passwords do not match."
+          confirmPasswordInput.classList.add(
+            "invalid"
           );
 
-        } else {
+        }
 
-          confirmPassword.setCustomValidity("");
+        else {
+
+          confirmPasswordInput.classList.remove(
+            "invalid"
+          );
 
         }
 
@@ -1352,25 +1391,20 @@
     );
 
 
-    password.addEventListener(
-      "input",
-      function () {
+    /*
+    =====================================================
+    USERNAME NORMALIZATION
+    =====================================================
+    */
 
-        if (
-          confirmPassword.value &&
-          password.value !==
-          confirmPassword.value
-        ) {
+    usernameInput.addEventListener(
+      "blur",
+      function() {
 
-          confirmPassword.setCustomValidity(
-            "Passwords do not match."
+        usernameInput.value =
+          normalizeUsername(
+            usernameInput.value
           );
-
-        } else {
-
-          confirmPassword.setCustomValidity("");
-
-        }
 
       }
     );
@@ -1378,4 +1412,4 @@
   </script>
 
 </body>
-    </html>
+  </html>
