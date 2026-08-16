@@ -4,34 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Login | Matuail Cyber Security Force</title>
+  <title>Member Login | MCSF</title>
 
   <meta
     name="description"
-    content="Member login portal of Matuail Cyber Security Force (MCSF)."
+    content="Secure member login for Matuail Cyber Security Force."
   >
 
   <style>
     :root {
-      --primary: #087653;
-      --primary-dark: #065d42;
-      --primary-soft: #eaf6f1;
+      --green: #087653;
+      --green-dark: #065c41;
+      --green-soft: #edf8f3;
 
-      --ink: #17201d;
-      --text: #28322e;
-      --muted: #6b7772;
+      --dark: #17201d;
+      --text: #35413c;
+      --muted: #74817b;
 
-      --bg: #f6f8f7;
       --white: #ffffff;
+      --background: #f5f7f6;
 
-      --border: #e1e8e4;
-
+      --border: #dfe7e3;
       --danger: #b42318;
 
-      --radius: 9px;
-
-      --shadow:
-        0 18px 55px rgba(19, 38, 30, .09);
+      --shadow: 0 18px 55px rgba(18, 35, 28, 0.09);
     }
 
     * {
@@ -40,31 +36,31 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html,
+    body {
+      min-height: 100%;
     }
 
     body {
       min-width: 320px;
-      min-height: 100vh;
 
-      display: flex;
-      flex-direction: column;
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(8, 118, 83, 0.07),
+          transparent 32%
+        ),
+        var(--background);
 
-      background: var(--bg);
       color: var(--text);
 
       font-family:
         Inter,
-        ui-sans-serif,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-
-      font-size: 14px;
-      line-height: 1.6;
 
       -webkit-font-smoothing: antialiased;
     }
@@ -80,62 +76,7 @@
     }
 
     button {
-      border: 0;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* =========================
-       TOP STRIP
-    ========================= */
-
-    .top-strip {
-      min-height: 34px;
-
-      background: var(--ink);
-      color: #cbd5d0;
-
-      font-size: 10px;
-    }
-
-    .container {
-      width: min(1160px, calc(100% - 40px));
-      margin-inline: auto;
-    }
-
-    .top-inner {
-      min-height: 34px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .top-left,
-    .top-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .top-right a {
-      transition: color .2s ease;
-    }
-
-    .top-right a:hover {
-      color: #8fd5bb;
-    }
-
-    .dot {
-      width: 4px;
-      height: 4px;
-
-      border-radius: 50%;
-
-      background: #69c7a4;
+      cursor: pointer;
     }
 
     /* =========================
@@ -143,13 +84,18 @@
     ========================= */
 
     .header {
-      background: rgba(255, 255, 255, .97);
+      height: 72px;
+
+      background: rgba(255, 255, 255, 0.96);
 
       border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
-      min-height: 72px;
+      width: min(1120px, calc(100% - 36px));
+      height: 100%;
+
+      margin: 0 auto;
 
       display: flex;
       align-items: center;
@@ -157,57 +103,53 @@
     }
 
     .brand {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 11px;
     }
 
     .brand-logo {
-      width: 43px;
-      height: 43px;
+      width: 42px;
+      height: 42px;
 
       object-fit: contain;
 
       border-radius: 9px;
     }
 
-    .brand-copy {
-      display: flex;
-      flex-direction: column;
-    }
-
     .brand-name {
-      color: var(--ink);
+      color: var(--dark);
 
       font-size: 12px;
       font-weight: 800;
 
-      line-height: 1.25;
+      line-height: 1.2;
     }
 
     .brand-short {
+      display: block;
+
       margin-top: 3px;
 
-      color: var(--primary);
+      color: var(--green);
 
       font-size: 8px;
       font-weight: 800;
 
-      letter-spacing: 1.8px;
-      line-height: 1;
+      letter-spacing: 2px;
     }
 
-    .back-home {
-      color: #68746f;
+    .back-link {
+      color: #66736e;
 
-      font-size: 10px;
-      font-weight: 650;
+      font-size: 9px;
+      font-weight: 700;
 
-      transition: color .2s ease;
+      transition: color 0.2s ease;
     }
 
-    .back-home:hover {
-      color: var(--primary);
+    .back-link:hover {
+      color: var(--green);
     }
 
     /* =========================
@@ -215,332 +157,179 @@
     ========================= */
 
     main {
-      flex: 1;
+      min-height: calc(100vh - 72px);
+
+      padding: 55px 18px 65px;
 
       display: flex;
       align-items: center;
       justify-content: center;
-
-      padding: 55px 0;
     }
 
-    .login-layout {
-      width: min(930px, 100%);
+    .login-wrapper {
+      width: 100%;
+      max-width: 420px;
+    }
 
-      display: grid;
-      grid-template-columns: .88fr 1.12fr;
+    /* =========================
+       LOGIN CARD
+    ========================= */
+
+    .login-card {
+      padding: 34px;
 
       background: var(--white);
 
       border: 1px solid var(--border);
-      border-radius: 16px;
-
-      overflow: hidden;
+      border-radius: 14px;
 
       box-shadow: var(--shadow);
-
-      animation: pageIn .55s ease both;
-    }
-
-    /* =========================
-       LEFT PANEL
-    ========================= */
-
-    .login-intro {
-      position: relative;
-      overflow: hidden;
-
-      padding: 42px 35px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      background:
-        linear-gradient(
-          145deg,
-          #183930,
-          #0d251e
-        );
-
-      color: #fff;
-    }
-
-    .login-intro::before {
-      content: "";
-
-      position: absolute;
-
-      width: 350px;
-      height: 350px;
-
-      top: -170px;
-      right: -170px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 50%;
-    }
-
-    .login-intro::after {
-      content: "";
-
-      position: absolute;
-
-      width: 230px;
-      height: 230px;
-
-      bottom: -130px;
-      left: -100px;
-
-      border: 1px solid rgba(255,255,255,.06);
-
-      border-radius: 50%;
-    }
-
-    .intro-content,
-    .intro-footer {
-      position: relative;
-      z-index: 2;
-    }
-
-    .intro-logo {
-      width: 57px;
-      height: 57px;
-
-      object-fit: contain;
-
-      padding: 5px;
-
-      background: rgba(255,255,255,.07);
-
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 11px;
-
-      margin-bottom: 27px;
-    }
-
-    .intro-label {
-      color: #8fd5bb;
-
-      font-size: 8px;
-      font-weight: 800;
-
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-
-      margin-bottom: 10px;
-    }
-
-    .intro-title {
-      max-width: 300px;
-
-      color: #fff;
-
-      font-size: 28px;
-      font-weight: 760;
-
-      line-height: 1.2;
-      letter-spacing: -.8px;
-
-      margin-bottom: 13px;
-    }
-
-    .intro-text {
-      max-width: 310px;
-
-      color: #a5b9b2;
-
-      font-size: 10px;
-      line-height: 1.8;
-    }
-
-    .intro-footer {
-      padding-top: 25px;
-
-      display: flex;
-      align-items: center;
-      gap: 7px;
-
-      color: #829890;
-
-      font-size: 8px;
-    }
-
-    .intro-status {
-      color: #69cba5;
-    }
-
-    /* =========================
-       LOGIN PANEL
-    ========================= */
-
-    .login-panel {
-      padding: 45px 48px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .login-heading {
-      margin-bottom: 28px;
+      margin-bottom: 27px;
     }
 
-    .login-label {
+    .eyebrow {
       display: block;
 
-      color: var(--primary);
+      margin-bottom: 8px;
+
+      color: var(--green);
 
       font-size: 8px;
       font-weight: 800;
 
-      letter-spacing: 1.5px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-
-      margin-bottom: 9px;
     }
 
-    .login-title {
-      color: var(--ink);
+    .title {
+      color: var(--dark);
 
       font-size: 27px;
-      font-weight: 780;
+      font-weight: 800;
 
       line-height: 1.2;
-      letter-spacing: -.7px;
+      letter-spacing: -0.5px;
 
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
 
-    .login-subtitle {
+    .description {
       color: var(--muted);
 
-      font-size: 10px;
-      line-height: 1.7;
+      font-size: 9px;
+      line-height: 1.8;
     }
 
     /* =========================
        FORM
     ========================= */
 
-    .form {
-      width: 100%;
-    }
-
-    .field {
+    .form-group {
       margin-bottom: 17px;
     }
 
-    .field-label {
+    .form-label {
       display: block;
 
-      color: #39453f;
+      margin-bottom: 7px;
+
+      color: #46534e;
 
       font-size: 9px;
       font-weight: 750;
-
-      margin-bottom: 6px;
     }
 
     .input-wrap {
       position: relative;
     }
 
-    .input {
+    .form-input {
       width: 100%;
       height: 45px;
 
       padding: 0 13px;
 
-      color: var(--ink);
+      color: var(--dark);
+      background: var(--white);
 
-      background: #fff;
-
-      border: 1px solid #d9e2de;
+      border: 1px solid #d5dfda;
       border-radius: 8px;
 
       outline: none;
 
-      font-size: 11px;
+      font-size: 10px;
 
       transition:
-        border-color .2s ease,
-        box-shadow .2s ease,
-        background .2s ease;
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
-    .input::placeholder {
-      color: #9aa5a0;
-    }
-
-    .input:focus {
-      background: #fff;
-
-      border-color: #7bb9a2;
+    .form-input:focus {
+      border-color: #78b69e;
 
       box-shadow:
-        0 0 0 3px rgba(8,118,83,.08);
+        0 0 0 3px rgba(8, 118, 83, 0.07);
+    }
+
+    .form-input::placeholder {
+      color: #a0aaa6;
     }
 
     .password-input {
-      padding-right: 48px;
+      padding-right: 70px;
     }
 
     .password-toggle {
       position: absolute;
 
-      right: 7px;
+      right: 10px;
       top: 50%;
-
-      width: 34px;
-      height: 34px;
 
       transform: translateY(-50%);
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 5px 6px;
+
+      color: var(--muted);
 
       background: transparent;
 
-      color: #78847f;
+      border: 0;
 
-      border-radius: 6px;
-
-      cursor: pointer;
-
-      font-size: 9px;
+      font-size: 8px;
       font-weight: 750;
-
-      transition:
-        color .2s ease,
-        background .2s ease;
     }
 
     .password-toggle:hover {
-      color: var(--primary);
-      background: var(--primary-soft);
+      color: var(--green);
     }
 
-    .form-row {
+    /* =========================
+       OPTIONS
+    ========================= */
+
+    .form-options {
+      margin-top: 4px;
+      margin-bottom: 20px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      gap: 15px;
-
-      margin: 2px 0 22px;
+      gap: 12px;
     }
 
     .remember {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 7px;
 
-      color: #6c7873;
+      color: #6d7974;
 
-      font-size: 9px;
+      font-size: 8px;
+      font-weight: 650;
 
       cursor: pointer;
     }
@@ -549,250 +338,152 @@
       width: 13px;
       height: 13px;
 
-      accent-color: var(--primary);
+      accent-color: var(--green);
 
       cursor: pointer;
     }
 
-    .forgot {
-      color: var(--primary);
+    .forgot-link {
+      color: var(--green);
 
-      font-size: 9px;
-      font-weight: 700;
+      font-size: 8px;
+      font-weight: 750;
     }
 
-    .forgot:hover {
+    .forgot-link:hover {
       text-decoration: underline;
     }
 
-    .login-button {
+    /* =========================
+       LOGIN BUTTON
+    ========================= */
+
+    .login-submit {
       width: 100%;
-      height: 46px;
+      height: 45px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
+      color: var(--white);
+      background: var(--green);
+
+      border: 0;
       border-radius: 8px;
 
-      color: #fff;
-
-      background: var(--primary);
-
-      cursor: pointer;
-
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 800;
 
       transition:
-        background .2s ease,
-        transform .2s ease,
-        box-shadow .2s ease;
+        background 0.2s ease,
+        transform 0.1s ease;
     }
 
-    .login-button:hover {
-      background: var(--primary-dark);
-
-      transform: translateY(-1px);
-
-      box-shadow:
-        0 7px 18px rgba(8,118,83,.16);
+    .login-submit:hover {
+      background: var(--green-dark);
     }
 
-    .login-button:disabled {
-      opacity: .7;
+    .login-submit:active {
+      transform: translateY(1px);
+    }
+
+    .login-submit:disabled {
+      opacity: 0.65;
       cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .login-button.loading {
-      pointer-events: none;
-    }
-
-    .login-button.loading::after {
-      content: "";
-
-      width: 14px;
-      height: 14px;
-
-      margin-left: 8px;
-
-      border: 2px solid rgba(255,255,255,.35);
-      border-top-color: #fff;
-
-      border-radius: 50%;
-
-      animation: spin .7s linear infinite;
     }
 
     /* =========================
        MESSAGE
     ========================= */
 
-    .form-message {
+    .message {
       display: none;
 
-      padding: 10px 11px;
+      margin-bottom: 17px;
 
-      margin-bottom: 16px;
+      padding: 10px 12px;
 
       border-radius: 7px;
 
-      font-size: 9px;
-      line-height: 1.5;
+      font-size: 8px;
+      line-height: 1.6;
     }
 
-    .form-message.show {
+    .message.show {
       display: block;
     }
 
-    .form-message.error {
+    .message.error {
       color: var(--danger);
-
-      background: #fff2f1;
-
-      border: 1px solid #f1ceca;
+      background: #fff3f2;
+      border: 1px solid #f2d1ce;
     }
 
-    .form-message.success {
-      color: #087653;
-
-      background: var(--primary-soft);
-
-      border: 1px solid #c9e5d9;
+    .message.success {
+      color: #086746;
+      background: var(--green-soft);
+      border: 1px solid #cbe3d8;
     }
 
     /* =========================
        REGISTER
     ========================= */
 
-    .register-note {
-      margin-top: 21px;
+    .register-area {
+      margin-top: 23px;
+      padding-top: 21px;
+
+      border-top: 1px solid #edf1ef;
 
       text-align: center;
-
-      color: #77837e;
-
-      font-size: 9px;
     }
 
-    .register-note a {
-      color: var(--primary);
-      font-weight: 750;
-    }
-
-    .register-note a:hover {
-      text-decoration: underline;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    .footer {
-      padding: 20px 0;
-
-      background: #101714;
-
-      color: #718079;
+    .register-text {
+      color: var(--muted);
 
       font-size: 8px;
     }
 
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .register-link {
+      margin-left: 4px;
 
-      gap: 15px;
+      color: var(--green);
+
+      font-weight: 800;
+    }
+
+    .register-link:hover {
+      text-decoration: underline;
     }
 
     /* =========================
-       ANIMATION
+       SECURITY NOTE
     ========================= */
 
-    @keyframes pageIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
+    .security-note {
+      margin-top: 16px;
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+      color: #8b9691;
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      font-size: 7px;
+      line-height: 1.7;
+
+      text-align: center;
     }
 
     /* =========================
-       MOBILE
+       RESPONSIVE
     ========================= */
 
-    @media (max-width: 760px) {
+    @media (max-width: 520px) {
 
-      .container {
-        width: calc(100% - 28px);
-      }
-
-      .top-right {
-        display: none;
+      .header {
+        height: 66px;
       }
 
       .header-inner {
-        min-height: 67px;
-      }
-
-      main {
-        padding: 28px 0;
-      }
-
-      .login-layout {
-        grid-template-columns: 1fr;
-
-        border-radius: 13px;
-      }
-
-      .login-intro {
-        min-height: 280px;
-
-        padding: 28px 24px;
-      }
-
-      .intro-logo {
-        width: 48px;
-        height: 48px;
-
-        margin-bottom: 20px;
-      }
-
-      .intro-title {
-        font-size: 24px;
-      }
-
-      .intro-footer {
-        padding-top: 20px;
-      }
-
-      .login-panel {
-        padding: 34px 24px;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      .top-left span:last-child,
-      .top-left .dot {
-        display: none;
-      }
-
-      .brand-name {
-        font-size: 10px;
+        width: calc(100% - 28px);
       }
 
       .brand-logo {
@@ -800,28 +491,40 @@
         height: 39px;
       }
 
-      .back-home {
-        font-size: 9px;
+      .brand-name {
+        font-size: 10px;
       }
 
-      .login-intro {
-        min-height: 255px;
+      main {
+        min-height: calc(100vh - 66px);
+
+        padding:
+          35px 14px
+          45px;
       }
 
-      .login-title {
+      .login-card {
+        padding: 26px 20px;
+      }
+
+      .title {
         font-size: 25px;
       }
+    }
 
-      .form-row {
-        align-items: flex-start;
-        flex-direction: column;
+    @media (max-width: 370px) {
 
-        gap: 9px;
+      .back-link {
+        display: none;
       }
 
-      .footer-inner {
+      .form-options {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .forgot-link {
+        margin-left: 20px;
       }
     }
 
@@ -830,7 +533,6 @@
       *,
       *::before,
       *::after {
-        animation: none !important;
         transition: none !important;
       }
     }
@@ -839,56 +541,16 @@
 
 <body>
 
-  <!-- =========================
-       TOP STRIP
-  ========================== -->
-
-  <div class="top-strip">
-
-    <div class="container top-inner">
-
-      <div class="top-left">
-
-        <span>
-          Matuail Cyber Security Force
-        </span>
-
-        <span class="dot"></span>
-
-        <span>
-          MCSF Community Platform
-        </span>
-
-      </div>
-
-      <div class="top-right">
-
-        <a href="index.html">
-          Home
-        </a>
-
-        <a href="register.html">
-          Register
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- HEADER -->
 
   <header class="header">
 
-    <div class="container header-inner">
+    <div class="header-inner">
 
       <a
         href="index.html"
         class="brand"
+        aria-label="MCSF Home"
       >
 
         <img
@@ -897,11 +559,11 @@
           class="brand-logo"
         >
 
-        <div class="brand-copy">
+        <div>
 
-          <span class="brand-name">
+          <div class="brand-name">
             Matuail Cyber Security Force
-          </span>
+          </div>
 
           <span class="brand-short">
             MCSF
@@ -914,7 +576,7 @@
 
       <a
         href="index.html"
-        class="back-home"
+        class="back-link"
       >
         ← Back to website
       </a>
@@ -924,284 +586,259 @@
   </header>
 
 
-  <!-- =========================
-       MAIN
-  ========================== -->
+  <!-- MAIN -->
 
   <main>
 
-    <div class="container">
+    <div class="login-wrapper">
 
-      <div class="login-layout">
+      <section class="login-card">
+
+        <!-- HEADING -->
+
+        <div class="login-heading">
+
+          <span class="eyebrow">
+            MCSF Member Portal
+          </span>
+
+          <h1 class="title">
+            Welcome back
+          </h1>
+
+          <p class="description">
+            Sign in to access your authorized MCSF
+            member account.
+          </p>
+
+        </div>
 
 
-        <!-- =====================
-             INTRO
-        ====================== -->
+        <!-- MESSAGE -->
 
-        <section class="login-intro">
+        <div
+          id="loginMessage"
+          class="message"
+          role="alert"
+          aria-live="polite"
+        ></div>
 
-          <div class="intro-content">
 
-            <img
-              src="logo.png"
-              alt="MCSF Logo"
-              class="intro-logo"
+        <!-- LOGIN FORM -->
+
+        <form
+          id="loginForm"
+          novalidate
+        >
+
+          <!-- EMAIL / USERNAME -->
+
+          <div class="form-group">
+
+            <label
+              for="loginIdentifier"
+              class="form-label"
             >
+              Email or Username
+            </label>
 
-            <div class="intro-label">
-              Member Portal
+            <div class="input-wrap">
+
+              <input
+                id="loginIdentifier"
+                name="identifier"
+                class="form-input"
+                type="text"
+                placeholder="Enter your email or username"
+                autocomplete="username"
+                required
+              >
+
             </div>
 
-            <h1 class="intro-title">
-              Welcome back to
-              the MCSF community.
-            </h1>
+          </div>
 
-            <p class="intro-text">
-              Sign in to access your member
-              account and the MCSF community
-              platform.
-            </p>
+
+          <!-- PASSWORD -->
+
+          <div class="form-group">
+
+            <label
+              for="loginPassword"
+              class="form-label"
+            >
+              Password
+            </label>
+
+            <div class="input-wrap">
+
+              <input
+                id="loginPassword"
+                name="password"
+                class="form-input password-input"
+                type="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              >
+
+              <button
+                type="button"
+                id="passwordToggle"
+                class="password-toggle"
+                aria-label="Show password"
+              >
+                Show
+              </button>
+
+            </div>
 
           </div>
 
 
-          <div class="intro-footer">
+          <!-- OPTIONS -->
 
-            <span class="intro-status">
-              ●
-            </span>
+          <div class="form-options">
 
-            Secure member area
+            <label class="remember">
 
-          </div>
+              <input
+                type="checkbox"
+                id="rememberMe"
+                name="remember"
+              >
 
-        </section>
+              <span>
+                Remember me
+              </span>
+
+            </label>
 
 
-        <!-- =====================
-             LOGIN FORM
-        ====================== -->
-
-        <section class="login-panel">
-
-          <div class="login-heading">
-
-            <span class="login-label">
-              Account Access
-            </span>
-
-            <h2 class="login-title">
-              Sign in
-            </h2>
-
-            <p class="login-subtitle">
-              Enter your account details to continue.
-            </p>
+            <a
+              href="forgot-password.html"
+              class="forgot-link"
+            >
+              Forgot password?
+            </a>
 
           </div>
 
 
-          <form
-            class="form"
-            id="loginForm"
-            novalidate
+          <!-- SUBMIT -->
+
+          <button
+            type="submit"
+            id="loginButton"
+            class="login-submit"
           >
+            Sign In
+          </button>
 
-            <div
-              class="form-message"
-              id="formMessage"
-              role="alert"
-            ></div>
+        </form>
 
 
-            <!-- EMAIL / USERNAME -->
+        <!-- REGISTER -->
 
-            <div class="field">
+        <div class="register-area">
 
-              <label
-                class="field-label"
-                for="loginIdentifier"
-              >
-                Email or Username
-              </label>
+          <span class="register-text">
+            Don't have an account?
+          </span>
 
-              <div class="input-wrap">
+          <a
+            href="register.html"
+            class="register-link"
+          >
+            Register
+          </a>
 
-                <input
-                  type="text"
-                  id="loginIdentifier"
-                  name="identifier"
-                  class="input"
-                  placeholder="Enter your email or username"
-                  autocomplete="username"
-                  required
-                >
-
-              </div>
-
-            </div>
+        </div>
 
 
-            <!-- PASSWORD -->
+        <!-- SECURITY -->
 
-            <div class="field">
+        <p class="security-note">
+          Access is restricted to authorized MCSF
+          accounts. Never share your password or
+          authentication information with anyone.
+        </p>
 
-              <label
-                class="field-label"
-                for="loginPassword"
-              >
-                Password
-              </label>
-
-              <div class="input-wrap">
-
-                <input
-                  type="password"
-                  id="loginPassword"
-                  name="password"
-                  class="input password-input"
-                  placeholder="Enter your password"
-                  autocomplete="current-password"
-                  minlength="6"
-                  required
-                >
-
-                <button
-                  type="button"
-                  class="password-toggle"
-                  id="passwordToggle"
-                  aria-label="Show password"
-                >
-                  Show
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <!-- OPTIONS -->
-
-            <div class="form-row">
-
-              <label class="remember">
-
-                <input
-                  type="checkbox"
-                  id="rememberMe"
-                  name="remember"
-                >
-
-                <span>
-                  Remember me
-                </span>
-
-              </label>
-
-
-              <a
-                href="forgot-password.html"
-                class="forgot"
-              >
-                Forgot password?
-              </a>
-
-            </div>
-
-
-            <!-- LOGIN -->
-
-            <button
-              type="submit"
-              class="login-button"
-              id="loginButton"
-            >
-              Sign in
-            </button>
-
-
-            <div class="register-note">
-
-              Don't have an account?
-
-              <a href="register.html">
-                Create an account
-              </a>
-
-            </div>
-
-          </form>
-
-        </section>
-
-      </div>
+      </section>
 
     </div>
 
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer class="footer">
-
-    <div class="container footer-inner">
-
-      <span>
-        © <span id="year"></span>
-        Matuail Cyber Security Force.
-        All rights reserved.
-      </span>
-
-      <span>
-        MCSF Community Platform
-      </span>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-
   <script>
 
-    /* -------------------------
-       YEAR
-    ------------------------- */
+    /*
+    =====================================================
+    MCSF LOGIN FRONTEND
+    =====================================================
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    This page does NOT contain demo credentials.
+
+    Authentication will be handled by the real
+    backend/authentication service.
+
+    Expected future flow:
+
+      1. User submits credentials.
+      2. Frontend sends them securely to backend.
+      3. Backend validates credentials.
+      4. Backend creates a secure session/token.
+      5. User is redirected to dashboard.html.
+
+    =====================================================
+    */
 
 
-    /* -------------------------
-       PASSWORD SHOW / HIDE
-    ------------------------- */
+    const loginForm =
+      document.getElementById("loginForm");
 
-    const passwordInput =
+    const loginIdentifier =
+      document.getElementById("loginIdentifier");
+
+    const loginPassword =
       document.getElementById("loginPassword");
+
+    const loginButton =
+      document.getElementById("loginButton");
+
+    const loginMessage =
+      document.getElementById("loginMessage");
 
     const passwordToggle =
       document.getElementById("passwordToggle");
+
+
+    /*
+    =====================================================
+    PASSWORD VISIBILITY
+    =====================================================
+    */
 
     passwordToggle.addEventListener(
       "click",
       function () {
 
         const isPassword =
-          passwordInput.type === "password";
+          loginPassword.type === "password";
 
-        passwordInput.type =
-          isPassword ? "text" : "password";
+
+        loginPassword.type =
+          isPassword
+            ? "text"
+            : "password";
+
 
         passwordToggle.textContent =
-          isPassword ? "Hide" : "Show";
+          isPassword
+            ? "Hide"
+            : "Show";
+
 
         passwordToggle.setAttribute(
           "aria-label",
@@ -1214,173 +851,155 @@
     );
 
 
-    /* -------------------------
-       FORM
-    ------------------------- */
-
-    const loginForm =
-      document.getElementById("loginForm");
-
-    const loginButton =
-      document.getElementById("loginButton");
-
-    const formMessage =
-      document.getElementById("formMessage");
-
-    const identifier =
-      document.getElementById("loginIdentifier");
-
-    const password =
-      document.getElementById("loginPassword");
-
+    /*
+    =====================================================
+    MESSAGE
+    =====================================================
+    */
 
     function showMessage(
       message,
-      type
+      type = "error"
     ) {
 
-      formMessage.textContent = message;
+      loginMessage.textContent =
+        message;
 
-      formMessage.className =
-        "form-message show " + type;
+      loginMessage.className =
+        `message show ${type}`;
 
     }
 
 
     function clearMessage() {
 
-      formMessage.textContent = "";
+      loginMessage.textContent = "";
 
-      formMessage.className =
-        "form-message";
+      loginMessage.className =
+        "message";
 
     }
 
 
+    /*
+    =====================================================
+    LOGIN SUBMIT
+    =====================================================
+    */
+
     loginForm.addEventListener(
       "submit",
-      function (event) {
+      async function (event) {
 
         event.preventDefault();
 
         clearMessage();
 
 
-        const username =
-          identifier.value.trim();
-
-        const passwordValue =
-          password.value;
+        const identifier =
+          loginIdentifier.value.trim();
 
 
-        /* BASIC CLIENT VALIDATION */
-
-        if (!username) {
-
-          showMessage(
-            "Please enter your email or username.",
-            "error"
-          );
-
-          identifier.focus();
-
-          return;
-        }
-
-
-        if (!passwordValue) {
-
-          showMessage(
-            "Please enter your password.",
-            "error"
-          );
-
-          password.focus();
-
-          return;
-        }
-
-
-        if (passwordValue.length < 6) {
-
-          showMessage(
-            "Password must contain at least 6 characters.",
-            "error"
-          );
-
-          password.focus();
-
-          return;
-        }
+        const password =
+          loginPassword.value;
 
 
         /*
-          IMPORTANT:
+          Basic frontend validation only.
 
-          Real authentication will be connected
-          through the backend/authentication system.
-
-          No real password is stored or checked
-          inside this HTML file.
+          Real authentication must happen
+          on the server/backend.
         */
+
+        if (!identifier) {
+
+          showMessage(
+            "Please enter your email or username."
+          );
+
+          loginIdentifier.focus();
+
+          return;
+        }
+
+
+        if (!password) {
+
+          showMessage(
+            "Please enter your password."
+          );
+
+          loginPassword.focus();
+
+          return;
+        }
 
 
         loginButton.disabled = true;
 
-        loginButton.classList.add("loading");
-
-        loginButton.textContent = "Signing in";
+        loginButton.textContent =
+          "Signing in...";
 
 
         /*
-          Temporary frontend response.
+        =================================================
+        BACKEND CONNECTION PLACEHOLDER
+        =================================================
 
-          This will be replaced by the real
-          authentication API later.
+        Do NOT put passwords or secret keys inside
+        this HTML file.
+
+        The real authentication endpoint will be
+        connected here after the backend is created.
+
+        Example future request:
+
+          const response = await fetch(
+            "/api/auth/login",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                identifier,
+                password
+              })
+            }
+          );
+
+        =================================================
         */
 
-        setTimeout(function () {
+
+        try {
+
+          /*
+            Backend is not connected yet.
+
+            We deliberately do not pretend that
+            authentication succeeded.
+          */
+
+          showMessage(
+            "Authentication service is not connected yet. Please complete the MCSF backend setup before signing in.",
+            "error"
+          );
+
+        } catch (error) {
+
+          showMessage(
+            "Unable to connect to the authentication service."
+          );
+
+        } finally {
 
           loginButton.disabled = false;
 
-          loginButton.classList.remove("loading");
+          loginButton.textContent =
+            "Sign In";
 
-          loginButton.textContent = "Sign in";
-
-          showMessage(
-            "The login system is ready for secure authentication setup.",
-            "success"
-          );
-
-        }, 700);
-
-      }
-    );
-
-
-    /* -------------------------
-       REMOVE ERROR ON INPUT
-    ------------------------- */
-
-    [identifier, password].forEach(
-      function (input) {
-
-        input.addEventListener(
-          "input",
-          function () {
-
-            if (
-              formMessage.classList.contains(
-                "error"
-              )
-            ) {
-
-              clearMessage();
-
-            }
-
-          }
-        );
+        }
 
       }
     );
